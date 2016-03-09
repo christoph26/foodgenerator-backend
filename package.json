@@ -1,0 +1,30 @@
+{
+  "name": "moviebass",
+  "version": "1.0.0",
+  "description": "Movie backend as a service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klimksh/moviebass.git"
+  },
+  "keywords": [
+    "moviebass",
+    "seba",
+    "master"
+  ],
+  "author": "sebis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klimksh/moviebass/issues"
+  },
+  "homepage": "https://github.com/klimksh/moviebass#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.6"
+  }
+}
