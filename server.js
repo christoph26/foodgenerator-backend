@@ -5,9 +5,14 @@ var bodyParser = require('body-parser');
 var Movie = require('./models/movie');
 var movieController = require('./controllers/movie');
 var cors = require('cors');
+var Config = require('./config/config.js');
 
 // Connect to the MongoDB with movies
-mongoose.connect('mongodb://localhost:27017/moviedb');
+mongoose.connect([Config.db.host, '/', Config.db.name].join(''),{
+    //eventually it's a good idea to make this secure
+    user: Config.db.user,
+    pass: Config.db.pass
+});
 
 // Create our Express application
 var app = express();
@@ -17,8 +22,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// Use environment defined port or 3000
-var port = process.env.PORT || 3000;
 
 // Create our Express router
 var router = express.Router();
@@ -27,8 +30,8 @@ var router = express.Router();
 app.use('/api', router);
 
 // Start the server
-app.listen(port);
-console.log('Insert beer on port ' + port);
+app.listen(Config.app.port);
+console.log('Insert beer on port ' + Config.app.port);
 
 // Initial dummy route for testing
 // http://localhost:3000/api
