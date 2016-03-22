@@ -25,7 +25,12 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
+    "expect": "^1.15.2",
     "express": "^4.13.4",
     "mongoose": "^4.4.6"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
   }
 }

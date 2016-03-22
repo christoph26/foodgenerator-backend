@@ -17,7 +17,7 @@ mongoose.connect([Config.db.host, '/', Config.db.name].join(''),{
 // Create our Express application
 var app = express();
 app.use(cors());
-// Use the body-parser package in our application
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
