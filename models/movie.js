@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Movie   = new mongoose.Schema({
     title: String,
     description: String,
+    mpaa_rating: String,
     year: Number
 });
 

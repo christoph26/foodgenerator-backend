@@ -41,7 +41,7 @@ describe("basic rest operations tests",function(){
             .expect(201)
             .end(function(err,res){
 
-                var postRetRec = JSON.parse(res.text).Movie;
+                var postRetRec = JSON.parse(res.text);
 
                 assert.equal(postRetRec.title, randomTitle);
                 assert.equal(postRetRec.year, randomYear);
@@ -53,8 +53,8 @@ describe("basic rest operations tests",function(){
                     .send()
                     .expect(200)
                     .end(function(err, res){
-                        var jsonRes = JSON.parse(res.text).Movie;
-                        console.log(jsonRes, postRetRec);
+                        var jsonRes = JSON.parse(res.text);
+
                         for (i in Object.keys(jsonRes)) {
                             assert.equal(jsonRes[i], postRetRec[i]);
                         }

@@ -9,7 +9,7 @@ exports.postMovie = function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({ message: 'Movie added to the collection!', Movie: m });
+        res.json(m);
     });
 };
 
@@ -32,7 +32,7 @@ exports.getMovie = function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({Movie:movie});
+        res.json(movie);
     });
 };
 
@@ -51,7 +51,7 @@ exports.putMovie = function(req, res) {
             if (err)
                 res.send(err);
 
-            res.json({Movie: movie});
+            res.json(movie);
         });
     });
 };
@@ -63,6 +63,6 @@ exports.deleteMovie = function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({ message: 'Movie removed from the collection!' });
+        res.json();
     });
 };
