@@ -23,10 +23,13 @@
   },
   "homepage": "https://github.com/klimksh/moviebass#readme",
   "dependencies": {
+    "bcrypt": "^0.8.5",
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
     "expect": "^1.15.2",
     "express": "^4.13.4",
+    "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.6"
   },
   "devDependencies": {

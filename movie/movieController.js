@@ -1,4 +1,4 @@
-var Movie = require('../models/movie');
+var Movie = require('./movieSchema');
 
 exports.postMovie = function(req, res) {
 
