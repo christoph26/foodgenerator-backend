@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 // Define our movie schema
 var Movie   = new mongoose.Schema({
     title: String,
-    description: String,
+    synopsis: String,
     mpaa_rating: String,
     year: Number
 });
