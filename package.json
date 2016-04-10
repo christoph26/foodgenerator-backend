@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/klimksh/moviebass#readme",
   "dependencies": {
-    "bcrypt": "^0.8.5",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
     "expect": "^1.15.2",

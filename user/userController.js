@@ -1,6 +1,5 @@
 var Config = require('../config/config.js');
 var token = require('jsonwebtoken');
-var bcrypt = require('bcrypt');
 var User = require('./userSchema');
 
 module.exports.login = function(req, res){
@@ -16,16 +15,16 @@ module.exports.login = function(req, res){
 
     User.findOne({username: req.body.username}, function(err, user){
         if (!user) {
-            res.status(401).send('Invalid Password');
+            res.status(401).send('Invalid Credentials');
             return;
         }
-        comparePassword(user.password, req.body.password, function(err, isMatch) {
+        user.comparePassword(req.body.password, function(err, isMatch) {
             if (err) throw err;
             if(!isMatch){
-                res.status(401).send('Invalid Password');
+                res.status(401).send('Invalid Credentials');
             } else {
-                var myToken = token.sign({ user: req.body.username }, Config.auth.secret);
-                res.status(200).json({token: myToken});
+                var newToken = token.sign({ user: req.body.username }, Config.auth.secret);
+                res.status(200).json({token: newToken});
             }
         });
     });
@@ -53,12 +52,5 @@ module.exports.signup = function(req, res){
 
         var myToken = token.sign({ user: req.body.username }, Config.auth.secret);
         res.json({token: myToken});
-    });
-};
-
-function comparePassword(original, candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, original, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
     });
 };
