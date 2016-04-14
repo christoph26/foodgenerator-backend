@@ -4,12 +4,16 @@ SEBA example app. front end can be found [here](https://github.com/treschenhofer
 
 ## prerequisites
 
-### for the back end
+
+_both for the back end and front end_
+
+* [check out the front end repository](https://github.com/treschenhofer/movie-angular-client)
+
+_just for the backend_
 
 * mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/)
 
-### both for the back end and front end
-[check out the front end repository](https://github.com/treschenhofer/movie-angular-client)
+
 
 ## setup (before first run)
 
@@ -18,15 +22,15 @@ go to your project root folder via command line
 cd path/to/workspace/moviebass
 ```
 
-### install node dependencies
+**install node dependencies**
 
 ```
 npm install
 ```
 
-### set up your database
+**set up your database**
 
-* create a new directory where your database will be stores (it's a good idea to seperate data and business logic - so the data directory should be on a different place than your app)
+* create a new directory where your database will be stored (it's a good idea to seperate data and business logic - the data directory should be on a different place than your app)
 * start the database server 
 ```
 mongod --dbpath relative/path/to/database
@@ -36,7 +40,7 @@ mongod --dbpath relative/path/to/database
 mongorestore dump/
 ```
 
-### set up environment configuration
+**set up environment configuration**
 
 copy one of the config files in the config directory and rename it to `config.js`. DO NOT check in your config.js file into source control. If you make a changes that your team members should be able to see (e.g. introducing a new config variable), change it in `config.dev_local.js`
 
@@ -51,4 +55,9 @@ start the web server
 ```
 node server.js
 ```
+
+## testing
+
+There are a few tests already using [postman](https://www.getpostman.com/)
+You need to import the test and environment from `rest.json.postman_collection` and `test/localhost.postman_environment`
 
