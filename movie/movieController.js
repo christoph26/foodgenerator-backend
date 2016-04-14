@@ -6,10 +6,11 @@ exports.postMovie = function(req, res) {
 
     movie.save(function(err, m) {
         if (err) {
-            res.send(err);
+            res.status(500).send(err);
+            return;
         }
 
-        res.json(m);
+        res.status(201).json(m);
     });
 };
 
@@ -17,7 +18,8 @@ exports.postMovie = function(req, res) {
 exports.getMovies = function(req, res) {
     Movie.find(function(err, movies) {
         if (err) {
-            res.send(err);
+            res.status(500).send(err);
+            return;
         }
         res.json(movies);
     });
@@ -28,7 +30,10 @@ exports.getMovies = function(req, res) {
 exports.getMovie = function(req, res) {
     // Use the Beer model to find a specific beer
     Movie.findById(req.params.movie_id, function(err, movie) {
-        if (err) { res.send(err) };
+        if (err) {
+            res.status(500).send(err)
+            return;
+        };
 
         res.json(movie);
     });
@@ -47,7 +52,8 @@ exports.putMovie = function(req, res) {
             runValidators: true
         }, function (err, movie) {
         if (err) {
-            return null;
+            res.status(500).send(err);
+            return;
         }
         res.json(movie);
     });
@@ -59,7 +65,8 @@ exports.deleteMovie = function(req, res) {
     // Use the Beer model to find a specific beer and remove it
     Movie.findById(req.params.movie_id, function(err, m) {
         if (err) {
-            res.send(err);
+            res.status(500).send(err);
+            return;
         }
         //authorize
         if (req.user.equals(m.user)) {

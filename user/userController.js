@@ -15,7 +15,8 @@ module.exports.login = function(req, res){
 
     User.findOne({username: req.body.username}, function(err, user){
         if (err) {
-            throw err;
+            res.status(500).send(err);
+            return
         }
 
         if (!user) {
@@ -50,10 +51,19 @@ module.exports.signup = function(req, res){
 
     user.save(function(err) {
         if (err) {
-            res.send(err);
+            res.status(500).send(err);
+            return;
         }
 
         res.json({token: createToken(user)});
+    });
+};
+
+module.exports.unregister = function(req, res) {
+    req.user.remove().then(function (user) {
+        res.sendStatus(200);
+    }, function(err){
+        res.status(500).send(err);
     });
 };
 
@@ -64,6 +74,6 @@ function createToken(user) {
             username: user.username
         }
 
-    }
+    };
     return jwt.encode(tokenPayload,Config.auth.jwtSecret);
 };
