@@ -28,9 +28,11 @@
     "cors": "^2.7.1",
     "expect": "^1.15.2",
     "express": "^4.13.4",
-    "express-jwt": "^3.3.0",
-    "jsonwebtoken": "^5.7.0",
-    "mongoose": "^4.4.6"
+    "express-unless": "^0.3.0",
+    "jwt-simple": "^0.5.0",
+    "mongoose": "^4.4.6",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.0.0"
   },
   "devDependencies": {
     "mocha": "^2.4.5",

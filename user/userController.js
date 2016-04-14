@@ -1,6 +1,6 @@
 var Config = require('../config/config.js');
-var token = require('jsonwebtoken');
 var User = require('./userSchema');
+var jwt = require('jwt-simple');
 
 module.exports.login = function(req, res){
 
@@ -14,17 +14,19 @@ module.exports.login = function(req, res){
     }
 
     User.findOne({username: req.body.username}, function(err, user){
+        if (err) {
+            throw err;
+        }
+
         if (!user) {
             res.status(401).send('Invalid Credentials');
             return;
         }
         user.comparePassword(req.body.password, function(err, isMatch) {
-            if (err) throw err;
-            if(!isMatch){
+            if(!isMatch || err){
                 res.status(401).send('Invalid Credentials');
             } else {
-                var newToken = token.sign({ user: req.body.username }, Config.auth.secret);
-                res.status(200).json({token: newToken});
+                res.status(200).json({token: createToken(user)});
             }
         });
     });
@@ -46,11 +48,22 @@ module.exports.signup = function(req, res){
     user.username = req.body.username;
     user.password = req.body.password;
 
-    user.save(function(err, m) {
-        if (err)
+    user.save(function(err) {
+        if (err) {
             res.send(err);
+        }
 
-        var myToken = token.sign({ user: req.body.username }, Config.auth.secret);
-        res.json({token: myToken});
+        res.json({token: createToken(user)});
     });
+};
+
+function createToken(user) {
+    var tokenPayload = {
+        user: {
+            _id: user._id,
+            username: user.username
+        }
+
+    }
+    return jwt.encode(tokenPayload,Config.auth.jwtSecret);
 };

@@ -6,8 +6,9 @@ exports.postMovie = function(req, res) {
 
 
     movie.save(function(err, m) {
-        if (err)
+        if (err) {
             res.send(err);
+        }
 
         res.json(m);
     });
@@ -15,10 +16,11 @@ exports.postMovie = function(req, res) {
 
 // Create endpoint /api/movies for GET
 exports.getMovies = function(req, res) {
-    // Use the Beer model to find all beer
     Movie.find(function(err, movies) {
-        if (err)
+        if (err) {
             res.send(err);
+        }
+        //authorize
 
         res.json(movies);
     });
@@ -29,8 +31,7 @@ exports.getMovies = function(req, res) {
 exports.getMovie = function(req, res) {
     // Use the Beer model to find a specific beer
     Movie.findById(req.params.movie_id, function(err, movie) {
-        if (err)
-            res.send(err);
+        if (err) { res.send(err) };
 
         res.json(movie);
     });
