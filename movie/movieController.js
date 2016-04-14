@@ -4,7 +4,6 @@ exports.postMovie = function(req, res) {
 
     var movie = new Movie(req.body);
 
-
     movie.save(function(err, m) {
         if (err) {
             res.send(err);
@@ -20,8 +19,6 @@ exports.getMovies = function(req, res) {
         if (err) {
             res.send(err);
         }
-        //authorize
-
         res.json(movies);
     });
 };
@@ -60,10 +57,17 @@ exports.putMovie = function(req, res) {
 // Create endpoint /api/movies/:movie_id for DELETE
 exports.deleteMovie = function(req, res) {
     // Use the Beer model to find a specific beer and remove it
-    Movie.findByIdAndRemove(req.params.movie_id, function(err) {
-        if (err)
+    Movie.findById(req.params.movie_id, function(err, m) {
+        if (err) {
             res.send(err);
+        }
+        //authorize
+        if (req.user.equals(m.user)) {
+            m.remove();
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(401);
+        }
 
-        res.json();
     });
 };

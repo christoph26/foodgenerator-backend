@@ -6,7 +6,11 @@ var Movie   = new mongoose.Schema({
     title: String,
     synopsis: String,
     mpaa_rating: String,
-    year: Number
+    year: Number,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 // Export the Mongoose model
