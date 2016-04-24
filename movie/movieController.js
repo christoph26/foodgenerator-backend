@@ -69,7 +69,7 @@ exports.deleteMovie = function(req, res) {
             return;
         }
         //authorize
-        if (req.user.equals(m.user)) {
+        if (m.user && req.user.equals(m.user)) {
             m.remove();
             res.sendStatus(200);
         } else {

@@ -4,8 +4,7 @@
   "description": "Movie backend as a service",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "test"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
     "jwt-simple": "^0.5.0",
     "mongoose": "^4.4.6",
     "passport": "^0.3.2",
-    "passport-jwt": "^2.0.0"
+    "passport-jwt": "^2.0.0",
+    "supertest": "^1.2.0"
   }
 }

@@ -12,6 +12,7 @@ _both for the back end and front end_
 _just for the backend_
 
 * mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/)
+* mocha cli [installation](https://mochajs.org/#installation)
 
 
 
@@ -58,6 +59,13 @@ node server.js
 
 ## testing
 
-There are a few tests already using [postman](https://www.getpostman.com/)
-You need to import the test and environment from `rest.json.postman_collection` and `test/localhost.postman_environment`
+Some tests are already implemented using the test framework mocha: Simply run
 
+```
+mocha
+```
+
+...and hope that all tests will pass.
+
+**Alternative/Additionally:** you could also use postman [postman](https://www.getpostman.com/)
+You need to import the test and environment from `test/rest.json.postman_collection` and `test/localhost.postman_environment`

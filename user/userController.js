@@ -55,7 +55,7 @@ module.exports.signup = function(req, res){
             return;
         }
 
-        res.json({token: createToken(user)});
+        res.status(201).json({token: createToken(user)});
     });
 };
 
