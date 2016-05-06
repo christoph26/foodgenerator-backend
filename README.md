@@ -1,22 +1,21 @@
-# movies backend
+# sebamaster-movie-backend application
 
-SEBA example app. back-end can be found [here](https://bitbucket.org/sebischair/sebamaster-movie-backend)
+sebamaster-movie-frontend application can be found [here](https://bitbucket.org/sebischair/sebamaster-movie-frontend)
 
-## prerequisites
+## Prerequisites
 
-
-_both for the back end and front end_
+Both for the back end and front end application
 
 * [check out the front end repository](https://bitbucket.org/sebischair/sebamaster-movie-frontend)
 
-_just for the backend_
+Just for the backend application:
 
 * mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/)
 * mocha cli [installation](https://mochajs.org/#installation)
 
 
 
-## setup (before first run)
+## Setup (before first run)
 
 go to your project root folder via command line
 ```
