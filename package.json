@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/klimksh/moviebass.git"
+    "url": "git+https://bitbucket.org/sebischair/sebamaster-movie-backend"
   },
   "keywords": [
-    "moviebass",
+    "movie-backend",
     "seba",
     "master"
   ],
   "author": "sebis",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/klimksh/moviebass/issues"
+    "url": "https://bitbucket.org/sebischair/sebamaster-movie-backend"
   },
-  "homepage": "https://github.com/klimksh/moviebass#readme",
+  "homepage": "https://bitbucket.org/sebischair/sebamaster-movie-backend#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
