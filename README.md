@@ -6,7 +6,7 @@ sebamaster-movie-frontend application can be found [here](https://bitbucket.org/
 
 Both for the back end and front end application
 
-* [check out the front end repository](https://bitbucket.org/sebischair/sebamaster-movie-frontend)
+* nodejs [official website](https://nodejs.org/en/) - nodejs includes [npm](https://www.npmjs.com/) (node package manager)
 
 Just for the backend application:
 
