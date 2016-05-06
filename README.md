@@ -1,26 +1,25 @@
-# movies backend
+# sebamaster-movie-backend application
 
-SEBA example app. front end can be found [here](https://github.com/treschenhofer/movie-angular-client)
+sebamaster-movie-frontend application can be found [here](https://bitbucket.org/sebischair/sebamaster-movie-frontend)
 
-## prerequisites
+## Prerequisites
 
+Both for the back end and front end application check
 
-_both for the back end and front end_
+* nodejs [official website](https://nodejs.org/en/) - nodejs includes [npm](https://www.npmjs.com/) (node package manager)
 
-* [check out the front end repository](https://github.com/treschenhofer/movie-angular-client)
-
-_just for the backend_
+Just for the backend application:
 
 * mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/)
 * mocha cli [installation](https://mochajs.org/#installation)
 
 
 
-## setup (before first run)
+## Setup (before first run)
 
 go to your project root folder via command line
 ```
-cd path/to/workspace/moviebass
+cd path/to/workspace/sebamaster-movie-frontend
 ```
 
 **install node dependencies**
@@ -31,7 +30,7 @@ npm install
 
 **set up your database**
 
-* create a new directory where your database will be stored (it's a good idea to seperate data and business logic - the data directory should be on a different place than your app)
+* create a new directory where your database will be stored (it's a good idea to separate data and business logic - the data directory should be on a different place than your app)
 * start the database server 
 ```
 mongod --dbpath relative/path/to/database
