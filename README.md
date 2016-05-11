@@ -58,6 +58,8 @@ node server.js
 
 ## testing
 
+**Important** Make sure that mocha is installed globally as it is specified in [documentation](https://mochajs.org/#installation). 
+
 Some tests are already implemented using the test framework mocha: Simply run
 
 ```
