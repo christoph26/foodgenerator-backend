@@ -9,5 +9,13 @@ var RecipeFamily   = new mongoose.Schema({
 		  ref:'recipe'}]
 });
 
+
+RecipeFamily.methods.getDefaultRecipe = function (){
+	return this.defaultrecipe;
+}
+RecipeFamily.methods.getFamilyRecipes = function (){
+	return this.recipes;
+}
+
 // Export the Mongoose model
 module.exports = mongoose.model('RecipeFamily', recipeFamilySchema);
