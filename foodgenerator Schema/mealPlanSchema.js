@@ -9,11 +9,10 @@ var MealPlan = new mongoose.Schema({
         order: Number,
         meal: {
             order: String,
-            recipe: [{
+            recipe: {
                 type: mongoose.Schema.Type.ObjectId,
                 ref: 'recipe'
             }
-            ]
         }
     }
 });
