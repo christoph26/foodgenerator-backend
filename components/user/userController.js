@@ -1,4 +1,4 @@
-var Config = require('../config/config.js');
+var Config = require('../../config/config.js');
 var User = require('./userSchema');
 var jwt = require('jwt-simple');
 
