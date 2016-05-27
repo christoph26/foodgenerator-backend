@@ -11,7 +11,7 @@ var Recipe   = new mongoose.Schema({
     ingredientlist: [ 
 	{type: mongoose.Schema.Type.ObjectId,
 	 ref:'ingredientList'}
-    ]
+    ],
     recipeFamily:{type: mongoose.Schema.Type.ObjectId,
 		  ref:'recipeFamily'}
 });
