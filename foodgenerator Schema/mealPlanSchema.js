@@ -2,11 +2,20 @@
 var mongoose = require('mongoose');
 
 // Define our movie schema
-var MealPlan   = new mongoose.Schema({
+var MealPlan = new mongoose.Schema({
     titel: String,
-    recipe:[{type: mongoose.Schema.Type.ObjectId,
-		  ref:'mealList'}
-           ]
+    mealList: {
+        titel: String,
+        order: Number,
+        meal: {
+            order: String,
+            recipe: [{
+                type: mongoose.Schema.Type.ObjectId,
+                ref: 'recipe'
+            }
+            ]
+        }
+    }
 });
 
 // Export the Mongoose model
