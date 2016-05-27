@@ -4,9 +4,7 @@ var mongoose = require('mongoose');
 // Define our movie schema
 var Supermarket   = new mongoose.Schema({
     titel: String,
-    icon: String,
-    products: [{type: mongoose.Schema.Type.ObjectId,
-		  ref:'ingredient'}]
+    icon: String
 });
 
 // Export the Mongoose model
