@@ -1,26 +1,33 @@
+//created manually
 [
   {
-    "titel": "Aldi Sued",
-    "icon": "http://"
+    "_id": "smID_01",
+    "title": "ALDI SUED",
+    "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "titel": "Lidl",
-    "icon": "http://"
+    "_id": "smID_02",
+    "title": "LIDL",
+    "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "titel": "REAL",
-    "icon": "http://"
+    "_id": "smID_03",
+    "title": "REAL",
+    "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "titel": "REWE",
-    "icon": "http://"
+    "_id": "smID_04",
+    "title": "REWE",
+    "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "titel": "EDEKA",
-    "icon": "http://"
+    "_id": "smID_05",
+    "title": "EDEKA",
+    "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "titel": "Penny",
-    "icon": "http://"
+    "_id": "smID_06",
+    "title": "PENNY",
+    "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   }
 ]

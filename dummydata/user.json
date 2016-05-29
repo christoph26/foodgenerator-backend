@@ -1,142 +1,294 @@
+/*
+[
+'{{repeat(40)}}',
+{
+_id: 'userID_{{objectId()}}',
+password: '{{guid()}}',
+salt: '{{floating(1000, 4000, 2, "00000")}}',
+last_name: '{{surname()}}',
+first_name: '{{firstName()}}'
+}
+]
+*/
 [
   {
-    "email": "staciehobbs@quilm.com",
-    "password": "ae66497d-430d-4a26-9da1-e0210fadef1f",
-    "salt": "57485a3964b2b0de597cbf14",
-    "last_name": "Barnes",
-    "first_name": "Deann"
+    "_id": "userID_574b070ac429856907d75885",
+    "password": "81962f54-396d-40ba-90a2-3ad0a8571d03",
+    "salt": 1016,
+    "last_name": "Mitchell",
+    "first_name": "Alyson"
   },
   {
-    "email": "deannbarnes@quilm.com",
-    "password": "a834922d-47f7-4ccf-aada-8a39ee7f0ac5",
-    "salt": "57485a390987550157cfa257",
-    "last_name": "Sweeney",
-    "first_name": "Mendoza"
-  },
-  {
-    "email": "mendozasweeney@quilm.com",
-    "password": "41c54565-bde9-4ed4-87ca-555c87ebfcdf",
-    "salt": "57485a39a1a26588cf1776ec",
-    "last_name": "Mullins",
-    "first_name": "Chris"
-  },
-  {
-    "email": "chrismullins@quilm.com",
-    "password": "5652971d-fe6b-4e11-91d9-c17473b636c2",
-    "salt": "57485a39b9e8bc928497540b",
-    "last_name": "Emerson",
-    "first_name": "Mable"
-  },
-  {
-    "email": "mableemerson@quilm.com",
-    "password": "1524c456-fa85-4b6c-a989-f0000706aa43",
-    "salt": "57485a3971407b09144abd67",
+    "_id": "userID_574b070ab14ed8c3001caeff",
+    "password": "8ec5f5bc-fff3-423c-bef5-005cc1de1f20",
+    "salt": 2721,
     "last_name": "Banks",
-    "first_name": "Brandi"
+    "first_name": "Mcdonald"
   },
   {
-    "email": "brandibanks@quilm.com",
-    "password": "e3795352-fea2-4284-bacb-74e5731f62a5",
-    "salt": "57485a39f190210ec6b7bc31",
-    "last_name": "Park",
-    "first_name": "Bowen"
+    "_id": "userID_574b070a80a3c33500e480f7",
+    "password": "85e72375-b62c-4e19-a795-242ae57708cd",
+    "salt": 1223,
+    "last_name": "Pope",
+    "first_name": "Krista"
   },
   {
-    "email": "bowenpark@quilm.com",
-    "password": "74c58134-8e12-40df-a061-fd0423138dfa",
-    "salt": "57485a399708163f610e500c",
-    "last_name": "Huber",
-    "first_name": "Margo"
+    "_id": "userID_574b070a7486a3acdd719ab4",
+    "password": "b0bbea76-1f59-4ed8-84a6-3d9f6aba6420",
+    "salt": 1387,
+    "last_name": "Estrada",
+    "first_name": "Wallace"
   },
   {
-    "email": "margohuber@quilm.com",
-    "password": "777caf20-7d15-4dec-8f68-0764e3b64eeb",
-    "salt": "57485a3941c61704711e2d45",
-    "last_name": "Fisher",
+    "_id": "userID_574b070afc58e5f64e79dffa",
+    "password": "aa1d91b3-3533-4b15-a02e-1c5d8e333f5e",
+    "salt": 1552,
+    "last_name": "Dillard",
+    "first_name": "Elinor"
+  },
+  {
+    "_id": "userID_574b070a1146aab331481ce5",
+    "password": "bffdbf5e-983b-40c4-83ec-c6e72fcbc7bc",
+    "salt": 2221,
+    "last_name": "Conway",
+    "first_name": "Greene"
+  },
+  {
+    "_id": "userID_574b070aa2c93f4aa265f095",
+    "password": "816e14fd-2b33-4be5-a8e5-968f0056f62f",
+    "salt": 2787,
+    "last_name": "Maxwell",
+    "first_name": "Pennington"
+  },
+  {
+    "_id": "userID_574b070adfc8f0d6b83b7f06",
+    "password": "3e081d25-edbd-485f-887a-06138c14f14c",
+    "salt": 1291,
+    "last_name": "Vinson",
+    "first_name": "Allen"
+  },
+  {
+    "_id": "userID_574b070a910c947b692bc913",
+    "password": "46351d00-9d3f-4378-8fc2-ec5b0f530993",
+    "salt": 2688,
+    "last_name": "Marshall",
+    "first_name": "Natalia"
+  },
+  {
+    "_id": "userID_574b070a5ba5ee2094ea9975",
+    "password": "f224bcd1-21dc-4494-a0fc-32c6d0a29cb3",
+    "salt": 2207,
+    "last_name": "Herman",
     "first_name": "Pittman"
   },
   {
-    "email": "pittmanfisher@quilm.com",
-    "password": "79ab6f45-23e8-41a6-b508-5ce6b6d1a275",
-    "salt": "57485a392de96ab1ba3cd80a",
-    "last_name": "Cain",
-    "first_name": "Vazquez"
+    "_id": "userID_574b070a7d3d79cf04700297",
+    "password": "0579107c-d6f9-450b-8dcc-075cfda1f21a",
+    "salt": 2033,
+    "last_name": "Suarez",
+    "first_name": "Janine"
   },
   {
-    "email": "vazquezcain@quilm.com",
-    "password": "f8c6500e-2067-45ac-b182-2275fc1e3993",
-    "salt": "57485a39287c4fb5402ec066",
-    "last_name": "Huff",
-    "first_name": "Luann"
+    "_id": "userID_574b070a3dc43462582caad5",
+    "password": "a69351b5-b068-4f7a-81d0-604e15eb932e",
+    "salt": 1115,
+    "last_name": "Pierce",
+    "first_name": "Mcintosh"
   },
   {
-    "email": "luannhuff@quilm.com",
-    "password": "f083a218-1f15-445e-9bce-b3ec9d2345f4",
-    "salt": "57485a39be969b9a72a83750",
-    "last_name": "Norris",
-    "first_name": "Elliott"
+    "_id": "userID_574b070abe610a478557c4cf",
+    "password": "aeea7005-734e-48b7-8bac-ab845735d257",
+    "salt": 1642,
+    "last_name": "Wagner",
+    "first_name": "Neva"
   },
   {
-    "email": "elliottnorris@quilm.com",
-    "password": "05720727-648e-4e4a-b7ca-278db12b8142",
-    "salt": "57485a397bf993d33bbdef1b",
-    "last_name": "Blackwell",
-    "first_name": "Geneva"
+    "_id": "userID_574b070aa40604dc73c4d083",
+    "password": "3941bd2c-3c65-416d-b897-e9551ba8e40b",
+    "salt": 3176,
+    "last_name": "Owens",
+    "first_name": "Fowler"
   },
   {
-    "email": "genevablackwell@quilm.com",
-    "password": "360dd076-df9c-4a31-9855-6133b216e810",
-    "salt": "57485a39ac80bd7d8085985b",
-    "last_name": "Sutton",
-    "first_name": "Iva"
+    "_id": "userID_574b070adcfbc939e9523b66",
+    "password": "0da882a6-361f-477a-bf9f-ec4287c1fe62",
+    "salt": 1649,
+    "last_name": "Blake",
+    "first_name": "Lowery"
   },
   {
-    "email": "ivasutton@quilm.com",
-    "password": "86f74352-132c-4a75-8c61-83d994c2a682",
-    "salt": "57485a395b0f5efd15f1537a",
-    "last_name": "Cash",
-    "first_name": "Rosalinda"
+    "_id": "userID_574b070a5c123c7ecc1b05b8",
+    "password": "9ef81a45-b56c-4827-9530-6c09d462807b",
+    "salt": 1336,
+    "last_name": "French",
+    "first_name": "Swanson"
   },
   {
-    "email": "rosalindacash@quilm.com",
-    "password": "742a397b-8ddd-4406-b51f-af8a7d0c2a27",
-    "salt": "57485a398455c89b0c32358b",
-    "last_name": "Grimes",
-    "first_name": "Louise"
+    "_id": "userID_574b070ae393c41d753a2d2c",
+    "password": "009f7215-e905-40b6-bf4c-ebb53248e2fc",
+    "salt": 2070,
+    "last_name": "Wynn",
+    "first_name": "Marisol"
   },
   {
-    "email": "louisegrimes@quilm.com",
-    "password": "c8d9582b-1ae7-4010-8e39-20ae73cc05b0",
-    "salt": "57485a39df3cae32c0e88548",
-    "last_name": "Mcdonald",
-    "first_name": "Vonda"
+    "_id": "userID_574b070a921c5aa694c205a4",
+    "password": "fd8d050b-737b-4e09-9849-540c690cd515",
+    "salt": 1204,
+    "last_name": "Sargent",
+    "first_name": "Angelique"
   },
   {
-    "email": "vondamcdonald@quilm.com",
-    "password": "0480f783-02cb-43d7-ba55-959f7f44bc61",
-    "salt": "57485a39a147ea4e671d14ca",
-    "last_name": "Forbes",
-    "first_name": "Terri"
+    "_id": "userID_574b070afa8b3fb504365386",
+    "password": "bb282fc7-99e4-48b5-8b62-55d892c498eb",
+    "salt": 1653,
+    "last_name": "Hester",
+    "first_name": "Alice"
   },
   {
-    "email": "terriforbes@quilm.com",
-    "password": "0adf9208-60aa-4e44-af09-03b5b9e036ed",
-    "salt": "57485a3932bceb84e94dc46c",
-    "last_name": "Boyer",
-    "first_name": "Cabrera"
+    "_id": "userID_574b070a8eae8a3196de7a1b",
+    "password": "cd3301bd-078e-4149-8ab0-943d6c8e8f11",
+    "salt": 2133,
+    "last_name": "Russell",
+    "first_name": "Trudy"
   },
   {
-    "email": "cabreraboyer@quilm.com",
-    "password": "adc68263-87bf-4441-be6c-da151b3fb6e0",
-    "salt": "57485a39b3323e1abedfccb5",
-    "last_name": "Wilder",
-    "first_name": "Levine"
+    "_id": "userID_574b070a85184e3781abda7e",
+    "password": "71fdf614-664a-4f7c-82a3-4567b5ed9a76",
+    "salt": 2951,
+    "last_name": "Barlow",
+    "first_name": "Brittany"
   },
   {
-    "email": "levinewilder@quilm.com",
-    "password": "f3cb85ef-a9a2-467a-a6f1-a7d3cd40cd7a",
-    "salt": "57485a393bb7a67077f6d606",
-    "last_name": "Clemons",
-    "first_name": "Pierce"
+    "_id": "userID_574b070a129da5c9b4cae8f0",
+    "password": "3b0fb6d2-5f0d-4a85-aa62-5b741a40cc17",
+    "salt": 3931,
+    "last_name": "Rodriquez",
+    "first_name": "Ochoa"
+  },
+  {
+    "_id": "userID_574b070a1daa2ed719cecdf5",
+    "password": "d3198162-c2e0-4e44-b478-a80b83776364",
+    "salt": 3658,
+    "last_name": "Hyde",
+    "first_name": "Dunlap"
+  },
+  {
+    "_id": "userID_574b070a0b9f007bd53b5797",
+    "password": "f899bd31-38d9-4e9a-8197-b8921abbd765",
+    "salt": 2866,
+    "last_name": "Hall",
+    "first_name": "Landry"
+  },
+  {
+    "_id": "userID_574b070a879a1905d24dd583",
+    "password": "c421995b-f94b-4fa3-972f-db94864f0083",
+    "salt": 2149,
+    "last_name": "Hartman",
+    "first_name": "Rosales"
+  },
+  {
+    "_id": "userID_574b070a0e94df59582430e5",
+    "password": "a65d0ab7-aeec-4a3e-8a9c-d381fa7e2da1",
+    "salt": 3998,
+    "last_name": "Woods",
+    "first_name": "Wilcox"
+  },
+  {
+    "_id": "userID_574b070a03d02d81deca3c07",
+    "password": "cae26865-0139-4bd7-95a7-e64ed3d7b7e5",
+    "salt": 1995,
+    "last_name": "Chapman",
+    "first_name": "Hobbs"
+  },
+  {
+    "_id": "userID_574b070a863aecf0c6795508",
+    "password": "7a3ec26e-6162-4ed6-8b20-b2a209276ea8",
+    "salt": 1768,
+    "last_name": "Shields",
+    "first_name": "Georgia"
+  },
+  {
+    "_id": "userID_574b070a34eb0534d0ea7d29",
+    "password": "a762fc0b-6088-49be-bd47-24d2b646fd8a",
+    "salt": 1524,
+    "last_name": "Frederick",
+    "first_name": "Armstrong"
+  },
+  {
+    "_id": "userID_574b070a31a3ce0339283c4c",
+    "password": "cf464b50-2377-4654-ab2c-74dbbd9275cc",
+    "salt": 1295,
+    "last_name": "Woodward",
+    "first_name": "Antoinette"
+  },
+  {
+    "_id": "userID_574b070a02d0be49c59f747c",
+    "password": "a4d6173e-cd92-418e-8d24-bc7efd2dc835",
+    "salt": 3904,
+    "last_name": "Le",
+    "first_name": "Janis"
+  },
+  {
+    "_id": "userID_574b070a5add095e8ac49c51",
+    "password": "8b9a1bc9-f7ee-4d9f-b3bf-d99bce4d4509",
+    "salt": 1327,
+    "last_name": "Berger",
+    "first_name": "Madden"
+  },
+  {
+    "_id": "userID_574b070ac3a9881d1a5a66a8",
+    "password": "7c20fbf9-008b-4402-8919-a0729d59bb68",
+    "salt": 2461,
+    "last_name": "Avila",
+    "first_name": "Hendrix"
+  },
+  {
+    "_id": "userID_574b070a76983fb87b680d38",
+    "password": "f1da90eb-318c-4005-b4bc-ae8fb1b6a535",
+    "salt": 3373,
+    "last_name": "Leon",
+    "first_name": "Ida"
+  },
+  {
+    "_id": "userID_574b070ac1b1ca9db85844cb",
+    "password": "32710f4f-5763-417d-b46a-278f5391f9e7",
+    "salt": 2951,
+    "last_name": "Mcfarland",
+    "first_name": "Gay"
+  },
+  {
+    "_id": "userID_574b070ad95766cf63be93df",
+    "password": "3d20d39f-ca4d-450b-b28e-8d484c2ca4f1",
+    "salt": 3390,
+    "last_name": "Morgan",
+    "first_name": "Morrow"
+  },
+  {
+    "_id": "userID_574b070aeb85460513c52535",
+    "password": "a3710796-b64e-45bb-8c26-33c73a55493c",
+    "salt": 3401,
+    "last_name": "Mason",
+    "first_name": "Tamera"
+  },
+  {
+    "_id": "userID_574b070a7b01b3394238018b",
+    "password": "6d67aaa6-5504-41bc-91eb-a1308a0a88f1",
+    "salt": 3633,
+    "last_name": "Blankenship",
+    "first_name": "Tanner"
+  },
+  {
+    "_id": "userID_574b070a225e9357a7990106",
+    "password": "98179a3e-966a-42d5-b7a6-65d9b8348f58",
+    "salt": 1174,
+    "last_name": "Williamson",
+    "first_name": "Celeste"
+  },
+  {
+    "_id": "userID_574b070a85e407ff930683f3",
+    "password": "f3b2eff6-c913-4f62-9a5b-7ae182fd2475",
+    "salt": 1868,
+    "last_name": "Maldonado",
+    "first_name": "Penelope"
   }
 ]
