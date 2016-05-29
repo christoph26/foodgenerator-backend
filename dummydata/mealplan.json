@@ -1,0 +1,864 @@
+/*
+#Json Generator Dummy Cde
+[
+'{{repeat(5)}}',
+{
+titel: 'MealPlan_{{objectId()}}',
+meallist:
+['{{repeat(7)}}',
+{
+titel: 'Meallist_{{company().toUpperCase()}}',
+order: '{{index()}}',
+meal:[{
+order:'{{index()}}',
+recipe: ['{{repeat(3)}}',
+{
+type:'mongoose.Schema.Type.ObjectId',
+ref: function (tags)
+{
+var fruits = ['Chili Cin Carne', 'Spaghetti Bolognese', 'Salami Pizza', 'Scrambled Eggs', 'Lasagne', 'Cheese Cake'];
+return fruits[tags.integer(0, fruits.length - 1)];
+}
+}
+]
+}]
+
+}
+]
+
+}
+]
+*/
+
+[
+  {
+    "titel": "MealPlan_5748bc04b10792a87c74c1d0",
+    "meallist": [
+      {
+        "titel": "Meallist_KIGGLE",
+        "order": 0,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_IMAGINART",
+        "order": 1,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_ZENCO",
+        "order": 2,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_SYNTAC",
+        "order": 3,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_BOILCAT",
+        "order": 4,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_ORONOKO",
+        "order": 5,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_VELITY",
+        "order": 6,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titel": "MealPlan_5748bc04038e5bc188016f7b",
+    "meallist": [
+      {
+        "titel": "Meallist_ZBOO",
+        "order": 0,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_DATAGEN",
+        "order": 1,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_COMVERGES",
+        "order": 2,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_DEEPENDS",
+        "order": 3,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_CINCYR",
+        "order": 4,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_PUSHCART",
+        "order": 5,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_REPETWIRE",
+        "order": 6,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titel": "MealPlan_5748bc04867c7fb627540dd6",
+    "meallist": [
+      {
+        "titel": "Meallist_EXOSPEED",
+        "order": 0,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_OPTICON",
+        "order": 1,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_ZANITY",
+        "order": 2,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_ROCKLOGIC",
+        "order": 3,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_WAZZU",
+        "order": 4,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_KIDGREASE",
+        "order": 5,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_TECHTRIX",
+        "order": 6,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titel": "MealPlan_5748bc0484b95a1cfc8a370e",
+    "meallist": [
+      {
+        "titel": "Meallist_FLUMBO",
+        "order": 0,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_TECHMANIA",
+        "order": 1,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_FISHLAND",
+        "order": 2,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_ACCEL",
+        "order": 3,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_ACCUPHARM",
+        "order": 4,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_INDEXIA",
+        "order": 5,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_PAPRICUT",
+        "order": 6,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titel": "MealPlan_5748bc04dc17e10b232fa595",
+    "meallist": [
+      {
+        "titel": "Meallist_QUAREX",
+        "order": 0,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_BLUPLANET",
+        "order": 1,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_ENERSAVE",
+        "order": 2,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Lasagne"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_MEDIOT",
+        "order": 3,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Chili Cin Carne"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_HOUSEDOWN",
+        "order": 4,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Scrambled Eggs"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_ZOXY",
+        "order": 5,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Cheese Cake"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titel": "Meallist_GEEKOLOGY",
+        "order": 6,
+        "meal": [
+          {
+            "order": 0,
+            "recipe": [
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Spaghetti Bolognese"
+              },
+              {
+                "type": "mongoose.Schema.Type.ObjectId",
+                "ref": "Salami Pizza"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
