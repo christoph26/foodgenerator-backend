@@ -1,16 +1,25 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
+//define our user schema
 var userSchema = mongoose.Schema({
-    username: {
+    //email for login
+    email: {
         type: String,
         required: true,
         unique: true
     },
+    //pw for login
     password: {
         type: String,
         required: true
-    }
+    },
+    //name of the user (optional)
+    firstName: String,
+    lastName: String,
+    //salt for pw hashing
+    salt: String
+
 });
 
 userSchema.pre('save', function(next) {

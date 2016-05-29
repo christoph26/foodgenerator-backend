@@ -1,7 +1,7 @@
 // Load required packages
 var mongoose = require('mongoose');
 
-// Define our movie schema
+// Define our Recipe schema
 var Recipe = new mongoose.Schema({
         title: String, //title of the recipe
         skill: Number, //skill level of the recipe
