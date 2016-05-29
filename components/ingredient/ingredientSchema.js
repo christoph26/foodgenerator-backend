@@ -1,7 +1,7 @@
 // Load required packages
 var mongoose = require('mongoose');
 
-// Define our movie schema
+// Define our ingredient schema
 var Ingredient   = new mongoose.Schema({
     title: String,
     supermarket:[String],
@@ -9,4 +9,4 @@ var Ingredient   = new mongoose.Schema({
 });
 
 // Export the Mongoose model
-module.exports = mongoose.model('Ingredient', ingredientSchema);
+module.exports = mongoose.model('Ingredient', Ingredient);
