@@ -8,4 +8,4 @@ var Supermarket   = new mongoose.Schema({
 });
 
 // Export the Mongoose model
-module.exports = mongoose.model('Supermarket', supermarketSchema);
+module.exports = mongoose.model('Supermarket', Supermarket);

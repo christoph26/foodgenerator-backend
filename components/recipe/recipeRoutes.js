@@ -1,5 +1,12 @@
-var Recipe = require('./recipeSchema');
-var base = require('../base');
+module.exports = recipeRoutes;
 
-// Create endpoint /api/recipe/:id for GET
-exports.getRecipe = base.getEntityById(Recipe)
+function recipeRoutes() {
+
+    var recipeController = require('./recipeController');
+    var router = require('express').Router();
+
+    router.route('/recipe/:id')
+        .get(recipeController.getRecipe)
+    return router;
+
+}

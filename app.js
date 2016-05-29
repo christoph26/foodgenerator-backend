@@ -42,6 +42,12 @@ app.use('/', ingredientRoutes());
 var recipeRoutes = require("./components/recipe/recipeRoutes");
 app.use('/', recipeRoutes());
 
+var recipeFamilyRoutes = require("./components/recipeFamily/recipeFamilyRoutes");
+app.use('/', recipeFamilyRoutes());
+
+var supermarketRoutes = require("./components/supermarket/supermarketRoutes");
+app.use('/', supermarketRoutes());
+
 
 
 module.exports = app;

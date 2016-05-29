@@ -11,16 +11,16 @@ var Recipe = new mongoose.Schema({
         ingredientlist: {
             amount: [String],
             ingredient: [{
-                type: mongoose.Schema.Type.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'ingredient'
             }]
         },
         recipeFamily: {
-            type: mongoose.Schema.Type.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'recipeFamily'
         }
     })
 ;
 
 // Export the Mongoose model
-module.exports = mongoose.model('Recipe', recipeSchema);
+module.exports = mongoose.model('Recipe', Recipe);
