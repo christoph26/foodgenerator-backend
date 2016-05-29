@@ -1,32 +1,32 @@
 //created manually
 [
   {
-    "_id": "01",
+    "_id": "smID_01",
     "title": "ALDI SUED",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "_id": "02",
+    "_id": "smID_02",
     "title": "LIDL",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "_id": "03",
+    "_id": "smID_03",
     "title": "REAL",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "_id": "04",
+    "_id": "smID_04",
     "title": "REWE",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "_id": "05",
+    "_id": "smID_05",
     "title": "EDEKA",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
-    "_id": "06",
+    "_id": "smID_06",
     "title": "PENNY",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   }
