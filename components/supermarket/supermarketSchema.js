@@ -1,7 +1,7 @@
 // Load required packages
 var mongoose = require('mongoose');
 
-// Define our movie schema
+// Define our Supermarket schema
 var Supermarket   = new mongoose.Schema({
     titel: String,
     icon: String
