@@ -1,25 +1,31 @@
 [
   {
+    "_id": "01",
     "title": "ALDI SUED",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
+    "_id": "02",
     "title": "LIDL",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
+    "_id": "03",
     "title": "REAL",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
+    "_id": "04",
     "title": "REWE",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
+    "_id": "05",
     "title": "EDEKA",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   },
   {
+    "_id": "06",
     "title": "PENNY",
     "icon": "http://icons.iconarchive.com/icons/kyo-tux/aeon/256/Sign-LogOff-icon.png"
   }
