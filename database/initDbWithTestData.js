@@ -29,6 +29,9 @@ var testIngredient = {
     supermarket: ["Testsupermarkt1", "Testsupermarkt2"],
     picture: "relative_path_to_pic"
 };
+var testIngredient = function(){
+
+}
 result = db.ingredients.insert(testIngredient);
 print(result);
 

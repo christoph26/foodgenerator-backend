@@ -1,39 +1,252 @@
-[
-  //Gemüse
+/*[
+  '{{repeat(40)}}',
   {
-    "titel": "Tomate"
-  },
-  {
-    "titel": "Paprika"
-  },
-  {
-    "titel": "Zwiebel"
-  },
-  {
-    "titel": "Reis"
-  },
-  {
-    "titel": "Kartoffeln"
-  },
+    _id: '{{objectId()}}',
+    title:'food_{{firstName()}}',
+    supermarket:'{{random("ALDI SUED", "LIDL", "REAL", "EDEKA", "PENNY")}}',
+    picture: 'http://placehold.it/32x32'
 
-  //Frische Produkte
-  {
-    "titel": "Ei"
-  },
-  {
-    "titel": "Milch"
-  },
-
-  {
-    "titel": "Kidney Bohnen"
-  },
-  {
-    "titel": "Mais"
-  },
-
-  //Fleisch Waren
-  {
-    "titel": "Hackleisch"
   }
-
- ]
+]*/
+[
+  {
+    "_id": "574afabee557a1b84311d59c",
+    "title": "food_Moran",
+    "supermarket": "ALDI SUED",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe1ad24053de036859",
+    "title": "food_Burnett",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabeaf97c2837ac454cb",
+    "title": "food_Allie",
+    "supermarket": "PENNY",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabeac8d000d17ddde33",
+    "title": "food_Turner",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe656b36ee3c08bdb7",
+    "title": "food_Paula",
+    "supermarket": "ALDI SUED",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe2f81772a2a0fd906",
+    "title": "food_Kimberley",
+    "supermarket": "ALDI SUED",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe216c6ec844d09594",
+    "title": "food_Faulkner",
+    "supermarket": "REAL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe816312c9ba090565",
+    "title": "food_Lori",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe04a97698bc60c954",
+    "title": "food_Jasmine",
+    "supermarket": "PENNY",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabeb32504d07e2523ad",
+    "title": "food_Bentley",
+    "supermarket": "ALDI SUED",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe6413f2cf86c8abe8",
+    "title": "food_Holloway",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabebfecd70bf290016d",
+    "title": "food_Jacklyn",
+    "supermarket": "REAL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabee2c1128bb4abbb74",
+    "title": "food_Heidi",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe380c09ca6662eeda",
+    "title": "food_Mcgowan",
+    "supermarket": "PENNY",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe8fc95b1046a53c2e",
+    "title": "food_Hudson",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe8b6378933ccab166",
+    "title": "food_Julia",
+    "supermarket": "ALDI SUED",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe3bc463885054d3c4",
+    "title": "food_Larson",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabec3c986cecb6b597f",
+    "title": "food_Vargas",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe7cc838b058714e60",
+    "title": "food_Keller",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe7c062cc048c54c02",
+    "title": "food_Mable",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe1251f53bd6958ab9",
+    "title": "food_Beryl",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe3d19fa9a8b164079",
+    "title": "food_Jefferson",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabee4f499ae13a42265",
+    "title": "food_Briana",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe21714ebdabe436a3",
+    "title": "food_Schwartz",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe8fa4e64591c123d6",
+    "title": "food_Hall",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe54e5b6baf4d668bc",
+    "title": "food_Phyllis",
+    "supermarket": "ALDI SUED",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabecc28da6f44858ee8",
+    "title": "food_Tamra",
+    "supermarket": "PENNY",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabed8978b95ff773eb7",
+    "title": "food_Lindsey",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe276904cc6ba245df",
+    "title": "food_Rios",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabede113ee59c04a155",
+    "title": "food_Evelyn",
+    "supermarket": "PENNY",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe12e141463b4dfe54",
+    "title": "food_Bartlett",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe9c972c53ee7774af",
+    "title": "food_Josie",
+    "supermarket": "REAL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe3ede4e5f4bcdfd41",
+    "title": "food_Marianne",
+    "supermarket": "REAL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe2ffd3cd03a87a1c1",
+    "title": "food_Cindy",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe3ed2b25313a4ec43",
+    "title": "food_Nieves",
+    "supermarket": "LIDL",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe8cf5e704f5bf1535",
+    "title": "food_Bowman",
+    "supermarket": "ALDI SUED",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe0bf200bd19f63fd7",
+    "title": "food_Ethel",
+    "supermarket": "ALDI SUED",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe245007f1054d7c2b",
+    "title": "food_Joni",
+    "supermarket": "PENNY",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe1e8b753439c4fd99",
+    "title": "food_Rocha",
+    "supermarket": "EDEKA",
+    "picture": "http://placehold.it/32x32"
+  },
+  {
+    "_id": "574afabe63880bc091f04328",
+    "title": "food_Cora",
+    "supermarket": "PENNY",
+    "picture": "http://placehold.it/32x32"
+  }
+]
