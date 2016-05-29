@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 // Define our movie schema
-var MealPlan = new mongoose.Schema({
+var Mealplan = new mongoose.Schema({
     titel: String,
     mealList: {
         titel: String,
@@ -18,4 +18,4 @@ var MealPlan = new mongoose.Schema({
 });
 
 // Export the Mongoose model
-module.exports = mongoose.model('MealPlan', mealPlanSchema);
+module.exports = mongoose.model('Mealplan', mealPlanSchema);
