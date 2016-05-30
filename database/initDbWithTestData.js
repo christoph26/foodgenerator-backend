@@ -50,40 +50,38 @@ MongoClient.connect("mongodb://localhost:27017/foodgeneratorDb", function (err, 
             console.log("Created supermarket entities:");
             console.log(result);
         }
-    });
 
-    // import the ingredient entities
-    var ingredients = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENT);
-    db.collection("ingredients").insertMany(ingredients, function (err, result) {
-        if (err)
-            console.error(err);
-        else {
-            console.log("Created ingredient entities:");
-            console.log(result);
-        }
-    });
+        // import the ingredient entities
+        var ingredients = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENT);
+        db.collection("ingredients").insertMany(ingredients, function (err, result) {
+            if (err)
+                console.error(err);
+            else {
+                console.log("Created ingredient entities:");
+                console.log(result);
+            }
 
-    // import the recipe entities
-    var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
-    db.collection("recipes").insertMany(recipes, function (err, result) {
-        if (err)
-            console.error(err);
-        else {
-            console.log("Created recipe entities:");
-            console.log(result);
-        }
+            // import the recipe entities
+            var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
+            db.collection("recipes").insertMany(recipes, function (err, result) {
+                if (err)
+                    console.error(err);
+                else {
+                    console.log("Created recipe entities:");
+                    console.log(result);
+                }
+
+                db.close(function (err, result) {
+                    if (err)
+                        console.error(err);
+                    else
+                        console.log(result);
+                    console.log("All tasks executed without errors.");
+                });
+            });
+
+        });
+
     });
-    //
-    // // signalize success
-    // while (successCount != 4) {
-    //     // busy wait
-    // }
-    // db.close(function (err, result) {
-    //     if (err)
-    //         console.error(err);
-    //     else
-    //         console.log(result);
-    //     console.log("All tasks executed without errors.");
-    // });
 });
 
