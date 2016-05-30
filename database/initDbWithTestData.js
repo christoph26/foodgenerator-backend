@@ -4,6 +4,7 @@
 
 // connect to running mongoDb instance on localhost and default port
 var mongoClient = require('mongodb').MongoClient;
+console.log("Connecting to database at localhost:27017...");
 mongoClient.connect("mongodb://localhost:27017/foodgeneratorDb", function (err, db) {
     // in case of error, print it to console and exit
     if (err) {
