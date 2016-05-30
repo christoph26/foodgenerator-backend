@@ -43,26 +43,47 @@ MongoClient.connect("mongodb://localhost:27017/foodgeneratorDb", function (err, 
     console.log("Starting to import entities.");
     // import the supermarket entities
     var supermarkets = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_SUPERMARKET);
-    var result = db.collection("supermarkets").insertMany(supermarkets);
-    console.log(result);
+    db.collection("supermarkets").insertMany(supermarkets, function (err, result) {
+        if (err)
+            console.error(err);
+        else {
+            console.log("Created supermarket entities:");
+            console.log(result);
+        }
+    });
 
     // import the ingredient entities
     var ingredients = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENT);
-    result = db.collection("ingredients").insertMany(ingredients);
-    console.log(result);
+    db.collection("ingredients").insertMany(ingredients, function (err, result) {
+        if (err)
+            console.error(err);
+        else {
+            console.log("Created ingredient entities:");
+            console.log(result);
+        }
+    });
 
     // import the recipe entities
     var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
-    result = db.collection("recipes").insertMany(recipes);
-    console.log(result);
-
-    // // import the recipe family entities
-    // var recipeFamilies = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE_FAMILY);
-    // result = db.collection("recipefamilies").insertMany(recipeFamilies);
-    // console.log(result);
-    
-    // signalize success
-    db.close();
-    console.log("All tasks executed without errors.");
+    db.collection("recipes").insertMany(recipes, function (err, result) {
+        if (err)
+            console.error(err);
+        else {
+            console.log("Created recipe entities:");
+            console.log(result);
+        }
+    });
+    //
+    // // signalize success
+    // while (successCount != 4) {
+    //     // busy wait
+    // }
+    // db.close(function (err, result) {
+    //     if (err)
+    //         console.error(err);
+    //     else
+    //         console.log(result);
+    //     console.log("All tasks executed without errors.");
+    // });
 });
 
