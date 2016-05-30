@@ -60,4 +60,7 @@ mongoClient.connect("mongodb://localhost:27017/foodgeneratorDb", function (err, 
     };
     result = db.recipefamilies.insert(testRecipeFamily);
     console.log(result);
+
+    // signalize success
+    console.log("All tasks executed without errors.");
 });
