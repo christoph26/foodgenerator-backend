@@ -34,6 +34,7 @@
     "supertest": "^1.2.0"
   },
   "devDependencies": {
-    "mongodb": "^2.1.20"
+    "mongodb": "^2.1.20",
+    "uglify-js": "^2.6.2"
   }
 }
