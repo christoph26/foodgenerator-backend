@@ -59,11 +59,24 @@ module.exports.signup = function(req, res){
     });
 };
 
-module.exports.unregister = function(req, res) {
-    req.user.remove().then(function (user) {
-        res.sendStatus(200);
-    }, function(err){
-        res.status(500).send(err);
+module.exports.unregister = function(req) {
+    req.user.remove();
+};
+
+//returns the user of an ID
+modul.export.GET = function(id) {
+
+    User.findOne({ObjectID: id}, function(err, user){
+        if (err) {
+            res.status(500).send(err);
+            return
+        }
+
+        if (!id) {
+            res.status(401).send('Invalid Credentials');
+            return;
+        }
+        return user;
     });
 };
 
@@ -76,4 +89,4 @@ function createToken(user) {
 
     };
     return jwt.encode(tokenPayload,Config.auth.jwtSecret);
-};
+}
