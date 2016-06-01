@@ -27,17 +27,62 @@ function removeCommentsAndOpen(directoryPath, fileName) {
 }
 
 // connect to running mongoDb instance on localhost and default port
-console.log("Connecting to database at localhost:27017...");
+mongoose.connect([Config.db.host, '/', Config.db.name].join(''), function (err) {
+    if (err)
+        console.error(err);
+    else {
+        console.log("Connected to database at localhost:27017.");
+    }
 
-mongoose.connect([Config.db.host, '/', Config.db.name].join(''), {
-    //eventually it's a good idea to make this secure
-    user: Config.db.user,
-    pass: Config.db.pass
+    mongoose.connection.db.dropDatabase(function (err) {
+        if (err)
+            console.error(err);
+        else {
+            console.log("Dropped database.");
+        }
+
+        console.log("Starting to import entities.");
+        // import the supermarket entities
+        var supermarkets = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_SUPERMARKET);
+        Ingredient.insertMany(supermarkets, function (err, result) {
+            if (err)
+                console.error(err);
+            else {
+                console.log("Created supermarket entities:");
+                console.log(result);
+            }
+
+            /*// import the ingredient entities
+             var ingredients = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENT);
+             db.collection("ingredients").insertMany(ingredients, function (err, result) {
+             if (err)
+             console.error(err);
+             else {
+             console.log("Created ingredient entities:");
+             console.log(result);
+             }
+
+             // import the recipe entities
+             var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
+             db.collection("recipes").insertMany(recipes, function (err, result) {
+             if (err)
+             console.error(err);
+             else {
+             console.log("Created recipe entities:");
+             console.log(result);
+             }
+
+             console.log("Disconnecting...");
+             mongoose.disconnect();
+             });
+             });*/
+        });
+
+
+    });
 });
 
 
-console.log("Disconnecting...");
-mongoose.disconnect();
 /**
     // delete the database before recreating it
     db.dropDatabase();
