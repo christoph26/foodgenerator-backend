@@ -8,9 +8,14 @@ const FILE_PATH_RECIPE = "recipe.json";
 const FILE_PATH_SUPERMARKET = "supermarket.json";
 const FILE_PATH_USER = "user.json";
 
+var Config = require('../config/config.js');
 var UglifyJS = require("uglify-js");
 var fs = require('fs');
-var MongoClient = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
+
+// Load Schemas
+var IngredientSchema = require('../components/ingredient/ingredientSchema');
+var Ingredient = mongoose.model('Ingredient', IngredientSchema);
 
 function removeCommentsAndOpen(directoryPath, fileName) {
     var fileContent = fs.readFileSync(directoryPath + fileName, "utf8");
@@ -23,12 +28,17 @@ function removeCommentsAndOpen(directoryPath, fileName) {
 
 // connect to running mongoDb instance on localhost and default port
 console.log("Connecting to database at localhost:27017...");
-MongoClient.connect("mongodb://localhost:27017/foodgeneratorDb", function (err, db) {
-    // in case of error, print it to console and exit
-    if (err) {
-        return console.dir(err);
-    }
 
+mongoose.connect([Config.db.host, '/', Config.db.name].join(''), {
+    //eventually it's a good idea to make this secure
+    user: Config.db.user,
+    pass: Config.db.pass
+});
+
+
+console.log("Disconnecting...");
+mongoose.disconnect();
+/**
     // delete the database before recreating it
     db.dropDatabase();
     console.log("Old data deleted.");
@@ -84,4 +94,5 @@ MongoClient.connect("mongodb://localhost:27017/foodgeneratorDb", function (err, 
 
     });
 });
+ */
 
