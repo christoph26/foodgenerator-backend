@@ -4,7 +4,7 @@ var jwt = require('jwt-simple');
 
 module.exports.login = function(req, res){
 
-    if(!req.body.username){
+    if (!req.body.email) {
         res.status(400).send('username required');
         return;
     }
@@ -13,7 +13,7 @@ module.exports.login = function(req, res){
         return;
     }
 
-    User.findOne({username: req.body.username}, function(err, user){
+    User.findOne({email: req.body.email}, function (err, user) {
         if (err) {
             res.status(500).send(err);
             return
@@ -76,7 +76,7 @@ module.exports.unregister = function(req) {
 
 //returns the user of an _id
 // id must has the Format: ObjectId("574da88571e612882d4392d7")
-modul.export.getuser = function(id) {
+module.exports.getuser = function (id) {
 
     User.find({_id: id}, function(err, user){
         if (err) {
