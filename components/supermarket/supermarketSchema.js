@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 // Define our Supermarket schema
 var Supermarket   = new mongoose.Schema({
-    titel: String,
+    title: String,
     icon: String
 });
 
