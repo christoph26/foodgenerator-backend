@@ -49,12 +49,16 @@ module.exports.signup = function(req, res){
     user.email = req.body.email;
     user.password = req.body.password;
 
-    if(req.body.firstName){
-        user.firstName = req.body.firstName;
+    if(!req.body.firstName){
+        res.status(400).send('first name required');
+        return;
     }
-    if(req.lastName){
-        user.lastName = req.body.lastName;
+    user.firstName = req.body.firstName;
+    if(!req.lastName){
+        res.status(400).send('last name required');
+        return;
     }
+    user.lastName = req.body.lastName;
     user.salt = "salzig";
 
 
@@ -69,9 +73,39 @@ module.exports.signup = function(req, res){
 };
 
 //deletes an user
-module.exports.unregister = function(req) {
-    req.user.remove();
-    res.status(400).send('user deleted');
+module.exports.unregister = function(req, res) {
+
+    if (!req.body.email) {
+        res.status(400).send('username required');
+        return;
+    }
+    if(!req.body.password){
+        res.status(400).send('password required');
+        return;
+    }
+
+    User.findOne({email: req.body.email}, function (err, user) {
+        if (err) {
+            res.status(500).send(err);
+            return
+        }
+
+        if (!user) {
+            res.status(401).send('Invalid Credentials');
+            return;
+        }
+        user.comparePassword(req.body.password, function(err, isMatch) {
+            if(!isMatch || err){
+                res.status(401).send('Invalid Credentials');
+            } else {
+                req.user.remove();
+                res.status(400).send('user deleted');
+            }
+        });
+    });
+
+
+
 };
 
 //returns the user of an _id
