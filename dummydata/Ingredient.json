@@ -1,9 +1,10 @@
 [
   //Gemüse
   {
-    "title": "Tomate"
-  },
-  {
-    "title": "Paprika"
+    "_id": "200000000000000000000001",
+    "title": "Tomate",
+    "supermarkets": [
+      "100000000000000000000002"
+    ]
   }
  ]

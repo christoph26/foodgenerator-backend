@@ -7,17 +7,19 @@ const FILE_PATH_INGREDIENT = "Ingredient.json";
 const FILE_PATH_RECIPE = "recipe.json";
 const FILE_PATH_SUPERMARKET = "supermarket.json";
 const FILE_PATH_USER = "user.json";
+FILE_PATH_RECIPEFAMILY = "recipeFamily.json";
+
 
 var Config = require('../config/config.js');
 var UglifyJS = require("uglify-js");
 var fs = require('fs');
 var mongoose = require('mongoose');
 
-// Load Schemas
-var IngredientSchema = require('../components/ingredient/ingredientSchema');
-var Ingredient = mongoose.model('Ingredient', IngredientSchema);
-var SupermarketSchema = require('../components/supermarket/supermarketSchema');
-var Supermarket = mongoose.model('Supermarket', SupermarketSchema);
+// Load Schema Models
+var Ingredient = require('../components/ingredient/ingredientSchema');
+var Supermarket = require('../components/supermarket/supermarketSchema');
+var Recipe = require('../components/recipe/recipeSchema');
+var RecipeFamily = require('../components/recipeFamily/recipeFamilySchema');
 
 function removeCommentsAndOpen(directoryPath, fileName) {
     var fileContent = fs.readFileSync(directoryPath + fileName, "utf8");
@@ -53,94 +55,45 @@ mongoose.connect([Config.db.host, '/', Config.db.name].join(''), function (err) 
                 console.log("Created supermarket entities:");
                 console.log(result);
             }
-            mongoose.disconnect();
+
 
             // import the ingredient entities
-             var ingredients = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENT);
+            var ingredients = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENT);
             Ingredient.insertMany(ingredients, function (err, result) {
-             if (err)
-             console.error(err);
-             else {
-             console.log("Created ingredient entities:");
-             console.log(result);
-             }
-                /*
-             // import the recipe entities
-             var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
-             db.collection("recipes").insertMany(recipes, function (err, result) {
-             if (err)
-             console.error(err);
-             else {
-             console.log("Created recipe entities:");
-             console.log(result);
-             }
-
-             console.log("Disconnecting...");
-             mongoose.disconnect();
-             });*/
-            });
-        });
-
-
-    });
-});
-
-
-/**
-    // delete the database before recreating it
-    db.dropDatabase();
-    console.log("Old data deleted.");
-
-    // create the empty collections
-    db.createCollection("ingredients");
-    db.createCollection("recipes");
-    db.createCollection("recipefamilies");
-    db.createCollection("supermarkets");
-    console.log("Collections created.");
-
-    console.log("Starting to import entities.");
-    // import the supermarket entities
-    var supermarkets = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_SUPERMARKET);
-    db.collection("supermarkets").insertMany(supermarkets, function (err, result) {
-        if (err)
-            console.error(err);
-        else {
-            console.log("Created supermarket entities:");
-            console.log(result);
-        }
-
-        // import the ingredient entities
-        var ingredients = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENT);
-        db.collection("ingredients").insertMany(ingredients, function (err, result) {
-            if (err)
-                console.error(err);
-            else {
-                console.log("Created ingredient entities:");
-                console.log(result);
-            }
-
-            // import the recipe entities
-            var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
-            db.collection("recipes").insertMany(recipes, function (err, result) {
                 if (err)
                     console.error(err);
                 else {
-                    console.log("Created recipe entities:");
+                    console.log("Created ingredient entities:");
                     console.log(result);
                 }
 
-                db.close(function (err, result) {
+                // import the recipe entities
+                var recipeFamilies = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPEFAMILY);
+                RecipeFamily.insertMany(recipeFamilies, function (err, result) {
                     if (err)
                         console.error(err);
-                    else
+                    else {
+                        console.log("Created recipeFamily entities:");
                         console.log(result);
-                    console.log("All tasks executed without errors.");
+                    }
+
+                    // import the recipe entities
+                    var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
+                    Recipe.insertMany(recipes, function (err, result) {
+                        if (err)
+                            console.error(err);
+                        else {
+                            console.log("Created recipe entities:");
+                            console.log(result);
+                        }
+
+                        console.log("Disconnecting...");
+                        mongoose.disconnect();
+                    });
                 });
             });
-
         });
+
 
     });
 });
- */
-
