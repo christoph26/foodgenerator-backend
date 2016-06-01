@@ -1,39 +1,9 @@
 [
   //Gemüse
   {
-    "titel": "Tomate"
+    "title": "Tomate"
   },
   {
-    "titel": "Paprika"
-  },
-  {
-    "titel": "Zwiebel"
-  },
-  {
-    "titel": "Reis"
-  },
-  {
-    "titel": "Kartoffeln"
-  },
-
-  //Frische Produkte
-  {
-    "titel": "Ei"
-  },
-  {
-    "titel": "Milch"
-  },
-
-  {
-    "titel": "Kidney Bohnen"
-  },
-  {
-    "titel": "Mais"
-  },
-
-  //Fleisch Waren
-  {
-    "titel": "Hackleisch"
+    "title": "Paprika"
   }
-
  ]

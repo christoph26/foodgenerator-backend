@@ -16,6 +16,8 @@ var mongoose = require('mongoose');
 // Load Schemas
 var IngredientSchema = require('../components/ingredient/ingredientSchema');
 var Ingredient = mongoose.model('Ingredient', IngredientSchema);
+var SupermarketSchema = require('../components/supermarket/supermarketSchema');
+var Supermarket = mongoose.model('Supermarket', SupermarketSchema);
 
 function removeCommentsAndOpen(directoryPath, fileName) {
     var fileContent = fs.readFileSync(directoryPath + fileName, "utf8");
@@ -44,24 +46,25 @@ mongoose.connect([Config.db.host, '/', Config.db.name].join(''), function (err) 
         console.log("Starting to import entities.");
         // import the supermarket entities
         var supermarkets = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_SUPERMARKET);
-        Ingredient.insertMany(supermarkets, function (err, result) {
+        Supermarket.insertMany(supermarkets, function (err, result) {
             if (err)
                 console.error(err);
             else {
                 console.log("Created supermarket entities:");
                 console.log(result);
             }
+            mongoose.disconnect();
 
-            /*// import the ingredient entities
+            // import the ingredient entities
              var ingredients = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENT);
-             db.collection("ingredients").insertMany(ingredients, function (err, result) {
+            Ingredient.insertMany(ingredients, function (err, result) {
              if (err)
              console.error(err);
              else {
              console.log("Created ingredient entities:");
              console.log(result);
              }
-
+                /*
              // import the recipe entities
              var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
              db.collection("recipes").insertMany(recipes, function (err, result) {
@@ -74,8 +77,8 @@ mongoose.connect([Config.db.host, '/', Config.db.name].join(''), function (err) 
 
              console.log("Disconnecting...");
              mongoose.disconnect();
-             });
              });*/
+            });
         });
 
 
