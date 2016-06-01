@@ -6,9 +6,9 @@ function userRoutes(passport) {
     var router = require('express').Router();
 
 
-    router.get('/login', userController.login);
+    router.post('/login', userController.login);
     router.post('/signup', userController.signup);
-    router.delete('/unregister', passport.authenticate('jwt', {session: false}),userController.unregister)
+    router.post('/unregister', passport.authenticate('jwt', {session: false}), userController.unregister);
 
     return router;
 
