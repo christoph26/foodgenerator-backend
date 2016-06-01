@@ -2,9 +2,15 @@
 var mongoose = require('mongoose');
 
 // Define our Supermarket schema
-var Supermarket = new mongoose.Schema({
-    titel: String,
-    icon: String
+var Supermarket   = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    icon: {
+        type: String,
+        required: true
+    }
 });
 
 // Export the Mongoose model
