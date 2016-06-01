@@ -22,13 +22,13 @@ var userSchema = mongoose.Schema({
 
 });
 
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
     var user = this;
 
     // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();
 
-    bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.genSalt(10, function (err, salt) {
         if (err) return next(err);
 
         // hash the password using our new salt
@@ -42,8 +42,8 @@ userSchema.pre('save', function(next) {
     });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+userSchema.methods.comparePassword = function (candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
     });

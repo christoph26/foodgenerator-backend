@@ -9,19 +9,19 @@ var Recipe = new mongoose.Schema({
         vegan: Boolean, //vegan?
         vegetarian: Boolean, //vegetarian?
     //ingredient list: list of tuple with ingredient and amount (incl. unit of measurement) of the ingredient
-        ingredientlist: [{
+        ingredientList: [{
             amount: Number,
             unit: String,
             ingredient: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'ingredient'
+                ref: 'Ingredient'
             }
         }
         ],
     // recipe family: group of recipes that belongs together
         recipeFamily: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'recipeFamily'
+            ref: 'RecipeFamily'
         }
     })
     ;

@@ -7,7 +7,7 @@ var Ingredient   = new mongoose.Schema({
     //in which supermarket is this ingredient available
     supermarket:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'supermarket'}],
+        ref: 'Supermarket'}],
     picture: String
 });
 
