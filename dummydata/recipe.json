@@ -6,6 +6,7 @@
     "description": "blablalbalbla",
     "vegan": false,
     "vegetarian": false,
+    "picture": "path to picture",
     "ingredientlist": [
       {
         "amount": 500,

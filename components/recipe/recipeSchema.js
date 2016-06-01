@@ -24,6 +24,10 @@ var Recipe = new mongoose.Schema({
             type: Boolean,
             required: true
         }, //vegetarian?
+        picture: {
+            type: String,
+            required: true
+        },
         //ingredient list: list of tuple with ingredient and amount (incl. unit of measurement) of the ingredient
         ingredientlist: {
             type: [{
