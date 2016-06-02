@@ -10,7 +10,7 @@ function userRoutes() {
 
     router.post('/login', userController.login);//needs email and pw
     router.post('/signup', userController.signup); //needs email, pw, first and last name
-    router.post('/unregister', userController.unregister);
+    router.post('/unregister', userController.unregister); //needs email and pw
 
     return router;
 
