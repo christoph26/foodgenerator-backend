@@ -96,7 +96,7 @@ module.exports.unregister = function(req, res) {
             if(!isMatch || err){
                 res.status(401).send('Invalid Credentials');
             } else {
-                req.user.remove();
+                user.remove();
                 res.status(400).send('user deleted');
             }
         });
