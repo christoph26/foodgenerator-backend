@@ -43,21 +43,19 @@ module.exports.signup = function(req, res){
         res.status(400).send('password required');
         return;
     }
-
-    var user = new User();
-
-    user.email = req.body.email;
-    user.password = req.body.password;
-
     if(!req.body.firstName){
         res.status(400).send('first name required');
         return;
     }
-    user.firstName = req.body.firstName;
-    if(!req.lastName){
+    if(!req.body.lastName){
         res.status(400).send('last name required');
         return;
     }
+
+    var user = new User();
+    user.email = req.body.email;
+    user.password = req.body.password;
+    user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.salt = "salzig";
 
