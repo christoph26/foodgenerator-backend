@@ -6,331 +6,289 @@ _id: '88_{{index()}}',
 email: '{{email()}}',
 password:'{{integer(1, 10)}}_{{random("blue", "brown", "green")}}',
 first_name: '{{firstName()}}',
-last_name: '{{surname()}}',
-salt: '{{lorem(1, "words")}}'
-
+last_name: '{{surname()}}'
 }
 ]
 */
 [
   {
     "_id": "88_0",
-    "email": "villarrealdixon@navir.com",
-    "password": "3_brown",
-    "first_name": "Ester",
-    "last_name": "Hinton",
-    "salt": "eu"
+    "email": "joycompton@navir.com",
+    "password": "7_brown",
+    "first_name": "Marina",
+    "last_name": "Justice"
   },
   {
     "_id": "88_1",
-    "email": "esterhinton@navir.com",
-    "password": "9_blue",
-    "first_name": "Kendra",
-    "last_name": "Harris",
-    "salt": "in"
+    "email": "marinajustice@navir.com",
+    "password": "4_blue",
+    "first_name": "Maureen",
+    "last_name": "Delgado"
   },
   {
     "_id": "88_2",
-    "email": "kendraharris@navir.com",
+    "email": "maureendelgado@navir.com",
     "password": "7_blue",
-    "first_name": "Amparo",
-    "last_name": "Mcdonald",
-    "salt": "id"
+    "first_name": "Little",
+    "last_name": "Morrison"
   },
   {
     "_id": "88_3",
-    "email": "amparomcdonald@navir.com",
-    "password": "1_blue",
-    "first_name": "Andrea",
-    "last_name": "Estrada",
-    "salt": "anim"
+    "email": "littlemorrison@navir.com",
+    "password": "7_green",
+    "first_name": "Bonita",
+    "last_name": "Rollins"
   },
   {
     "_id": "88_4",
-    "email": "andreaestrada@navir.com",
-    "password": "7_brown",
-    "first_name": "Alice",
-    "last_name": "Spears",
-    "salt": "cillum"
+    "email": "bonitarollins@navir.com",
+    "password": "5_blue",
+    "first_name": "Nixon",
+    "last_name": "Fuentes"
   },
   {
     "_id": "88_5",
-    "email": "alicespears@navir.com",
-    "password": "7_brown",
-    "first_name": "Conner",
-    "last_name": "Schultz",
-    "salt": "magna"
+    "email": "nixonfuentes@navir.com",
+    "password": "6_blue",
+    "first_name": "Dawn",
+    "last_name": "Workman"
   },
   {
     "_id": "88_6",
-    "email": "connerschultz@navir.com",
-    "password": "1_blue",
-    "first_name": "Latonya",
-    "last_name": "Levine",
-    "salt": "proident"
+    "email": "dawnworkman@navir.com",
+    "password": "10_blue",
+    "first_name": "Kristine",
+    "last_name": "Alford"
   },
   {
     "_id": "88_7",
-    "email": "latonyalevine@navir.com",
-    "password": "9_green",
-    "first_name": "Guzman",
-    "last_name": "Richard",
-    "salt": "dolor"
+    "email": "kristinealford@navir.com",
+    "password": "1_blue",
+    "first_name": "Judy",
+    "last_name": "Pace"
   },
   {
     "_id": "88_8",
-    "email": "guzmanrichard@navir.com",
-    "password": "2_green",
-    "first_name": "Kris",
-    "last_name": "Marsh",
-    "salt": "adipisicing"
+    "email": "judypace@navir.com",
+    "password": "2_brown",
+    "first_name": "Jefferson",
+    "last_name": "Schmidt"
   },
   {
     "_id": "88_9",
-    "email": "krismarsh@navir.com",
-    "password": "6_brown",
-    "first_name": "Karin",
-    "last_name": "Cooper",
-    "salt": "eu"
+    "email": "jeffersonschmidt@navir.com",
+    "password": "7_green",
+    "first_name": "Jeannie",
+    "last_name": "Henry"
   },
   {
     "_id": "88_10",
-    "email": "karincooper@navir.com",
-    "password": "2_green",
-    "first_name": "Anderson",
-    "last_name": "Russo",
-    "salt": "ut"
+    "email": "jeanniehenry@navir.com",
+    "password": "7_blue",
+    "first_name": "Wise",
+    "last_name": "Mccarthy"
   },
   {
     "_id": "88_11",
-    "email": "andersonrusso@navir.com",
-    "password": "2_brown",
-    "first_name": "Byrd",
-    "last_name": "Barker",
-    "salt": "commodo"
+    "email": "wisemccarthy@navir.com",
+    "password": "1_green",
+    "first_name": "Kirby",
+    "last_name": "Mills"
   },
   {
     "_id": "88_12",
-    "email": "byrdbarker@navir.com",
-    "password": "9_blue",
-    "first_name": "Ford",
-    "last_name": "Marshall",
-    "salt": "et"
+    "email": "kirbymills@navir.com",
+    "password": "10_blue",
+    "first_name": "Ortega",
+    "last_name": "Obrien"
   },
   {
     "_id": "88_13",
-    "email": "fordmarshall@navir.com",
-    "password": "8_green",
-    "first_name": "Mckay",
-    "last_name": "Jacobs",
-    "salt": "elit"
+    "email": "ortegaobrien@navir.com",
+    "password": "7_blue",
+    "first_name": "Antoinette",
+    "last_name": "Wilder"
   },
   {
     "_id": "88_14",
-    "email": "mckayjacobs@navir.com",
+    "email": "antoinettewilder@navir.com",
     "password": "10_brown",
-    "first_name": "Chasity",
-    "last_name": "Campos",
-    "salt": "aliqua"
+    "first_name": "Allison",
+    "last_name": "Wells"
   },
   {
     "_id": "88_15",
-    "email": "chasitycampos@navir.com",
-    "password": "5_green",
-    "first_name": "Louisa",
-    "last_name": "Gomez",
-    "salt": "ad"
+    "email": "allisonwells@navir.com",
+    "password": "3_blue",
+    "first_name": "Miller",
+    "last_name": "Brown"
   },
   {
     "_id": "88_16",
-    "email": "louisagomez@navir.com",
-    "password": "7_blue",
-    "first_name": "Rowena",
-    "last_name": "Christian",
-    "salt": "ut"
+    "email": "millerbrown@navir.com",
+    "password": "3_blue",
+    "first_name": "Cole",
+    "last_name": "Patterson"
   },
   {
     "_id": "88_17",
-    "email": "rowenachristian@navir.com",
-    "password": "7_brown",
-    "first_name": "Daniels",
-    "last_name": "Pittman",
-    "salt": "voluptate"
+    "email": "colepatterson@navir.com",
+    "password": "1_green",
+    "first_name": "Roy",
+    "last_name": "Santana"
   },
   {
     "_id": "88_18",
-    "email": "danielspittman@navir.com",
-    "password": "6_blue",
-    "first_name": "Dillard",
-    "last_name": "Franks",
-    "salt": "veniam"
+    "email": "roysantana@navir.com",
+    "password": "2_brown",
+    "first_name": "Avila",
+    "last_name": "Wyatt"
   },
   {
     "_id": "88_19",
-    "email": "dillardfranks@navir.com",
-    "password": "5_blue",
-    "first_name": "Saundra",
-    "last_name": "Pace",
-    "salt": "ullamco"
+    "email": "avilawyatt@navir.com",
+    "password": "9_green",
+    "first_name": "Tamika",
+    "last_name": "Fleming"
   },
   {
     "_id": "88_20",
-    "email": "saundrapace@navir.com",
-    "password": "8_brown",
-    "first_name": "Maryellen",
-    "last_name": "Stanton",
-    "salt": "veniam"
+    "email": "tamikafleming@navir.com",
+    "password": "3_blue",
+    "first_name": "Velez",
+    "last_name": "Watson"
   },
   {
     "_id": "88_21",
-    "email": "maryellenstanton@navir.com",
-    "password": "10_green",
-    "first_name": "Maria",
-    "last_name": "Barrett",
-    "salt": "ut"
+    "email": "velezwatson@navir.com",
+    "password": "2_green",
+    "first_name": "Queen",
+    "last_name": "Horne"
   },
   {
     "_id": "88_22",
-    "email": "mariabarrett@navir.com",
-    "password": "4_green",
-    "first_name": "Finley",
-    "last_name": "Whitney",
-    "salt": "tempor"
+    "email": "queenhorne@navir.com",
+    "password": "7_blue",
+    "first_name": "Leah",
+    "last_name": "Wise"
   },
   {
     "_id": "88_23",
-    "email": "finleywhitney@navir.com",
-    "password": "3_green",
-    "first_name": "Christian",
-    "last_name": "Carrillo",
-    "salt": "occaecat"
+    "email": "leahwise@navir.com",
+    "password": "9_green",
+    "first_name": "Helene",
+    "last_name": "Tate"
   },
   {
     "_id": "88_24",
-    "email": "christiancarrillo@navir.com",
-    "password": "5_brown",
-    "first_name": "Katy",
-    "last_name": "Morales",
-    "salt": "occaecat"
+    "email": "helenetate@navir.com",
+    "password": "7_green",
+    "first_name": "Kenya",
+    "last_name": "Carter"
   },
   {
     "_id": "88_25",
-    "email": "katymorales@navir.com",
-    "password": "9_green",
-    "first_name": "Ernestine",
-    "last_name": "Macias",
-    "salt": "est"
+    "email": "kenyacarter@navir.com",
+    "password": "6_blue",
+    "first_name": "Graciela",
+    "last_name": "Nash"
   },
   {
     "_id": "88_26",
-    "email": "ernestinemacias@navir.com",
-    "password": "7_blue",
-    "first_name": "Vargas",
-    "last_name": "Barnett",
-    "salt": "ipsum"
+    "email": "gracielanash@navir.com",
+    "password": "7_green",
+    "first_name": "Stella",
+    "last_name": "Fischer"
   },
   {
     "_id": "88_27",
-    "email": "vargasbarnett@navir.com",
-    "password": "7_brown",
-    "first_name": "Hester",
-    "last_name": "Whitfield",
-    "salt": "adipisicing"
+    "email": "stellafischer@navir.com",
+    "password": "2_green",
+    "first_name": "Esperanza",
+    "last_name": "Velazquez"
   },
   {
     "_id": "88_28",
-    "email": "hesterwhitfield@navir.com",
-    "password": "2_blue",
-    "first_name": "Lola",
-    "last_name": "Cardenas",
-    "salt": "nulla"
+    "email": "esperanzavelazquez@navir.com",
+    "password": "9_green",
+    "first_name": "Shawn",
+    "last_name": "Trevino"
   },
   {
     "_id": "88_29",
-    "email": "lolacardenas@navir.com",
-    "password": "8_brown",
-    "first_name": "Ginger",
-    "last_name": "Norris",
-    "salt": "qui"
+    "email": "shawntrevino@navir.com",
+    "password": "10_blue",
+    "first_name": "Mildred",
+    "last_name": "Mccall"
   },
   {
     "_id": "88_30",
-    "email": "gingernorris@navir.com",
-    "password": "6_green",
-    "first_name": "Tammie",
-    "last_name": "Thompson",
-    "salt": "do"
+    "email": "mildredmccall@navir.com",
+    "password": "1_green",
+    "first_name": "Mcintyre",
+    "last_name": "Wade"
   },
   {
     "_id": "88_31",
-    "email": "tammiethompson@navir.com",
-    "password": "10_green",
-    "first_name": "Aurora",
-    "last_name": "Gibbs",
-    "salt": "non"
+    "email": "mcintyrewade@navir.com",
+    "password": "5_green",
+    "first_name": "Lucia",
+    "last_name": "Molina"
   },
   {
     "_id": "88_32",
-    "email": "auroragibbs@navir.com",
-    "password": "4_blue",
-    "first_name": "Shields",
-    "last_name": "Wilson",
-    "salt": "eu"
+    "email": "luciamolina@navir.com",
+    "password": "4_brown",
+    "first_name": "Frankie",
+    "last_name": "Vaughn"
   },
   {
     "_id": "88_33",
-    "email": "shieldswilson@navir.com",
-    "password": "3_blue",
-    "first_name": "Nicholson",
-    "last_name": "Ellis",
-    "salt": "sint"
+    "email": "frankievaughn@navir.com",
+    "password": "2_green",
+    "first_name": "Cline",
+    "last_name": "Bender"
   },
   {
     "_id": "88_34",
-    "email": "nicholsonellis@navir.com",
-    "password": "1_green",
-    "first_name": "Eunice",
-    "last_name": "Oneill",
-    "salt": "non"
+    "email": "clinebender@navir.com",
+    "password": "9_brown",
+    "first_name": "Ada",
+    "last_name": "Bowman"
   },
   {
     "_id": "88_35",
-    "email": "euniceoneill@navir.com",
-    "password": "7_brown",
-    "first_name": "Blevins",
-    "last_name": "Terrell",
-    "salt": "irure"
+    "email": "adabowman@navir.com",
+    "password": "7_green",
+    "first_name": "Abigail",
+    "last_name": "Whitley"
   },
   {
     "_id": "88_36",
-    "email": "blevinsterrell@navir.com",
-    "password": "6_brown",
-    "first_name": "Bruce",
-    "last_name": "Myers",
-    "salt": "voluptate"
+    "email": "abigailwhitley@navir.com",
+    "password": "2_blue",
+    "first_name": "Doris",
+    "last_name": "Harding"
   },
   {
     "_id": "88_37",
-    "email": "brucemyers@navir.com",
-    "password": "3_green",
-    "first_name": "Jeri",
-    "last_name": "Alexander",
-    "salt": "voluptate"
+    "email": "dorisharding@navir.com",
+    "password": "10_blue",
+    "first_name": "Ginger",
+    "last_name": "Morrow"
   },
   {
     "_id": "88_38",
-    "email": "jerialexander@navir.com",
-    "password": "4_brown",
-    "first_name": "Middleton",
-    "last_name": "Barton",
-    "salt": "deserunt"
+    "email": "gingermorrow@navir.com",
+    "password": "1_blue",
+    "first_name": "Michael",
+    "last_name": "Berger"
   },
   {
     "_id": "88_39",
-    "email": "middletonbarton@navir.com",
-    "password": "8_green",
-    "first_name": "Willa",
-    "last_name": "Roth",
-    "salt": "fugiat"
+    "email": "michaelberger@navir.com",
+    "password": "8_brown",
+    "first_name": "Carolyn",
+    "last_name": "Bean"
   }
 ]
