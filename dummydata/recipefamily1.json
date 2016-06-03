@@ -2,25 +2,25 @@
 [
 '{{repeat(5)}}',
 {
-_id:'22{{integer(0, 20)}}'
+defaultrecipe:'22{{integer(0, 20)}}'
 }
 ]
 */
 
 [
   {
-    "_id": 2213
+    "defaultrecipe": 221
   },
   {
-    "_id": 222
+    "defaultrecipe": 2214
   },
   {
-    "_id": 227
+    "defaultrecipe": 222
   },
   {
-    "_id": 2220
+    "defaultrecipe": 2213
   },
   {
-    "_id": 2219
+    "defaultrecipe": 223
   }
 ]
