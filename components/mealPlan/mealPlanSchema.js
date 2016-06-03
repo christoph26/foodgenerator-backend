@@ -3,10 +3,10 @@ var mongoose = require('mongoose');
 
 // Define our MealPlan schema
 var MealPlan = new mongoose.Schema({
-    titel: String, //name for the Plan (eg. Tina's visit, weekend, my favourite meals,...)
+    title: String, //name for the Plan (eg. Tina's visit, weekend, my favourite meals,...)
     //one MealPlan can has multiple meal Lists (eg. plan for multiple days)
     mealList: [{
-        titel: String, //name for the List (eg. Monday)
+        title: String, //name for the List (eg. Monday)
         order: Number, // to order the different "days"
         //each mealList can has multiple meals (eg. breakfast, lunch, dinner)
         meal: [{
