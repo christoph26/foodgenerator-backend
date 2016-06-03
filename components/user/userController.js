@@ -111,23 +111,7 @@ module.exports.unregister = function(req, res) {
 
 };
 
-//returns the user of an _id
-// id must has the Format: ObjectId("574da88571e612882d4392d7")
-module.exports.getuser = function (id) {
 
-    User.find({_id: id}, function(err, user){
-        if (err) {
-            res.status(500).send(err);
-            return
-        }
-
-        if (!id) {
-            res.status(401).send('Invalid Credentials');
-            return;
-        }
-        return user;
-    });
-};
 
 function createToken(user) {
     var tokenPayload = {
