@@ -3,37 +3,35 @@ var User = require('./userSchema');
 var jwt = require('jwt-simple');
 
 module.exports.login = function (req, res) {
-    req.on("data", function (body) {
-        body = JSON.parse(body.toString());
-        //check for pw and email
-        if (!body.email) {
-            res.status(400).send('username required');
+    var body = req.body;
+    //check for pw and email
+    if (!body.email) {
+        res.status(400).send('email required');
+        return;
+    }
+    if (!body.password) {
+        res.status(400).send('password required');
+        return;
+    }
+    //search user by email
+    User.findOne({email: body.email}, function (err, user) {
+        if (err) {
+            res.status(500).send(err);
+            return
+        }
+        //if no user found, return
+        if (!user) {
+            res.status(401).send('Invalid Credentials');
             return;
         }
-        if (!body.password) {
-            res.status(400).send('password required');
-            return;
-        }
-        //search user by email
-        User.findOne({email: body.email}, function (err, user) {
-            if (err) {
-                res.status(500).send(err);
-                return
-            }
-            //if no user found, return
-            if (!user) {
+        //check for right pw
+        user.comparePassword(body.password, function (err, isMatch) {
+            if (!isMatch || err) {
                 res.status(401).send('Invalid Credentials');
-                return;
+            } else {
+                //if right: creates token
+                res.status(200).json({token: createToken(user)});
             }
-            //check for right pw
-            user.comparePassword(body.password, function (err, isMatch) {
-                if (!isMatch || err) {
-                    res.status(401).send('Invalid Credentials');
-                } else {
-                    //if right: creates token
-                    res.status(200).json({token: createToken(user)});
-                }
-            });
         });
     });
 };
