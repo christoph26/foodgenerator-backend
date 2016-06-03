@@ -6,7 +6,8 @@ var idvalidator = require('mongoose-id-validator');
 var RecipeFamily = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        index: true
     },
     //the default recipe for this recipe family
     defaultrecipe: {
@@ -16,6 +17,9 @@ var RecipeFamily = new mongoose.Schema({
     }
 });
 RecipeFamily.plugin(idvalidator);
+
+RecipeFamily.index({title: 'text'});
+
 
 // Export the Mongoose model
 module.exports = mongoose.model('RecipeFamily', RecipeFamily);

@@ -49,6 +49,6 @@ var supermarketRoutes = require("./components/supermarket/supermarketRoutes");
 app.use('/', supermarketRoutes());
 
 var searchRoutes = require("./services/searchRoutes");
-app.use('/search/', searchRoutes());
+app.use('/search', searchRoutes());
 
 module.exports = app;

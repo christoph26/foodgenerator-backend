@@ -15,5 +15,22 @@
       }
     ],
     "recipeFamily": "300000000000000000000001"
+  },
+  {
+    "_id": "400000000000000000000002",
+    "title": "hallo wie gehts",
+    "skill": 2,
+    "description": "blablalbalbla",
+    "vegan": false,
+    "vegetarian": true,
+    "picture": "path to picture",
+    "ingredientlist": [
+      {
+        "amount": 500,
+        "unit": "g",
+        "ingredient": "200000000000000000000001"
+      }
+    ],
+    "recipeFamily": "300000000000000000000001"
   }
 ]

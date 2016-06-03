@@ -6,7 +6,8 @@ var idvalidator = require('mongoose-id-validator');
 var Recipe = new mongoose.Schema({
         title: {
             type: String,
-            required: true
+            required: true,
+            index: true
         }, //title of the recipe
         skill: {
             type: Number,
@@ -58,6 +59,10 @@ var Recipe = new mongoose.Schema({
     })
     ;
 Recipe.plugin(idvalidator);
+Recipe.index({title: 'text'});
+Recipe.index({vegetarian: 1});
+Recipe.index({vegan: 1});
+
 
 // Export the Mongoose model
 module.exports = mongoose.model('Recipe', Recipe);
