@@ -14,9 +14,9 @@ var async = require("async");
  searchDirectRecipes: boolean, required
  vegetarian: boolean, default false
  vegan: boolean, default false
- effortLow
- effortMedium
- effortHigh
+ effortLow: boolean, default false
+ effortMedium: boolean, default false
+ effortHigh: boolean, default false
  }
  */
 exports.searchRecipes = function (req, res) {
