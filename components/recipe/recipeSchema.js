@@ -8,7 +8,7 @@ var Recipe = new mongoose.Schema({
             type: String,
             required: true
         }, //title of the recipe
-        skill: {
+        effort: {
             type: Number,
             required: true
         }, //skill level of the recipe
@@ -29,24 +29,9 @@ var Recipe = new mongoose.Schema({
             required: true
         },
         //ingredient list: list of tuple with ingredient and amount (incl. unit of measurement) of the ingredient
-        ingredientlist: {
-            type: [{
-                amount: {
-                    type: Number,
-                    required: true
-                },
-                unit: {
-                    type: String,
-                    required: true
-                },
-                ingredient: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'Ingredient',
-                    required: true
-
-                }
-            }
-            ],
+        ingredientList: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'IngredientList',
             required: true
         },
 // recipe family: group of recipes that belongs together
