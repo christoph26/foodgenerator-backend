@@ -32,12 +32,27 @@ app.use(bodyParser.urlencoded({
 }));
 
 
+//passport
+
+var passport = require('passport');
+var jwtConfig = require('./components/passport/jwtConfig');
+
+app.use(passport.initialize());
+jwtConfig(passport);
+
+
 /**
  * routing
  */
 
+var userRoutes = require("./components/user/userRoutes");
+app.use('/', userRoutes(passport));
+
 var ingredientRoutes = require("./components/ingredient/ingredientRoutes");
 app.use('/', ingredientRoutes());
+
+var ingredientListRoutes = require("./components/ingredientList/ingredientListRoutes");
+app.use('/', ingredientListRoutes());
 
 var recipeRoutes = require("./components/recipe/recipeRoutes");
 app.use('/', recipeRoutes());

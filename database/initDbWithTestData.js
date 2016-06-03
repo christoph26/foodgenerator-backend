@@ -1,13 +1,15 @@
 /**
  * Development script for manual database initialization and data import
  */
+'use strict';
 
 const DATA_FOLDER_PATH = "../dummydata/";
 const FILE_PATH_INGREDIENT = "Ingredient.json";
 const FILE_PATH_RECIPE = "recipe.json";
 const FILE_PATH_SUPERMARKET = "supermarket.json";
 const FILE_PATH_USER = "user.json";
-FILE_PATH_RECIPEFAMILY = "recipeFamily.json";
+const FILE_PATH_RECIPEFAMILY = "recipeFamily.json";
+const FILE_PATH_INGREDIENTLIST = "IngredientList.json";
 
 
 var Config = require('../config/config.js');
@@ -20,6 +22,8 @@ var Ingredient = require('../components/ingredient/ingredientSchema');
 var Supermarket = require('../components/supermarket/supermarketSchema');
 var Recipe = require('../components/recipe/recipeSchema');
 var RecipeFamily = require('../components/recipeFamily/recipeFamilySchema');
+var IngredientList = require('../components/ingredientList/ingredientListSchema');
+
 
 function removeCommentsAndOpen(directoryPath, fileName) {
     var fileContent = fs.readFileSync(directoryPath + fileName, "utf8");
@@ -67,28 +71,40 @@ mongoose.connect([Config.db.host, '/', Config.db.name].join(''), function (err) 
                     console.log(result);
                 }
 
-                // import the recipe entities
-                var recipeFamilies = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPEFAMILY);
-                RecipeFamily.insertMany(recipeFamilies, function (err, result) {
+                // import the ingredient List entities
+                var ingredientLists = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_INGREDIENTLIST);
+                IngredientList.insertMany(ingredientLists, function (err, result) {
                     if (err)
                         console.error(err);
                     else {
-                        console.log("Created recipeFamily entities:");
+                        console.log("Created ingredienlist entities:");
                         console.log(result);
                     }
 
+
                     // import the recipe entities
-                    var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
-                    Recipe.insertMany(recipes, function (err, result) {
+                    var recipeFamilies = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPEFAMILY);
+                    RecipeFamily.insertMany(recipeFamilies, function (err, result) {
                         if (err)
                             console.error(err);
                         else {
-                            console.log("Created recipe entities:");
+                            console.log("Created recipeFamily entities:");
                             console.log(result);
                         }
 
-                        console.log("Disconnecting...");
-                        mongoose.disconnect();
+                        // import the recipe entities
+                        var recipes = removeCommentsAndOpen(DATA_FOLDER_PATH, FILE_PATH_RECIPE);
+                        Recipe.insertMany(recipes, function (err, result) {
+                            if (err)
+                                console.error(err);
+                            else {
+                                console.log("Created recipe entities:");
+                                console.log(result);
+                            }
+
+                            console.log("Disconnecting...");
+                            mongoose.disconnect();
+                        });
                     });
                 });
             });
