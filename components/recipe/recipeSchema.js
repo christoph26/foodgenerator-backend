@@ -11,7 +11,9 @@ var Recipe = new mongoose.Schema({
         }, //title of the recipe
         effort: {
             type: Number,
-            required: true
+            required: true,
+            min: 1,
+            max: 3
         }, //skill level of the recipe
         description: {
             type: String,
