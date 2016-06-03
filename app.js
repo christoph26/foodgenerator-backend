@@ -51,6 +51,9 @@ app.use('/', userRoutes(passport));
 var ingredientRoutes = require("./components/ingredient/ingredientRoutes");
 app.use('/', ingredientRoutes());
 
+var ingredientListRoutes = require("./components/ingredientList/ingredientListRoutes");
+app.use('/', ingredientListRoutes());
+
 var recipeRoutes = require("./components/recipe/recipeRoutes");
 app.use('/', recipeRoutes());
 
