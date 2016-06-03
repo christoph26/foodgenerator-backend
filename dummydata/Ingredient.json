@@ -11,79 +11,79 @@
 */
 [
   {
-    "_id": 111100000000000000000001,
+    "_id": "111100000000000000000001",
     "title": "Minced Meat",
     "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
     "picture": "http://www.duden.de/_media_/full/H/Hackfleisch-201020333294.jpg"
   },
   {
-    "_id": 111100000000000000000002,
+    "_id": "111100000000000000000002",
     "title": "Tomato",
     "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
     "picture": "http://revistaanamariabraga.uol.com.br/culinaria/img/sua_majestade_o_tomate_1__2012-04-09023953.jpg"
   },
   {
-    "_id": 111100000000000000000003,
+    "_id": "111100000000000000000003",
     "title": "Onion",
     "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
     "picture": "http://www.pastaweb.de/wp-content/uploads/2014/09/zwiebeln.jpg"
   },
   {
-    "_id": 111100000000000000000004,
+    "_id": "111100000000000000000004",
     "title": "Garlic",
     "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
     "picture": "http://static.chefkoch-cdn.de/ck.de/cms-uploads/chefkoch/29/knoblauch.jpg?0.2457099730989003"
   },
   {
-    "_id": 111100000000000000000005,
+    "_id": "111100000000000000000005",
     "title": "Oregano",
     "supermarket": "888800000000000000000003",
     "picture": "http://www.veggipedia.de/view/oregano.jpg"
   },
   {
-    "_id": 111100000000000000000006,
+    "_id": "111100000000000000000006",
     "title": "Spaghetti",
     "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
     "picture": "http://kochkurz.de/wp-content/uploads/2013/02/spaghetti.jpg"
   },
   {
-    "_id": 111100000000000000000007,
+    "_id": "111100000000000000000007",
     "title": "Pepper Red",
     "supermarket": "888800000000000000000003",
     "picture": "http://logisch-bio.de/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/i/s/istock_000017940210xsmall_1_.jpg"
   },
   {
-    "_id": 111100000000000000000008,
+    "_id": "111100000000000000000008",
     "title": "Kidney Bean",
     "supermarket": "888800000000000000000001, 888800000000000000000003",
     "picture": "http://logisch-bio.de/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/i/s/istock_000017940210xsmall_1_.jpg"
   },
   {
-    "_id": 111100000000000000000009,
+    "_id": "111100000000000000000009",
     "title": "Rice",
     "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
     "picture": "http://logisch-bio.de/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/i/s/istock_000017940210xsmall_1_.jpg"
   },
   {
-    "_id": 111100000000000000000010,
+    "_id": "111100000000000000000010",
     "title": "Avocado",
     "supermarket": "888800000000000000000001, 888800000000000000000002",
     "picture": "http://cdn-img.health.com/sites/default/files/migration/images/slides/avocado-heart-400x400.jpg"
   },
   {
-    "_id": 111100000000000000000011,
+    "_id": "111100000000000000000011",
     "title": "Olive oil",
     "supermarket": "888800000000000000000001, 888800000000000000000002",
     "picture": "http://www.duden.de/_media_/full/O/Olivenoel-201100278849.jpg"
   },
   {
-    "_id": 111100000000000000000012,
+    "_id": "111100000000000000000012",
     "title": "Cabbage Lettuce",
     "supermarket": "888800000000000000000001, 888800000000000000000002 ,888800000000000000000003",
     "picture": "http://behr-ag.com/typo3temp/_processed_/csm_Kopfsalat_9da7ccbfaf.png"
-  }
+  },
   {
-    "_id": 111100000000000000000013,
+    "_id": "111100000000000000000013",
     "title": "Feta Cheese",
     "supermarket": "888800000000000000000001",
     "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Feta_Greece_2.jpg"
