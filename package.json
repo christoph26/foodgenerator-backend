@@ -32,7 +32,8 @@
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",
     "supertest": "^1.2.0",
-    "mongoose-id-validator": "^0.3.0"
+    "mongoose-id-validator": "^0.3.0",
+    "mongoose-text-search": "^0.0.2"
   },
   "devDependencies": {
     "mongodb": "^2.1.20",
