@@ -2,18 +2,12 @@
   {
     "_id": "400000000000000000000001",
     "title": "Testitle",
-    "skill": 3,
+    "effort": 3,
     "description": "blablalbalbla",
     "vegan": false,
     "vegetarian": false,
     "picture": "path to picture",
-    "ingredientlist": [
-      {
-        "amount": 500,
-        "unit": "g",
-        "ingredient": "200000000000000000000001"
-      }
-    ],
+    "ingredientList": "220000000000000000000001",
     "recipeFamily": "300000000000000000000001"
   },
   {

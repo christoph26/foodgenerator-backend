@@ -3,8 +3,8 @@ var User = require('./userSchema');
 var jwt = require('jwt-simple');
 
 module.exports.login = function(req, res){
-
-    if(!req.body.username){
+//check for pw and email
+    if (!req.body.email) {
         res.status(400).send('username required');
         return;
     }
@@ -12,8 +12,80 @@ module.exports.login = function(req, res){
         res.status(400).send('password required');
         return;
     }
+//search user by email
+    User.findOne({email: req.body.email}, function (err, user) {
+        if (err) {
+            res.status(500).send(err);
+            return
+        }
+//if no user found, return
+        if (!user) {
+            res.status(401).send('Invalid Credentials');
+            return;
+        }
+        //check for right pw
+        user.comparePassword(req.body.password, function(err, isMatch) {
+            if(!isMatch || err){
+                res.status(401).send('Invalid Credentials');
+            } else {
+                //if right: creates token
+                res.status(200).json({token: createToken(user)});
+            }
+        });
+    });
 
-    User.findOne({username: req.body.username}, function(err, user){
+};
+
+module.exports.signup = function(req, res){
+    //check for required information
+    if(!req.body.email){
+        res.status(400).send('email required');
+        return;
+    }
+    if(!req.body.password){
+        res.status(400).send('password required');
+        return;
+    }
+    if(!req.body.firstName){
+        res.status(400).send('first name required');
+        return;
+    }
+    if(!req.body.lastName){
+        res.status(400).send('last name required');
+        return;
+    }
+//create new user, insert information
+    var user = new User();
+    user.email = req.body.email;
+    user.password = req.body.password;
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.salt = "salzig";
+
+//safe user in db
+    user.save(function(err) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+//creates token
+        res.status(201).json({token: createToken(user)});
+    });
+};
+
+//deletes an user
+module.exports.unregister = function(req, res) {
+//check fpr emaila nd pw
+    if (!req.body.email) {
+        res.status(400).send('username required');
+        return;
+    }
+    if(!req.body.password){
+        res.status(400).send('password required');
+        return;
+    }
+//search for email in db
+    User.findOne({email: req.body.email}, function (err, user) {
         if (err) {
             res.status(500).send(err);
             return
@@ -23,90 +95,23 @@ module.exports.login = function(req, res){
             res.status(401).send('Invalid Credentials');
             return;
         }
+        //check if right pw
         user.comparePassword(req.body.password, function(err, isMatch) {
             if(!isMatch || err){
                 res.status(401).send('Invalid Credentials');
             } else {
-                res.status(200).json({token: createToken(user)});
+                //if right pw, delete user
+                user.remove();
+                res.status(400).send('user deleted');
             }
         });
     });
 
+
+
 };
 
-module.exports.signup = function(req, res){
-    if(!req.body.email){
-        res.status(400).send('email required');
-        return;
-    }
-    if(!req.body.password){
-        res.status(400).send('password required');
-        return;
-    }
 
-    var user = new User();
-
-    user.email = req.body.email;
-    user.password = req.body.password;
-
-    user.save(function(err) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        }
-
-        res.status(201).json({token: createToken(user)});
-    });
-};
-
-//POST: creates an user
-module.exports.POST = function(req, res){
-    if(!req.body.email){
-        res.status(400).send('email required');
-        return;
-    }
-    if(!req.body.password){
-        res.status(400).send('password required');
-        return;
-    }
-
-    var user = new User();
-
-    user.email = req.body.email;
-    user.password = req.body.password;
-
-    user.save(function(err) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        }
-
-        res.status(201).json({token: createToken(user)});
-    });
-};
-//deletes an user
-module.exports.DELETE = function(req) {
-    req.user.remove();
-    res.status(400).send('user deleted');
-};
-
-//returns the user of an _id
-// id must has the Format: ObjectId("574da88571e612882d4392d7")
-modul.export.GET = function(id) {
-
-    User.find({_id: id}, function(err, user){
-        if (err) {
-            res.status(500).send(err);
-            return
-        }
-
-        if (!id) {
-            res.status(401).send('Invalid Credentials');
-            return;
-        }
-        return user;
-    });
-};
 
 function createToken(user) {
     var tokenPayload = {
