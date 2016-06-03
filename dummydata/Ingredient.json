@@ -1,39 +1,10 @@
 [
   //Gemüse
   {
-    "titel": "Tomate"
-  },
-  {
-    "titel": "Paprika"
-  },
-  {
-    "titel": "Zwiebel"
-  },
-  {
-    "titel": "Reis"
-  },
-  {
-    "titel": "Kartoffeln"
-  },
-
-  //Frische Produkte
-  {
-    "titel": "Ei"
-  },
-  {
-    "titel": "Milch"
-  },
-
-  {
-    "titel": "Kidney Bohnen"
-  },
-  {
-    "titel": "Mais"
-  },
-
-  //Fleisch Waren
-  {
-    "titel": "Hackleisch"
+    "_id": "200000000000000000000001",
+    "title": "Tomate",
+    "supermarkets": [
+      "100000000000000000000002"
+    ]
   }
-
  ]

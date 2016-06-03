@@ -1,26 +1,12 @@
 [
   {
-    "titel": "Aldi Sued",
-    "icon": "http://"
+    "_id": "100000000000000000000001",
+    "title": "Aldi Sued",
+    "icon": "http://picture to aldi"
   },
   {
-    "titel": "Lidl",
-    "icon": "http://"
-  },
-  {
-    "titel": "REAL",
-    "icon": "http://"
-  },
-  {
-    "titel": "REWE",
-    "icon": "http://"
-  },
-  {
-    "titel": "EDEKA",
-    "icon": "http://"
-  },
-  {
-    "titel": "Penny",
-    "icon": "http://"
+    "_id": "100000000000000000000002",
+    "title": "Lidl",
+    "icon": "http://picture to lidle"
   }
 ]
