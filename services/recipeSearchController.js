@@ -5,7 +5,6 @@ var IngredientList = require('../components/ingredientList/ingredientListSchema'
 var Ingredient = require('../components/ingredient/ingredientSchema');
 var Supermarket = require('../components/supermarket/supermarketSchema');
 
-
 var async = require("async");
 
 /*
@@ -65,7 +64,7 @@ exports.searchRecipes = function (req, res) {
             query.or(effortFilter);
         }
 
-        query.exec(function (queryError, queryResult) {
+        query.lean().exec(function (queryError, queryResult) {
             if (queryError) {
                 res.status(500).send(queryError);
                 return;
@@ -74,13 +73,16 @@ exports.searchRecipes = function (req, res) {
 
             //Calculate supermarket availabilities:
             async.forEach(queryResult, function (recipe, forEachCallback) {
-                calculateAvailableSupermarkets(recipe, forEachCallback);
-            }), function (forEachError) {
-                res.status(500).send(forEachError);
-                return;
-            };
+                    calculateAvailableSupermarkets(recipe, forEachCallback);
+                }
+                , function (forEachError) {
+                    if (forEachError) {
+                        res.status(500).send(forEachError);
+                        return;
+                    }
 
-            res.json(queryResult);
+                    res.json(queryResult);
+                });
         });
 
 
@@ -110,37 +112,40 @@ function calculateAvailableSupermarkets(recipe, callback) {
     async.parallel(
         [
             function (loadCallback) {
-                IngredientList.findById(recipe.ingredientList, function (err, result) {
+                IngredientList.findById(recipe.ingredientList).lean().exec(function (err, result) {
                     if (err) {
                         loadCallback(err);
                     }
-                    ingredientList = result;
+                    ingredientList = result.ingredients;
                     loadCallback();
-                })
+                });
             },
             function (loadCallback) {
-                Supermarket.find(function (err, result) {
+                Supermarket.find().lean().exec(function (err, result) {
                     if (err) {
                         loadCallback(err);
                     }
-                    supermarkets = result;
+                    supermarkets = result.map(function (elem) {
+                        return elem._id;
+                    });
                     loadCallback();
-                })
+                });
             }
         ]
-    ), function (loadError) {
-        if (loadError) {
-            callback(loadError);
-        }
+        , function (parallelError) {
+            if (parallelError) {
+                callback(parallelError);
+            }
 
-        //load ingredients of current ingredientList
-        async.map(ingredientList, function (ingredientId, loadIngredientCallback) {
-            Ingredient.findById(ingredientId, function (err, ingredient) {
-                if (err) {
-                    loadIngredientCallback(err);
-                }
-                loadIngredientCallback(null, ingredient.supermarkets);
-            }), function (mapError, supermarketLists) {
+            //load ingredients of current ingredientList
+            async.map(ingredientList, function (ingredientId, loadIngredientCallback) {
+                Ingredient.findById(ingredientId.ingredient).lean().exec(function (err, ingredient) {
+                    if (err) {
+                        loadIngredientCallback(err);
+                    }
+                    loadIngredientCallback(null, ingredient.supermarkets);
+                });
+            }, function (mapError, supermarketLists) {
                 if (mapError) {
                     callback(mapError);
                 }
@@ -153,21 +158,24 @@ function calculateAvailableSupermarkets(recipe, callback) {
 
                     var newAvailabilityState = [];
 
-                    for (s in availabilityState) {
-                        if (supermarketsOfIngredient.indexOf(s) >= 0) {
-                            newAvailabilityState.push(s);
+                    for (var i = 0; i < availabilityState.length; i++) {
+                        for (var j = 0; j < supermarketsOfIngredient.length; j++) {
+                            if (String(availabilityState[i]) === String(supermarketsOfIngredient[j])) {
+                                newAvailabilityState.push(String(availabilityState[i]));
+                            }
                         }
                     }
+
+                    reduceCallback(null, newAvailabilityState);
                 }, function (reduceError, reduction) {
                     if (reduceError) {
                         callback(reduceError);
                     }
 
-                    recipe.availability = availableSupermarkets;
+                    recipe.availability = reduction;
                     callback();
                 });
-            };
-        });
-
-    };
+            });
+        }
+    );
 }
