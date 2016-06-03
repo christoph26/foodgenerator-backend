@@ -1,14 +1,3 @@
-/*
-[
-  '{{repeat(20)}}',
-  {
-    _id: '11{{index()}}',
-    title:'food_{{firstName()}}',
-    supermarket:'{{random("ALDI SUED", "LIDL", "REAL", "EDEKA", "PENNY")}}',
-    picture: 'http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png'
-  }
-]
-*/
 [
   {
     "_id": "111100000000000000000001",

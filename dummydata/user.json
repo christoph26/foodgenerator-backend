@@ -1,15 +1,3 @@
-/*
-[
-'{{repeat(40)}}',
-{
-_id: '88{{index()}}',
-email: '{{email()}}',
-password:'{{integer(1, 10)}}_{{random("blue", "brown", "green")}}',
-first_name: '{{firstName()}}',
-last_name: '{{surname()}}'
-}
-]
-*/
 [
   {
     "_id": "999900000000000000000001",

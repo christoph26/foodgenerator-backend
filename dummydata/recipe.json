@@ -1,30 +1,3 @@
-/*
-[
-  '{{repeat(20)}}',
-  {
-    _id:'22{{index()}}',
-    title:'recipe_{{firstName()}}',
-    skill:'{{random("Insane", "Handable", "Easy")}}',
-    description: '{{lorem(1, "paragraphs")}}',
-    vegan:'{{bool()}}',
-    vegetarian:'{{bool()}}',
-    picture: 'http://www.pizza-flitza.de/shop/bramsche/files/2011/07/pizza-vegetarisch.jpg',
-    ingredientlist:
-                  [
-                    '{{repeat(3)}}',{
-            amount:'{{floating(1, 10, 0, "10")}}',
-            unit:'{{random("gramm", "ml", "pieces")}}',
-			ingredient_id:'11{{integer(0, 20)}}'
-                                     }
-					],
-    recipefamily:
-    ['{{repeat(3)}}',{
-		recipefamily_id:'22{{integer(0, 20)}}'
-    }]
-  }
-]
-*/
-
 [
   {
     "_id": 333300000000000000000001,
