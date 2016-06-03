@@ -7,6 +7,8 @@ function supermarketRoutes() {
 
     router.route('/supermarket/:id')
         .get(supermarketController.getSupermarket);
+    router.route('/supermarkets')
+        .get(supermarketController.getAllSupermarkets);
     return router;
 
 }
