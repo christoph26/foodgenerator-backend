@@ -1,57 +1,57 @@
 [
   {
-    "_id": 333300000000000000000001,
+    "_id": "333300000000000000000001",
     "title": "Spaghetti Bolognese Classic",
     "effort": 1,
-    "description": "Preperation is simple and done in 30 minutes.\r\n",
+    "description": "Preperation is simple and done in 30 minutes.",
     "vegan": false,
     "vegetarian": false,
     "picture": "https://www.frag-mutti.de/images/uploads/de/head/61/Spaghetti_Bolognese.jpg",
-    "ingredientlist": "222200000000000000000001",
+    "ingredientList": "222200000000000000000001",
     "recipeFamily": "444400000000000000000001"
   },
   {
-    "_id": 333300000000000000000002,
+    "_id": "333300000000000000000002",
     "title": "Rammstein Spaghetti Bolognese",
     "effort": 3,
-    "description": "HOT as Hell.\r\n",
+    "description": "HOT as Hell.",
     "vegan": false,
     "vegetarian": false,
     "picture": "http://static.chefkoch-cdn.de/ck.de/rezepte/62/62122/818606-960x720-rammstein-s-spaghetti-bolognese.jpg",
-    "ingredientlist": "222200000000000000000002",
+    "ingredientList": "222200000000000000000002",
     "recipeFamily": "444400000000000000000001"
   },
   {
-    "_id": 333300000000000000000003,
+    "_id": "333300000000000000000003",
     "title": "Chili Con Carne",
     "effort": 1,
-    "description": "Hot & Spicy\r\n",
+    "description": "Hot & Spicy",
     "vegan": false,
     "vegetarian": false,
     "picture": "http://static.chefkoch-cdn.de/ck.de/rezepte/62/62122/818606-960x720-rammstein-s-spaghetti-bolognese.jpg",
-    "ingredientlist": "222200000000000000000003",
+    "ingredientList": "222200000000000000000003",
     "recipeFamily": "444400000000000000000002"
   },
   {
     "_id": "333300000000000000000004",
     "title": "Avocado Salad",
     "effort": 1,
-    "description": "Delicious Healthy Salat for Vegan People\r\n",
+    "description": "Delicious Healthy Salat for Vegan People",
     "vegan": true,
     "vegetarian": true,
     "picture": "http://static.chefkoch-cdn.de/ck.de/rezepte/62/62122/818606-960x720-rammstein-s-spaghetti-bolognese.jpg",
-    "ingredientlist": "222200000000000000000004",
+    "ingredientList": "222200000000000000000004",
     "recipeFamily": "444400000000000000000003"
   },
   {
     "_id": "333300000000000000000005",
     "title": "Avocado Salad Feta",
     "effort": 1,
-    "description": "Delicious Healthy Salat for Vegetarian People\r\n",
+    "description": "Delicious Healthy Salat for Vegetarian People",
     "vegan": false,
     "vegetarian": true,
     "picture": "http://static.chefkoch-cdn.de/ck.de/rezepte/62/62122/818606-960x720-rammstein-s-spaghetti-bolognese.jpg",
-    "ingredientlist": "222200000000000000000005",
+    "ingredientList": "222200000000000000000005",
     "recipeFamily": "444400000000000000000003"
   }
 ]
