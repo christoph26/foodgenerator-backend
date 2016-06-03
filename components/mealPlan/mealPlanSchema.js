@@ -10,14 +10,14 @@ var MealPlan = new mongoose.Schema({
         order: Number, // to order the different "days"
         //each mealList can has multiple meals (eg. breakfast, lunch, dinner)
         meal: [{
-            order: String, // to order if its the first or the last meal of the plan
+            order: Number, // to order if its the first or the last meal of the plan
             recipe: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'recipe'
+                ref: 'Recipe'
             }
         }]
     }]
 });
 
 // Export the Mongoose model
-module.exports = mongoose.model('MealPlan', mealPlan);
+module.exports = mongoose.model('MealPlan', MealPlan);
