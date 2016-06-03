@@ -1,43 +1,26 @@
 /*
 [
-  '{{repeat(6)}}',
-  {
-						type:'mongoose.Schema.Type.ObjectId',
-                        ref: function (tags)
-                      {
-      var fruits = ['Chili Con Carne', 'Spaghetti Bolognese', 'Salami Pizza', 'Scrambled Eggs', 'Lasagne', 'Cheese Cake'];
-      return fruits[tags.integer(0, fruits.length - 1)];
-                      }
-                 }
-
+'{{repeat(5)}}',
+{
+_id:'22{{integer(0, 20)}}'
+}
 ]
 */
 
-
-
 [
   {
-    "type": "mongoose.Schema.Type.ObjectId",
-    "ref": "Lasagne"
+    "_id": 2213
   },
   {
-    "type": "mongoose.Schema.Type.ObjectId",
-    "ref": "Spaghetti Bolognese"
+    "_id": 222
   },
   {
-    "type": "mongoose.Schema.Type.ObjectId",
-    "ref": "Scrambled Eggs"
+    "_id": 227
   },
   {
-    "type": "mongoose.Schema.Type.ObjectId",
-    "ref": "Cheese Cake"
+    "_id": 2220
   },
   {
-    "type": "mongoose.Schema.Type.ObjectId",
-    "ref": "Spaghetti Bolognese"
-  },
-  {
-    "type": "mongoose.Schema.Type.ObjectId",
-    "ref": "Salami Pizza"
+    "_id": 2219
   }
 ]
