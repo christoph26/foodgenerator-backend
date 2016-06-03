@@ -11,123 +11,39 @@
 */
 [
   {
-    "_id": 110,
-    "title": "food_Noble",
-    "supermarket": "REAL",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
+    "_id": 111100000000000000000001,
+    "title": "Hackfleisch",
+    "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
+    "picture": "http://www.duden.de/_media_/full/H/Hackfleisch-201020333294.jpg"
   },
   {
-    "_id": 111,
-    "title": "food_Odonnell",
-    "supermarket": "PENNY",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
+    "_id": 111100000000000000000002,
+    "title": "Tomate",
+    "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
+    "picture": "http://revistaanamariabraga.uol.com.br/culinaria/img/sua_majestade_o_tomate_1__2012-04-09023953.jpg"
   },
   {
-    "_id": 112,
-    "title": "food_Lina",
-    "supermarket": "REAL",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
+    "_id": 111100000000000000000003,
+    "title": "Zwiebel",
+    "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
+    "picture": "http://www.pastaweb.de/wp-content/uploads/2014/09/zwiebeln.jpg"
   },
   {
-    "_id": 113,
-    "title": "food_Snyder",
-    "supermarket": "ALDI SUED",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
+    "_id": 111100000000000000000004,
+    "title": "Knoblauch",
+    "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
+    "picture": "http://static.chefkoch-cdn.de/ck.de/cms-uploads/chefkoch/29/knoblauch.jpg?0.2457099730989003"
   },
   {
-    "_id": 114,
-    "title": "food_Olga",
-    "supermarket": "LIDL",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
+    "_id": 111100000000000000000005,
+    "title": "Oregano",
+    "supermarket": "888800000000000000000003",
+    "picture": "http://www.veggipedia.de/view/oregano.jpg"
   },
   {
-    "_id": 115,
-    "title": "food_Villarreal",
-    "supermarket": "ALDI SUED",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 116,
-    "title": "food_Tina",
-    "supermarket": "PENNY",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 117,
-    "title": "food_Tameka",
-    "supermarket": "EDEKA",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 118,
-    "title": "food_Larsen",
-    "supermarket": "EDEKA",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 119,
-    "title": "food_Constance",
-    "supermarket": "EDEKA",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1110,
-    "title": "food_Allie",
-    "supermarket": "PENNY",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1111,
-    "title": "food_Alana",
-    "supermarket": "EDEKA",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1112,
-    "title": "food_Holden",
-    "supermarket": "EDEKA",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1113,
-    "title": "food_Yvonne",
-    "supermarket": "LIDL",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1114,
-    "title": "food_Joni",
-    "supermarket": "PENNY",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1115,
-    "title": "food_Charlene",
-    "supermarket": "EDEKA",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1116,
-    "title": "food_Latisha",
-    "supermarket": "REAL",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1117,
-    "title": "food_Ila",
-    "supermarket": "EDEKA",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1118,
-    "title": "food_John",
-    "supermarket": "REAL",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
-  },
-  {
-    "_id": 1119,
-    "title": "food_Diaz",
-    "supermarket": "PENNY",
-    "picture": "http://www.tomaten.at/wp-content/uploads/2014/05/tomatooo.png"
+    "_id": 111100000000000000000006,
+    "title": "Spaghetti",
+    "supermarket": "888800000000000000000001, 888800000000000000000002, 888800000000000000000003",
+    "picture": "http://kochkurz.de/wp-content/uploads/2013/02/spaghetti.jpg"
   }
 ]
