@@ -11,7 +11,7 @@ var async = require("async");
  expected body structure:
  {
  searchtext: nonempty String, required
- useParameter: boolean, required
+ searchDirectRecipes: boolean, required
  vegetarian: boolean, default false
  vegan: boolean, default false
  effortLow
@@ -25,8 +25,8 @@ exports.searchRecipes = function (req, res) {
         res.status(400).send('Search text required.');
         return;
     }
-    if (typeof req.body.userParameter === 'undefined') {
-        res.status(400).send("Attribute 'userParameter' required");
+    if (typeof req.body.searchDirectRecipes === 'undefined') {
+        res.status(400).send("Attribute 'searchDirectRecipes' required");
         return;
     }
 
@@ -37,7 +37,7 @@ exports.searchRecipes = function (req, res) {
     };
 
 
-    if (req.body.userParameter) {
+    if (req.body.searchDirectRecipes) {
 
         var query = Recipe.find({$text: {$search: req.body.searchtext}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}});
 
@@ -89,14 +89,43 @@ exports.searchRecipes = function (req, res) {
     } else {
         var query = RecipeFamily.find({'$text': {'$search': req.body.searchtext}});
 
-        query.exec(function (queryError, queryResult) {
+        //Execute Text search
+        query.lean().exec(function (queryError, queryResult) {
             if (queryError) {
                 res.status(500).send(queryError);
                 return;
             }
             ;
 
-            res.json(queryResult);
+            //load default recipes of recipe families
+            async.map(queryResult, function (recipeFamily, mapCallback) {
+                Recipe.findById(recipeFamily.defaultrecipe).lean().exec(function (loadDefaultRecipeError, defaultrecipe) {
+                    if (loadDefaultRecipeError) {
+                        mapCallback(loadDefaultRecipeError);
+                    }
+
+                    mapCallback(null, defaultrecipe);
+                });
+            }, function (mapError, defaultrecipes) {
+                if (mapError) {
+                    res.status(500).send(mapError);
+                    return;
+                }
+
+                //Calculate supermarket availabilities:
+                async.forEach(defaultrecipes, function (recipe, forEachCallback) {
+                        calculateAvailableSupermarkets(recipe, forEachCallback);
+                    }
+                    , function (forEachError) {
+                        if (forEachError) {
+                            res.status(500).send(forEachError);
+                            return;
+                        }
+
+                        res.json(defaultrecipes);
+                    });
+            });
+
         });
 
     }
