@@ -1,6 +1,10 @@
 var Config = require('../../config/config.js');
 var User = require('./userSchema');
+var base = require('../base');
 var jwt = require('jwt-simple');
+
+// Create endpoint /users/:id for GET
+exports.getUser = base.getEntityById(User);
 
 module.exports.login = function (req, res) {
     var body = req.body;
