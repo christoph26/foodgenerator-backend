@@ -88,8 +88,11 @@ exports.searchRecipes = function (req, res) {
 
                             var passedFilter = true;
                             //Check if elements of supermarket filter are in the availabilty list of the current recipe
+                            var availabilityIdList = recipe.availability.map(function (item) {
+                                return String(item._id);
+                            });
                             for (var i = 0; i < supermarketFilter.length; i++) {
-                                passedFilter = passedFilter && (recipe.availability.indexOf(supermarketFilter[i]) >= 0);
+                                passedFilter = passedFilter && (availabilityIdList.indexOf(supermarketFilter[i]) >= 0);
                             }
 
                             filterCallback(null, passedFilter);
@@ -204,7 +207,7 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                     callback(mapError);
                 }
 
-                //replace ingredientList with List of ingredients
+                //replace reference to supermarketList with List of ingredients
                 recipe.ingredientList = listOfIngredients;
                 var supermarketListsOfIngredients = listOfIngredients.map(function (ingredient) {
                     return ingredient.supermarkets;
@@ -232,8 +235,23 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                         callback(reduceError);
                     }
 
-                    recipe.availability = reduction;
-                    callback();
+                    //Load supermarkets form Id-list
+                    async.map(reduction, function (supermarketId, mapCallback) {
+                        Supermarket.findById(supermarketId).lean().exec(function (loadError, supermarket) {
+                            if (loadError) {
+                                mapCallback(loadError);
+                            }
+
+                            mapCallback(null, supermarket);
+                        })
+                    }, function (mapError, loadedSupermarkets) {
+                        if (mapError) {
+                            callback(mapError)
+                        }
+                        recipe.availability = loadedSupermarkets;
+                        callback();
+                    });
+
                 });
             });
         }
