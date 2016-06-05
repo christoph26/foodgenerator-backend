@@ -73,7 +73,7 @@ exports.searchRecipes = function (req, res) {
 
             //Calculate supermarket availabilities:
             async.forEach(queryResult, function (recipe, forEachCallback) {
-                    calculateAvailableSupermarkets(recipe, forEachCallback);
+                    calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, forEachCallback);
                 }
                 , function (forEachError) {
                     if (forEachError) {
@@ -139,7 +139,7 @@ exports.searchRecipes = function (req, res) {
 
                 //Calculate supermarket availabilities:
                 async.forEach(defaultrecipes, function (recipe, forEachCallback) {
-                        calculateAvailableSupermarkets(recipe, forEachCallback);
+                        calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, forEachCallback);
                     }
                     , function (forEachError) {
                         if (forEachError) {
@@ -157,7 +157,7 @@ exports.searchRecipes = function (req, res) {
 
 };
 
-function calculateAvailableSupermarkets(recipe, callback) {
+function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, callback) {
 
     var ingredientList;
     var supermarkets;
@@ -197,14 +197,20 @@ function calculateAvailableSupermarkets(recipe, callback) {
                     if (err) {
                         loadIngredientCallback(err);
                     }
-                    loadIngredientCallback(null, ingredient.supermarkets);
+                    loadIngredientCallback(null, ingredient);
                 });
-            }, function (mapError, supermarketLists) {
+            }, function (mapError, listOfIngredients) {
                 if (mapError) {
                     callback(mapError);
                 }
 
-                async.reduce(supermarketLists, supermarkets, function (availabilityState, supermarketsOfIngredient, reduceCallback) {
+                //replace ingredientList with List of ingredients
+                recipe.ingredientList = listOfIngredients;
+                var supermarketListsOfIngredients = listOfIngredients.map(function (ingredient) {
+                    return ingredient.supermarkets;
+                });
+
+                async.reduce(supermarketListsOfIngredients, supermarkets, function (availabilityState, supermarketsOfIngredient, reduceCallback) {
                     if (availabilityState.length == 0) {
                         reduceCallback(null, []);
                     }
