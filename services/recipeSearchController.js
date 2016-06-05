@@ -81,7 +81,32 @@ exports.searchRecipes = function (req, res) {
                         return;
                     }
 
-                    res.json(queryResult);
+                    //supermarket filter
+                    if (req.body.supermarketFilter) {
+                        var supermarketFilter = req.body.supermarketFilter;
+                        async.filter(queryResult, function (recipe, filterCallback) {
+
+                            var passedFilter = true;
+                            //Check if elements of supermarket filter are in the availabilty list of the current recipe
+                            for (var i = 0; i < supermarketFilter.length; i++) {
+                                passedFilter = passedFilter && (recipe.availability.indexOf(supermarketFilter[i]) >= 0);
+                            }
+
+                            filterCallback(null, passedFilter);
+                        }, function (filterError, filteredResults) {
+                            if (filterError) {
+                                res.status(500).send(filterError);
+                                return;
+                            }
+                            ;
+
+                            res.json(filteredResults);
+                        });
+
+                    } else {
+                        res.json(queryResult);
+
+                    }
                 });
         });
 
