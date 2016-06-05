@@ -21,7 +21,7 @@ var async = require("async");
  */
 exports.searchRecipes = function (req, res) {
 
-    if (!req.body.searchtext || req.body.searchtext == "") {
+    if (!req.body.searchText || req.body.searchText == "") {
         res.status(400).send('Search text required.');
         return;
     }
@@ -32,14 +32,14 @@ exports.searchRecipes = function (req, res) {
 
     var textquery = {
         '$text': {
-            '$search': req.body.searchtext
+            '$search': req.body.searchText
         }
     };
 
 
     if (req.body.searchDirectRecipes) {
 
-        var query = Recipe.find({$text: {$search: req.body.searchtext}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}});
+        var query = Recipe.find({$text: {$search: req.body.searchText}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}});
 
         //Filter for vegetarian and vegan flags
         if (typeof req.body.vegetarian !== 'undefined') {
@@ -115,7 +115,7 @@ exports.searchRecipes = function (req, res) {
 
 
     } else {
-        var query = RecipeFamily.find({'$text': {'$search': req.body.searchtext}});
+        var query = RecipeFamily.find({'$text': {'$search': req.body.searchText}});
 
         //Execute Text search
         query.lean().exec(function (queryError, queryResult) {
