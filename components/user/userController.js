@@ -73,8 +73,8 @@ module.exports.signup = function (req, res) {
             res.status(500).send(err);
             return;
         }
-        //return user
-        res.status(201).json(user);     //FIXME remove password before transmitting user
+        //create token
+        res.status(201).json({token: createToken(user)});
     });
 };
 
