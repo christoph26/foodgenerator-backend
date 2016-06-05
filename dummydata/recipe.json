@@ -6,7 +6,7 @@
     "description": "Preperation is simple and done in 30 minutes.",
     "vegan": false,
     "vegetarian": false,
-    "picture": "https://www.frag-mutti.de/images/uploads/de/head/61/Spaghetti_Bolognese.jpg",
+    "picture": "img/recipes/spaghetti-bolognese-classic.jpg",
     "ingredientList": "222200000000000000000001",
     "recipeFamily": "444400000000000000000001"
   },
@@ -17,7 +17,7 @@
     "description": "HOT as Hell.",
     "vegan": false,
     "vegetarian": false,
-    "picture": "http://static.chefkoch-cdn.de/ck.de/rezepte/62/62122/818606-960x720-rammstein-s-spaghetti-bolognese.jpg",
+    "picture": "img/recipes/spaghetti-bolognese-rammstein.jpg",
     "ingredientList": "222200000000000000000002",
     "recipeFamily": "444400000000000000000001"
   },
@@ -28,7 +28,7 @@
     "description": "Hot & Spicy",
     "vegan": false,
     "vegetarian": false,
-    "picture": "http://static.chefkoch-cdn.de/ck.de/rezepte/62/62122/818606-960x720-rammstein-s-spaghetti-bolognese.jpg",
+    "picture": "img/recipes/chili-con-carne.jpg",
     "ingredientList": "222200000000000000000003",
     "recipeFamily": "444400000000000000000002"
   },
@@ -39,7 +39,7 @@
     "description": "Delicious Healthy Salat for Vegan People",
     "vegan": true,
     "vegetarian": true,
-    "picture": "http://static.chefkoch-cdn.de/ck.de/rezepte/62/62122/818606-960x720-rammstein-s-spaghetti-bolognese.jpg",
+    "picture": "img/recipes/avocado-salad.jpg",
     "ingredientList": "222200000000000000000004",
     "recipeFamily": "444400000000000000000003"
   },
@@ -50,7 +50,7 @@
     "description": "Delicious Healthy Salat for Vegetarian People",
     "vegan": false,
     "vegetarian": true,
-    "picture": "http://static.chefkoch-cdn.de/ck.de/rezepte/62/62122/818606-960x720-rammstein-s-spaghetti-bolognese.jpg",
+    "picture": "img/recipes/avocado-salad-feta.jpg",
     "ingredientList": "222200000000000000000005",
     "recipeFamily": "444400000000000000000003"
   }
