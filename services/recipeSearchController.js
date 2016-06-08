@@ -42,11 +42,10 @@ exports.searchRecipes = function (req, res) {
         var query = Recipe.find({$text: {$search: req.body.searchText}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}});
 
         //Filter for vegetarian and vegan flags
-        if (typeof req.body.vegetarian !== 'undefined') {
-            query.where("vegetarian", req.body.vegetarian);
-        }
-        if (typeof req.body.vegan !== 'undefined') {
-            query.where("vegan", req.body.vegan);
+        if (typeof req.body.vegetarian !== 'undefined' && req.body.vegetarian) {
+            query.where("vegetarian", true);
+        } else if (typeof req.body.vegan !== 'undefined' && req.body.vegan) {
+            query.where("vegan", true);
         }
 
         //filter for effort
@@ -82,17 +81,17 @@ exports.searchRecipes = function (req, res) {
                     }
 
                     //supermarket filter
-                    if (req.body.supermarketFilter) {
+                    if (req.body.supermarketFilter && req.body.supermarketFilter.length > 0) {
                         var supermarketFilter = req.body.supermarketFilter;
                         async.filter(queryResult, function (recipe, filterCallback) {
 
-                            var passedFilter = true;
+                            var passedFilter = false;
                             //Check if elements of supermarket filter are in the availabilty list of the current recipe
                             var availabilityIdList = recipe.availability.map(function (item) {
                                 return String(item._id);
                             });
                             for (var i = 0; i < supermarketFilter.length; i++) {
-                                passedFilter = passedFilter && (availabilityIdList.indexOf(supermarketFilter[i]) >= 0);
+                                passedFilter = passedFilter || (availabilityIdList.indexOf(supermarketFilter[i]) >= 0);
                             }
 
                             filterCallback(null, passedFilter);
