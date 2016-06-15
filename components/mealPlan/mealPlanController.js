@@ -28,6 +28,33 @@ module.exports.createMealPlan = function (req, res) {
 
         res.status(200).json(savedMealPlan);
     });
+};
 
+module.exports.updateMealPlan = function (req, res) {
+    var body = req.body;
 
+    if (!body._id) {
+        res.status(400).send('_id required.');
+        return;
+    }
+
+    MealPlan.findOneAndUpdate({_id: body._id}, req.body, function (err) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+
+        res.status(200).json("Update successful!");
+    });
+};
+
+module.exports.deleteMealPlan = function (req, res) {
+    MealPlan.findOneAndRemove({_id: req.params.id}, function (err) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+
+        res.status(200).json("Deleted MealPlan with ID " + req.params.id + ".");
+    });
 };
