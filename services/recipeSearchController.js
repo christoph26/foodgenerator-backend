@@ -7,6 +7,59 @@ var Supermarket = require('../components/supermarket/supermarketSchema');
 
 var async = require("async");
 
+
+//need: body: "ingredients":["ingredient":"00000001"] <- list of ingredients (_ids!)
+
+exports.searchIngredients = function (req, res) {
+    if (!req.body.ingredients || req.body.ingredients == "") {
+        res.status(400).send('Ingredients required.');
+        return;
+    }
+
+    var indexList = [[1000001, 80], [], [], [], []]; //list for the tupels of ingredientList_ID and % of ingredient match
+    var query = IngredientList.find();
+
+    var test = "nothing done";
+
+
+    query.lean().exec(function (queryError, queryResult) {
+        //if (queryError) {
+        //   res.status(500).send(queryError);
+        //    return;
+        //}
+        //else
+
+        test = "sth done";
+        for (var i = 0; i < 4; i++) {//for (var i = 0; i < queryResult.length; i++){
+            indexList[i][0] = queryResult[i]._id.str;
+            indexList[i][1] = compareLists(queryResult[i], req.body);
+        }
+
+    });
+    //indexList.push( [queryResult[i]._id, compareLists(queryResult[i], req.body)]);
+
+
+    res.json(test);
+};
+
+
+//returns the % of the coverage of ingredients from list A by list B
+// (how many % of the ingredients of list A are in list B)
+
+function compareLists(ingredientListA, ingredientListB) {
+    var matches = 0;
+    for (var i = 0; i < ingredientListA.ingredients.length; i++) {
+        for (var j = 0; j < ingredientListB.ingredients.length; j++) {
+            if (ingredientListA[i].ingredient == ingredientListB[j].ingredient) {
+                matches = matches + 1;
+            }
+        }
+    }
+    var result = 100 / i * matches;
+
+    return result;
+}
+
 /*
  expected body structure:
  {
