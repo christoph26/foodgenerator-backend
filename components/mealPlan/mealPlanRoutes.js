@@ -1,21 +1,21 @@
 module.exports = mealPlanRoutes;
 
-function mealPlanRoutes() {
+function mealPlanRoutes(passport) {
 
     var mealPlanController = require('./mealPlanController');
     var router = require('express').Router();
 
     router.route('/mealPlans/')
-        .post(mealPlanController.createMealPlan);
+        .post(passport.authenticate('jwt', {session: false}), mealPlanController.createMealPlan);
 
     router.route('/mealPlans/:id')
-        .get(mealPlanController.getMealPlan);
+        .get(passport.authenticate('jwt', {session: false}), mealPlanController.getMealPlan);
 
     router.route('/mealPlans/')
-        .put(mealPlanController.updateMealPlan);
+        .put(passport.authenticate('jwt', {session: false}), mealPlanController.updateMealPlan);
 
     router.route('/mealPlans/:id')
-        .delete(mealPlanController.deleteMealPlan);
+        .delete(passport.authenticate('jwt', {session: false}), mealPlanController.deleteMealPlan);
     return router;
 
 }

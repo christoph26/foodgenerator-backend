@@ -36,7 +36,12 @@ var MealPlan = new mongoose.Schema({
         type: String,
         required: true
     },
-    mealLists: [MealList]
+    mealLists: [MealList],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 });
 
 MealPlan.plugin(idvalidator);
