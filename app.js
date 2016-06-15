@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({
 //passport
 
 var passport = require('passport');
-var jwtConfig = require('./passport/jwtConfig');
+var jwtConfig = require('./components/passport/jwtConfig');
 
 app.use(passport.initialize());
 jwtConfig(passport);
@@ -45,11 +45,25 @@ jwtConfig(passport);
  * routing
  */
 
-var userRoutes = require("./user/userRoutes");
-var movieRoutes = require("./movie/movieRoutes");
-
-app.use('/api', movieRoutes(passport));
+var userRoutes = require("./components/user/userRoutes");
 app.use('/', userRoutes(passport));
 
+var ingredientRoutes = require("./components/ingredient/ingredientRoutes");
+app.use('/', ingredientRoutes());
+
+var ingredientListRoutes = require("./components/ingredientList/ingredientListRoutes");
+app.use('/', ingredientListRoutes());
+
+var recipeRoutes = require("./components/recipe/recipeRoutes");
+app.use('/', recipeRoutes());
+
+var recipeFamilyRoutes = require("./components/recipeFamily/recipeFamilyRoutes");
+app.use('/', recipeFamilyRoutes());
+
+var supermarketRoutes = require("./components/supermarket/supermarketRoutes");
+app.use('/', supermarketRoutes());
+
+var searchRoutes = require("./services/searchRoutes");
+app.use('/search', searchRoutes());
 
 module.exports = app;

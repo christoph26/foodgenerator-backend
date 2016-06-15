@@ -4,7 +4,7 @@ Config.app={};
 Config.auth = {};
 
 Config.db.host = 'localhost:27017';
-Config.db.name = 'moviedb';
+Config.db.name = 'foodgeneratorDb';
 
 // Use environment defined port or 3000
 Config.app.port = process.env.PORT || 3000;

@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "999900000000000000000001",
+    "email": "newmanturner@navir.com",
+    "password": "10_brown",
+    "first_name": "Cox",
+    "last_name": "Glenn"
+  },
+  {
+    "_id": "999900000000000000000002",
+    "email": "coxglenn@navir.com",
+    "password": "3_brown",
+    "first_name": "Alvarez",
+    "last_name": "Clayton"
+  },
+  {
+    "_id": "999900000000000000000003",
+    "email": "alvarezclayton@navir.com",
+    "password": "2_blue",
+    "first_name": "Katy",
+    "last_name": "Spears"
+  },
+  {
+    "_id": 999900000000000000000004,
+    "email": "alvarezclayton@navir.com",
+    "password": "2_blue",
+    "first_name": "Katy",
+    "last_name": "Spears"
+  }
+ ]
