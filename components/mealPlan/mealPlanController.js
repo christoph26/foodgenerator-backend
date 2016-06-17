@@ -10,7 +10,7 @@ exports.getMealPlan = function (req, res) {
         }
 
         if (result) {
-            //Check authorisation
+            // if the given ID returned an entry, verify the user authorisation
             var idFromToken = base.getIdFromToken(req.headers['authorization'].split(" ")[1]);
             if (!idFromToken || !(idFromToken.user._id == result.user)) {
                 res.status(403).send('Unauthorized!');
