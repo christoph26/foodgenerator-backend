@@ -16,71 +16,94 @@ exports.searchIngredients = function (req, res) {
         return;
     }
 
-    var query = IngredientList.find();
 
-    query.lean().exec(function (queryError, queryResult) {
-        if (queryError) {
-            res.status(500).send(queryError);
+    var query2 = Recipe.find();
+
+    query2.lean().exec(function (queryError2, queryResult2) {
+        if (queryError2) {
+            res.status(500).send(queryError2);
             return;
         }
         else
 
-        for (var i = 0; i < queryResult.length; i++){
-            queryResult[i].coverage = compareLists(queryResult[i], req.body);
-        }
+            var query = IngredientList.find();
+        query.lean().exec(function (queryError, queryResult) {
+            if (queryError) {
+                res.status(500).send(queryError);
+                return;
+            }
+            else
 
-        //var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
-        //res.json(result);
-        //console.log(result);
-        queryResult.sort(function (a, b) {
-            if (a.coverage < b.coverage) {
-                return 1;
+                for (var ii = 0; ii < queryResult.length; ii++) {
+                    queryResult[ii].coverage = compareLists(queryResult[ii], req.body);
+                }
+
+            //var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
+            //res.json(result);
+            //console.log(result);
+
+            for (var xx = 0; xx < queryResult2.length; xx++) {
+                for (var yy = 0; yy < queryResult.length; yy++) {
+                    if (String(queryResult2[xx].ingredientList) == String(queryResult[yy]._id)) {
+                        queryResult2[xx].ingredientList = queryResult[yy];
+                    }
+                }
             }
-            if (a.coverage > b.coverage) {
-                return -1;
+
+
+            queryResult2.sort(function (a, b) {
+                if (a.ingredientList.coverage < b.ingredientList.coverage) {
+                    return 1;
+                }
+                if (a.ingredientList.coverage > b.ingredientList.coverage) {
+                    return -1;
+                }
+                // a must be equal to b
+                return 0;
+            });
+
+            //var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
+            //var result = queryResult2[0].title + ", " + queryResult2[1].title + ", " + queryResult2[2].title + ", " + queryResult2[3].title + ", " + queryResult2[4].title;
+
+            //console.log(result);
+            //res.json(result);
+            for (var x = 0; x < queryResult2.length; x++) {
+                var missingIngredients = [];
+                var counter = 0;
+                for (var y = 0; y < queryResult2[x].ingredientList.ingredients.length; y++) {
+                    var found = 0;
+
+                    for (var z = 0; z < req.body.ingredients.length; z++) {
+                        if (String(queryResult2[x].ingredientList.ingredients[y].ingredient) === String(req.body.ingredients[z].ingredient)) {
+                            found = 1;
+                        }
+                    }
+                    if (found == 0) {
+                        missingIngredients[counter] = queryResult2[x].ingredientList.ingredients[y].ingredient;
+                        counter = counter + 1;
+                    }
+
+                }
+                queryResult2[x].missingIngredients = missingIngredients;
             }
-            // a must be equal to b
-            return 0;
+
+
+            for (var i = 0; i < queryResult2.length; i++) {
+                console.log("recipe" + i);
+                for (var j = 0; j < queryResult2[i].missingIngredients.length; j++) {
+                    console.log(queryResult2[i].missingIngredients[j]);
+                }
+                console.log("--------------");
+            }
+
+
         });
-        var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
-        //console.log(result);
-        res.json(result);
-
-
 
 
     });
 
 
 };
-
-
-//function getrecipe(ingredientList){
-//    async.parallel(
-//        [
-//            function (loadCallback) {
-//                recipes.findById(ingredientList).lean().exec(function (err, result) {
-//                    if (err) {
-//                        loadCallback(err);
-//                    }
-//                    ingredientList = result.ingredients;
-//                    loadCallback();
-//                });
-//            },
- //           function (loadCallback) {
-//                Supermarket.find().lean().exec(function (err, result) {
-//                    if (err) {
- //                       loadCallback(err);
- //                   }
- //                   supermarkets = result.map(function (elem) {
- //                       return elem._id;
- //                   });
- //                   loadCallback();
- //               });
- //           }
- //       ]
- //       , function (parallelError) {});
-//}
 
 
 //returns the % of the coverage of ingredients from list A by list B
@@ -122,9 +145,6 @@ exports.searchRecipes = function (req, res) {
         res.status(400).send("Attribute 'searchDirectRecipes' required");
 
     }
-
-
-    };
 
 
     if (req.body.searchDirectRecipes) {
@@ -246,8 +266,8 @@ exports.searchRecipes = function (req, res) {
         });
 
 
-
-}
+    }
+};
 
 function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, callback) {
 
