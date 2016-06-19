@@ -87,7 +87,7 @@ exports.searchIngredients = function (req, res) {
                 queryResult2[x].missingIngredients = missingIngredients;
             }
 
-
+//for debugging only
             for (var i = 0; i < queryResult2.length; i++) {
                 console.log("recipe" + i);
                 for (var j = 0; j < queryResult2[i].missingIngredients.length; j++) {
