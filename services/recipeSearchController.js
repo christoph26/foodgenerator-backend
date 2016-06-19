@@ -16,30 +16,38 @@ exports.searchIngredients = function (req, res) {
         return;
     }
 
-    var indexList = [[1000001, 80], [], [], [], []]; //list for the tupels of ingredientList_ID and % of ingredient match
     var query = IngredientList.find();
 
-    var test = "nothing done";
-
-
     query.lean().exec(function (queryError, queryResult) {
-        //if (queryError) {
-        //   res.status(500).send(queryError);
-        //    return;
-        //}
-        //else
+        if (queryError) {
+            res.status(500).send(queryError);
+            return;
+        }
+        else
 
-        test = "sth done";
-        for (var i = 0; i < 4; i++) {//for (var i = 0; i < queryResult.length; i++){
-            indexList[i][0] = queryResult[i]._id.str;
-            indexList[i][1] = compareLists(queryResult[i], req.body);
+        for (var i = 0; i < queryResult.length; i++){
+            queryResult[i].coverage = compareLists(queryResult[i], req.body);
         }
 
+        var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
+        //res.json(result);
+        //console.log(result);
+        queryResult.sort(function (a, b) {
+            if (a.coverage < b.coverage) {
+                return 1;
+            }
+            if (a.coverage > b.coverage) {
+                return -1;
+            }
+            // a must be equal to b
+            return 0;
+        });
+        result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
+        //console.log(result);
+        res.json(result);
     });
-    //indexList.push( [queryResult[i]._id, compareLists(queryResult[i], req.body)]);
 
 
-    res.json(test);
 };
 
 
@@ -50,7 +58,7 @@ function compareLists(ingredientListA, ingredientListB) {
     var matches = 0;
     for (var i = 0; i < ingredientListA.ingredients.length; i++) {
         for (var j = 0; j < ingredientListB.ingredients.length; j++) {
-            if (ingredientListA[i].ingredient == ingredientListB[j].ingredient) {
+            if (String(ingredientListA.ingredients[i].ingredient) === String(ingredientListB.ingredients[j].ingredient)) {
                 matches = matches + 1;
             }
         }
