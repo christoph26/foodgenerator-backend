@@ -29,7 +29,7 @@ exports.searchIngredients = function (req, res) {
             queryResult[i].coverage = compareLists(queryResult[i], req.body);
         }
 
-        var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
+        //var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
         //res.json(result);
         //console.log(result);
         queryResult.sort(function (a, b) {
@@ -42,13 +42,45 @@ exports.searchIngredients = function (req, res) {
             // a must be equal to b
             return 0;
         });
-        result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
+        var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
         //console.log(result);
         res.json(result);
+
+
+
+
     });
 
 
 };
+
+
+//function getrecipe(ingredientList){
+//    async.parallel(
+//        [
+//            function (loadCallback) {
+//                recipes.findById(ingredientList).lean().exec(function (err, result) {
+//                    if (err) {
+//                        loadCallback(err);
+//                    }
+//                    ingredientList = result.ingredients;
+//                    loadCallback();
+//                });
+//            },
+ //           function (loadCallback) {
+//                Supermarket.find().lean().exec(function (err, result) {
+//                    if (err) {
+ //                       loadCallback(err);
+ //                   }
+ //                   supermarkets = result.map(function (elem) {
+ //                       return elem._id;
+ //                   });
+ //                   loadCallback();
+ //               });
+ //           }
+ //       ]
+ //       , function (parallelError) {});
+//}
 
 
 //returns the % of the coverage of ingredients from list A by list B
@@ -63,9 +95,9 @@ function compareLists(ingredientListA, ingredientListB) {
             }
         }
     }
-    var result = 100 / i * matches;
 
-    return result;
+
+    return 100 / i * matches;
 }
 
 /*
@@ -88,25 +120,22 @@ exports.searchRecipes = function (req, res) {
     }
     if (typeof req.body.searchDirectRecipes === 'undefined') {
         res.status(400).send("Attribute 'searchDirectRecipes' required");
-        return;
+
     }
 
-    var textquery = {
-        '$text': {
-            '$search': req.body.searchText
-        }
+
     };
 
 
     if (req.body.searchDirectRecipes) {
 
-        var query = Recipe.find({$text: {$search: req.body.searchText}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}});
+        var query2 = Recipe.find({$text: {$search: req.body.searchText}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}});
 
         //Filter for vegetarian and vegan flags
         if (typeof req.body.vegetarian !== 'undefined' && req.body.vegetarian) {
-            query.where("vegetarian", true);
+            query2.where("vegetarian", true);
         } else if (typeof req.body.vegan !== 'undefined' && req.body.vegan) {
-            query.where("vegan", true);
+            query2.where("vegan", true);
         }
 
         //filter for effort
@@ -121,15 +150,15 @@ exports.searchRecipes = function (req, res) {
             effortFilter.push({effort: 3});
         }
         if (effortFilter.length > 0) {
-            query.or(effortFilter);
+            query2.or(effortFilter);
         }
 
-        query.lean().exec(function (queryError, queryResult) {
+        query2.lean().exec(function (queryError, queryResult) {
             if (queryError) {
                 res.status(500).send(queryError);
                 return;
             }
-            ;
+
 
             //Calculate supermarket availabilities:
             async.forEach(queryResult, function (recipe, forEachCallback) {
@@ -161,7 +190,7 @@ exports.searchRecipes = function (req, res) {
                                 res.status(500).send(filterError);
                                 return;
                             }
-                            ;
+
 
                             res.json(filteredResults);
                         });
@@ -183,7 +212,7 @@ exports.searchRecipes = function (req, res) {
                 res.status(500).send(queryError);
                 return;
             }
-            ;
+
 
             //load default recipes of recipe families
             async.map(queryResult, function (recipeFamily, mapCallback) {
@@ -216,9 +245,9 @@ exports.searchRecipes = function (req, res) {
 
         });
 
-    }
 
-};
+
+}
 
 function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, callback) {
 
