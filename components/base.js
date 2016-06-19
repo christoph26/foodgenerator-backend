@@ -1,3 +1,6 @@
+var jwt = require('jwt-simple');
+var Config = require('../config/config.js');
+
 /**
  * Basis implementation of a GET request. A entity defined by its id is loaded from the database and returned.
  *
@@ -38,4 +41,9 @@ exports.getAllEntities = function getAllEntities(schema) {
     };
 
     return getAllFunction
+};
+
+exports.getIdFromToken = function getIdFromToken(token) {
+    var decoded = jwt.decode(token, Config.auth.jwtSecret);
+    return decoded;
 };
