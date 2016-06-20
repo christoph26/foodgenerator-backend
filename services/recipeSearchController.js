@@ -33,15 +33,12 @@ exports.searchIngredients = function (req, res) {
                 return;
             }
             else
-
+//calculating the coverage for each ingredientList
                 for (var ii = 0; ii < queryResult.length; ii++) {
                     queryResult[ii].coverage = compareLists(queryResult[ii], req.body);
                 }
 
-            //var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
-            //res.json(result);
-            //console.log(result);
-
+//mapping the ingredientList to the recipes
             for (var xx = 0; xx < queryResult2.length; xx++) {
                 for (var yy = 0; yy < queryResult.length; yy++) {
                     if (String(queryResult2[xx].ingredientList) == String(queryResult[yy]._id)) {
@@ -50,7 +47,7 @@ exports.searchIngredients = function (req, res) {
                 }
             }
 
-
+//sort function for the recipes to sort them by their coverage (from high to low coverage)
             queryResult2.sort(function (a, b) {
                 if (a.ingredientList.coverage < b.ingredientList.coverage) {
                     return 1;
@@ -62,11 +59,8 @@ exports.searchIngredients = function (req, res) {
                 return 0;
             });
 
-            //var result = queryResult[0].coverage.toString() + ", " + queryResult[1].coverage.toString() + ", " + queryResult[2].coverage.toString() + ", " + queryResult[3].coverage.toString() + ", " + queryResult[4].coverage.toString();
-            //var result = queryResult2[0].title + ", " + queryResult2[1].title + ", " + queryResult2[2].title + ", " + queryResult2[3].title + ", " + queryResult2[4].title;
-
-            //console.log(result);
-            //res.json(result);
+              //res.json(result);
+            //checking wich ingredients are missing for each recipe and adding them to a new array: missingIngredients
             for (var x = 0; x < queryResult2.length; x++) {
                 var missingIngredients = [];
                 var counter = 0;
@@ -87,14 +81,45 @@ exports.searchIngredients = function (req, res) {
                 queryResult2[x].missingIngredients = missingIngredients;
             }
 
-//for debugging only
-            for (var i = 0; i < queryResult2.length; i++) {
-                console.log("recipe" + i);
-                for (var j = 0; j < queryResult2[i].missingIngredients.length; j++) {
-                    console.log(queryResult2[i].missingIngredients[j]);
+
+ //getting ingredient titles for the missing ingredients
+            var query3 = Ingredient.find();
+
+            query3.lean().exec(function (queryError3, queryResult3) {
+                if (queryError3) {
+                    res.status(500).send(queryError3);
+                    return;
                 }
-                console.log("--------------");
-            }
+                else
+                    for (var x = 0; x < queryResult2.length; x++) {
+                        if(!queryResult2[x].missingIngredients || queryResult2[x].missingIngredients == ""){
+
+                        }else{
+                            for (var y = 0; y < queryResult2[x].missingIngredients.length; y++) {
+                                for (var z = 0; z < queryResult3.length; z++) {
+                                    if (String(queryResult2[x].missingIngredients[y]) === String(queryResult3[z]._id)) {
+                                        //queryResult2[x].missingIngredients[y].title = queryResult3[z].title;
+                                        queryResult2[x].missingIngredients[y] = queryResult3[z];
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                res.json(queryResult2);
+//for debugging only
+//                for (var i = 0; i < queryResult2.length; i++) {
+//                    console.log("recipe" + i);
+//                    for (var j = 0; j < queryResult2[i].missingIngredients.length; j++) {
+//                        console.log(queryResult2[i].missingIngredients[j].title);
+//                    }
+//                    console.log("--------------");
+//                }
+
+            });
+
+
+
 
 
         });
