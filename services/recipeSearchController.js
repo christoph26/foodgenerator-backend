@@ -59,7 +59,7 @@ exports.searchIngredients = function (req, res) {
                 return 0;
             });
 
-              //res.json(result);
+            //res.json(result);
             //checking wich ingredients are missing for each recipe and adding them to a new array: missingIngredients
             for (var x = 0; x < queryResult2.length; x++) {
                 var missingIngredients = [];
@@ -82,7 +82,7 @@ exports.searchIngredients = function (req, res) {
             }
 
 
- //getting ingredient titles for the missing ingredients
+            //getting ingredient titles for the missing ingredients
             var query3 = Ingredient.find();
 
             query3.lean().exec(function (queryError3, queryResult3) {
@@ -92,21 +92,82 @@ exports.searchIngredients = function (req, res) {
                 }
                 else
                     for (var x = 0; x < queryResult2.length; x++) {
-                        if(!queryResult2[x].missingIngredients || queryResult2[x].missingIngredients == ""){
+                        if (!queryResult2[x].missingIngredients || queryResult2[x].missingIngredients == "") {
 
-                        }else{
+                        } else {
                             for (var y = 0; y < queryResult2[x].missingIngredients.length; y++) {
                                 for (var z = 0; z < queryResult3.length; z++) {
                                     if (String(queryResult2[x].missingIngredients[y]) === String(queryResult3[z]._id)) {
-                                        //queryResult2[x].missingIngredients[y].title = queryResult3[z].title;
                                         queryResult2[x].missingIngredients[y] = queryResult3[z];
                                     }
                                 }
                             }
                         }
                     }
+                //map ingredients to the ids of the ingredientLists
+                for (var xxx = 0; xxx < queryResult2.length; xxx++) {
+                    for (var yyy = 0; yyy < queryResult2[xxx].ingredientList.ingredients.length; yyy++) {
+                        for (var zzz = 0; zzz < queryResult3.length; zzz++) {
+                            if (String(queryResult2[xxx].ingredientList.ingredients[yyy].ingredient) === String(queryResult3[zzz]._id)) {
+                                queryResult2[xxx].ingredientList.ingredients[yyy] = queryResult3[zzz];
+                            }
+                        }
+                    }
 
-                res.json(queryResult2);
+                }
+// getting the supermarkts in denen ALLE ingredients eines recipes verfügbar sind
+                for (var xxxx = 0; xxxx < queryResult2.length; xxxx++) {
+                    var supermarketsAvailable = [];
+                    var supermarketcounter = 0;
+                    for (var zzzz = 0; zzzz < queryResult2[xxxx].ingredientList.ingredients[0].supermarkets.length; zzzz++) {
+
+                        var availableCounter = 1;
+                        for (var yyyy = 1; yyyy < queryResult2[xxxx].ingredientList.ingredients.length; yyyy++) {
+
+                            for (var aaaa = 0; aaaa < queryResult2[xxxx].ingredientList.ingredients[yyyy].supermarkets.length; aaaa++) {
+                                if (String(queryResult2[xxxx].ingredientList.ingredients[0].supermarkets[zzzz]) === String(queryResult2[xxxx].ingredientList.ingredients[yyyy].supermarkets[aaaa])) {
+                                    availableCounter = availableCounter + 1;
+                                }
+                            }
+                        }
+
+                        if (availableCounter == yyyy) {
+                            supermarketsAvailable[supermarketcounter] = queryResult2[xxxx].ingredientList.ingredients[0].supermarkets[zzzz];
+                            supermarketcounter = supermarketcounter + 1;
+
+
+
+                        }
+                    }
+                    queryResult2[xxxx].availableSupermarkets = supermarketsAvailable;
+
+                }
+
+
+                var query4 = Supermarket.find();
+
+                query4.lean().exec(function (queryError4, queryResult4) {
+                    if (queryError4) {
+                        res.status(500).send(queryError4);
+                        return;
+                    }
+                    else
+                        for (var blar = 0; blar < queryResult2.length; blar++){
+                            for (var blur = 0; blur < queryResult2[blar].availableSupermarkets.length; blur++){
+                                for (var blir = 0; blir < queryResult4.length; blir++){
+                                    if (String(queryResult2[blar].availableSupermarkets[blur])===String(queryResult4[blir]._id)){
+                                        queryResult2[blar].availableSupermarkets[blur] = queryResult4[blir];
+                                    }
+                                }
+
+                            }
+                        }
+                    res.json(queryResult2);
+                });
+
+
+
+
 //for debugging only
 //                for (var i = 0; i < queryResult2.length; i++) {
 //                    console.log("recipe" + i);
@@ -117,9 +178,6 @@ exports.searchIngredients = function (req, res) {
 //                }
 
             });
-
-
-
 
 
         });
