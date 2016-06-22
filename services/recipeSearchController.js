@@ -9,198 +9,325 @@ var async = require("async");
 
 
 //need: body: "ingredients":["ingredient":"00000001"] <- list of ingredients (_ids!)
+/*
+ exports.searchIngredients = function (req, res) {
+ if (!req.body.ingredients || req.body.ingredients == "") {
+ res.status(400).send('Ingredients required.');
+ return;
+ }
 
+
+ var recipeQuery = Recipe.find();
+
+ recipeQuery.lean().exec(function (recipeError, allRecipes) {
+ if (recipeError) {
+ res.status(500).send(recipeError);
+ return;
+ }
+ else
+
+ var ingredientListQuery = IngredientList.find();
+ ingredientListQuery.lean().exec(function (ingredientListError, allIngredientLists) {
+ if (ingredientListError) {
+ res.status(500).send(ingredientListError);
+ return;
+ }
+ else
+ //calculating the coverage for each ingredientList
+ for (var ii = 0; ii < allIngredientLists.length; ii++) {
+ allIngredientLists[ii].coverage = compareLists(allIngredientLists[ii], req.body);
+ }
+
+ //mapping the ingredientList to the recipes
+ for (var xx = 0; xx < allRecipes.length; xx++) {
+ for (var yy = 0; yy < allIngredientLists.length; yy++) {
+ if (String(allRecipes[xx].ingredientList) == String(allIngredientLists[yy]._id)) {
+ allRecipes[xx].ingredientList = allIngredientLists[yy];
+ }
+ }
+ }
+
+ //sort function for the recipes to sort them by their coverage (from high to low coverage)
+ allRecipes.sort(function (a, b) {
+ if (a.ingredientList.coverage < b.ingredientList.coverage) {
+ return 1;
+ }
+ if (a.ingredientList.coverage > b.ingredientList.coverage) {
+ return -1;
+ }
+ // a must be equal to b
+ return 0;
+ });
+
+ //res.json(result);
+ //checking wich ingredients are missing for each recipe and adding them to a new array: missingIngredients
+ for (var x = 0; x < allRecipes.length; x++) {
+ var missingIngredients = [];
+ var counter = 0;
+ for (var y = 0; y < allRecipes[x].ingredientList.ingredients.length; y++) {
+ var found = 0;
+
+ for (var z = 0; z < req.body.ingredients.length; z++) {
+ if (String(allRecipes[x].ingredientList.ingredients[y].ingredient) === String(req.body.ingredients[z].ingredient)) {
+ found = 1;
+ }
+ }
+ if (found == 0) {
+ missingIngredients[counter] = allRecipes[x].ingredientList.ingredients[y].ingredient;
+ counter = counter + 1;
+ }
+
+ }
+ allRecipes[x].missingIngredients = missingIngredients;
+ }
+
+
+ //getting ingredient titles for the missing ingredients
+ var ingredientQuery = Ingredient.find();
+
+ ingredientQuery.lean().exec(function (ingredientError, allIngredients) {
+ if (ingredientError) {
+ res.status(500).send(ingredientError);
+ return;
+ }
+ else
+ for (var x = 0; x < allRecipes.length; x++) {
+ if (!allRecipes[x].missingIngredients || allRecipes[x].missingIngredients == "") {
+
+ } else {
+ for (var y = 0; y < allRecipes[x].missingIngredients.length; y++) {
+ for (var z = 0; z < allIngredients.length; z++) {
+ if (String(allRecipes[x].missingIngredients[y]) === String(allIngredients[z]._id)) {
+ allRecipes[x].missingIngredients[y] = allIngredients[z];
+ }
+ }
+ }
+ }
+ }
+ //map ingredients to the ids of the ingredientLists
+ for (var xxx = 0; xxx < allRecipes.length; xxx++) {
+ for (var yyy = 0; yyy < allRecipes[xxx].ingredientList.ingredients.length; yyy++) {
+ for (var zzz = 0; zzz < allIngredients.length; zzz++) {
+ if (String(allRecipes[xxx].ingredientList.ingredients[yyy].ingredient) === String(allIngredients[zzz]._id)) {
+ allRecipes[xxx].ingredientList.ingredients[yyy] = allIngredients[zzz];
+ }
+ }
+ }
+
+ }
+ // getting the supermarkts in denen ALLE ingredients eines recipes verfügbar sind
+ for (var xxxx = 0; xxxx < allRecipes.length; xxxx++) {
+ var supermarketsAvailable = [];
+ var supermarketcounter = 0;
+ for (var zzzz = 0; zzzz < allRecipes[xxxx].ingredientList.ingredients[0].supermarkets.length; zzzz++) {
+
+ var availableCounter = 1;
+ for (var yyyy = 1; yyyy < allRecipes[xxxx].ingredientList.ingredients.length; yyyy++) {
+
+ for (var aaaa = 0; aaaa < allRecipes[xxxx].ingredientList.ingredients[yyyy].supermarkets.length; aaaa++) {
+ if (String(allRecipes[xxxx].ingredientList.ingredients[0].supermarkets[zzzz]) === String(allRecipes[xxxx].ingredientList.ingredients[yyyy].supermarkets[aaaa])) {
+ availableCounter = availableCounter + 1;
+ }
+ }
+ }
+
+ if (availableCounter == yyyy) {
+ supermarketsAvailable[supermarketcounter] = allRecipes[xxxx].ingredientList.ingredients[0].supermarkets[zzzz];
+ supermarketcounter = supermarketcounter + 1;
+
+
+ }
+ }
+ allRecipes[xxxx].availableSupermarkets = supermarketsAvailable;
+
+ }
+
+
+ var supermarketsQuery = Supermarket.find();
+
+ supermarketsQuery.lean().exec(function (queryError4, queryResult4) {
+ if (queryError4) {
+ res.status(500).send(queryError4);
+ return;
+ }
+ else
+ for (var blar = 0; blar < allRecipes.length; blar++) {
+ for (var blur = 0; blur < allRecipes[blar].availableSupermarkets.length; blur++) {
+ for (var blir = 0; blir < queryResult4.length; blir++) {
+ if (String(allRecipes[blar].availableSupermarkets[blur]) === String(queryResult4[blir]._id)) {
+ allRecipes[blar].availableSupermarkets[blur] = queryResult4[blir];
+ }
+ }
+
+ }
+ }
+ res.json(allRecipes);
+ });
+
+
+ //for debugging only
+ //                for (var i = 0; i < allRecipes.length; i++) {
+ //                    console.log("recipe" + i);
+ //                    for (var j = 0; j < allRecipes[i].missingIngredients.length; j++) {
+ //                        console.log(allRecipes[i].missingIngredients[j].title);
+ //                    }
+ //                    console.log("--------------");
+ //                }
+
+ });
+
+
+ });
+
+
+ });
+
+
+ };
+ */
 exports.searchIngredients = function (req, res) {
     if (!req.body.ingredients || req.body.ingredients == "") {
         res.status(400).send('Ingredients required.');
         return;
     }
 
+    var query = Recipe.find();
 
-    var recipeQuery = Recipe.find();
+    //Filter for vegetarian and vegan flags
+    if (typeof req.body.vegetarian !== 'undefined' && req.body.vegetarian) {
+        query.where("vegetarian", true);
+    } else if (typeof req.body.vegan !== 'undefined' && req.body.vegan) {
+        query.where("vegan", true);
+    }
 
-    recipeQuery.lean().exec(function (recipeError, allRecipes) {
-        if (recipeError) {
-            res.status(500).send(recipeError);
+    //filter for effort
+    var effortFilter = [];
+    if (typeof req.body.effortLow !== 'undefined' && req.body.effortLow) {
+        effortFilter.push({effort: 1});
+    }
+    if (typeof req.body.effortMedium !== 'undefined' && req.body.effortMedium) {
+        effortFilter.push({effort: 2});
+    }
+    if (typeof req.body.effortHigh !== 'undefined' && req.body.effortHigh) {
+        effortFilter.push({effort: 3});
+    }
+    if (effortFilter.length > 0) {
+        query.or(effortFilter);
+    }
+
+    query.lean().exec(function (queryError, queryResult) {
+        if (queryError) {
+            res.status(500).send(queryError);
             return;
         }
-        else
 
-            var ingredientListQuery = IngredientList.find();
-        ingredientListQuery.lean().exec(function (ingredientListError, allIngredientLists) {
-            if (ingredientListError) {
-                res.status(500).send(ingredientListError);
-                return;
+
+        //Calculate supermarket availabilities:
+        async.forEach(queryResult, function (recipe, forEachCallback) {
+                calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, forEachCallback);
             }
-            else
-//calculating the coverage for each ingredientList
-                for (var ii = 0; ii < allIngredientLists.length; ii++) {
-                    allIngredientLists[ii].coverage = compareLists(allIngredientLists[ii], req.body);
-                }
-
-//mapping the ingredientList to the recipes
-            for (var xx = 0; xx < allRecipes.length; xx++) {
-                for (var yy = 0; yy < allIngredientLists.length; yy++) {
-                    if (String(allRecipes[xx].ingredientList) == String(allIngredientLists[yy]._id)) {
-                        allRecipes[xx].ingredientList = allIngredientLists[yy];
-                    }
-                }
-            }
-
-//sort function for the recipes to sort them by their coverage (from high to low coverage)
-            allRecipes.sort(function (a, b) {
-                if (a.ingredientList.coverage < b.ingredientList.coverage) {
-                    return 1;
-                }
-                if (a.ingredientList.coverage > b.ingredientList.coverage) {
-                    return -1;
-                }
-                // a must be equal to b
-                return 0;
-            });
-
-            //res.json(result);
-            //checking wich ingredients are missing for each recipe and adding them to a new array: missingIngredients
-            for (var x = 0; x < allRecipes.length; x++) {
-                var missingIngredients = [];
-                var counter = 0;
-                for (var y = 0; y < allRecipes[x].ingredientList.ingredients.length; y++) {
-                    var found = 0;
-
-                    for (var z = 0; z < req.body.ingredients.length; z++) {
-                        if (String(allRecipes[x].ingredientList.ingredients[y].ingredient) === String(req.body.ingredients[z].ingredient)) {
-                            found = 1;
-                        }
-                    }
-                    if (found == 0) {
-                        missingIngredients[counter] = allRecipes[x].ingredientList.ingredients[y].ingredient;
-                        counter = counter + 1;
-                    }
-
-                }
-                allRecipes[x].missingIngredients = missingIngredients;
-            }
-
-
-            //getting ingredient titles for the missing ingredients
-            var ingredientQuery = Ingredient.find();
-
-            ingredientQuery.lean().exec(function (ingredientError, allIngredients) {
-                if (ingredientError) {
-                    res.status(500).send(ingredientError);
+            , function (forEachError) {
+                if (forEachError) {
+                    res.status(500).send(forEachError);
                     return;
                 }
-                else
-                    for (var x = 0; x < allRecipes.length; x++) {
-                        if (!allRecipes[x].missingIngredients || allRecipes[x].missingIngredients == "") {
 
-                        } else {
-                            for (var y = 0; y < allRecipes[x].missingIngredients.length; y++) {
-                                for (var z = 0; z < allIngredients.length; z++) {
-                                    if (String(allRecipes[x].missingIngredients[y]) === String(allIngredients[z]._id)) {
-                                        allRecipes[x].missingIngredients[y] = allIngredients[z];
-                                    }
+                //supermarket filter
+                if (req.body.supermarketFilter && req.body.supermarketFilter.length > 0) {
+                    var supermarketFilter = req.body.supermarketFilter;
+                    async.filter(queryResult, function (recipe, filterCallback) {
+
+                        var passedFilter = false;
+                        //Check if elements of supermarket filter are in the availabilty list of the current recipe
+                        var availabilityIdList = recipe.availability.map(function (item) {
+                            return String(item._id);
+                        });
+                        for (var i = 0; i < supermarketFilter.length; i++) {
+                            passedFilter = passedFilter || (availabilityIdList.indexOf(supermarketFilter[i]) >= 0);
+                        }
+
+                        filterCallback(null, passedFilter);
+                    }, function (filterError, filteredResults) {
+                        if (filterError) {
+                            res.status(500).send(filterError);
+                            return;
+                        }
+                        //calculating the coverage for each ingredientList
+                        for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
+                            queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
+                        }
+
+                        //sort function for the recipes to sort them by their coverage (from high to low coverage)
+                        if (queryResult.length > 1){
+                            queryResult.sort(function (a, b) {
+                                if (a.searchResult.match < b.searchResult.match) {
+                                    return 1;
                                 }
-                            }
+                                if (a.searchResult.match > b.searchResult.match) {
+                                    return -1;
+                                }
+                                // a must be equal to b
+                                return 0;
+                            });
                         }
+
+                        res.json(filteredResults);
+                    });
+
+                } else {
+                    //calculating the coverage for each ingredientList
+                    for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
+                        queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
                     }
-                //map ingredients to the ids of the ingredientLists
-                for (var xxx = 0; xxx < allRecipes.length; xxx++) {
-                    for (var yyy = 0; yyy < allRecipes[xxx].ingredientList.ingredients.length; yyy++) {
-                        for (var zzz = 0; zzz < allIngredients.length; zzz++) {
-                            if (String(allRecipes[xxx].ingredientList.ingredients[yyy].ingredient) === String(allIngredients[zzz]._id)) {
-                                allRecipes[xxx].ingredientList.ingredients[yyy] = allIngredients[zzz];
+
+                    //sort function for the recipes to sort them by their coverage (from high to low coverage)
+                    if (queryResult.length > 1){
+                        queryResult.sort(function (a, b) {
+                            if (a.searchResult.match < b.searchResult.match) {
+                                return 1;
                             }
-                        }
+                            if (a.searchResult.match > b.searchResult.match) {
+                                return -1;
+                            }
+                            // a must be equal to b
+                            return 0;
+                        });
                     }
+
+                    res.json(queryResult);
 
                 }
-// getting the supermarkts in denen ALLE ingredients eines recipes verfügbar sind
-                for (var xxxx = 0; xxxx < allRecipes.length; xxxx++) {
-                    var supermarketsAvailable = [];
-                    var supermarketcounter = 0;
-                    for (var zzzz = 0; zzzz < allRecipes[xxxx].ingredientList.ingredients[0].supermarkets.length; zzzz++) {
-
-                        var availableCounter = 1;
-                        for (var yyyy = 1; yyyy < allRecipes[xxxx].ingredientList.ingredients.length; yyyy++) {
-
-                            for (var aaaa = 0; aaaa < allRecipes[xxxx].ingredientList.ingredients[yyyy].supermarkets.length; aaaa++) {
-                                if (String(allRecipes[xxxx].ingredientList.ingredients[0].supermarkets[zzzz]) === String(allRecipes[xxxx].ingredientList.ingredients[yyyy].supermarkets[aaaa])) {
-                                    availableCounter = availableCounter + 1;
-                                }
-                            }
-                        }
-
-                        if (availableCounter == yyyy) {
-                            supermarketsAvailable[supermarketcounter] = allRecipes[xxxx].ingredientList.ingredients[0].supermarkets[zzzz];
-                            supermarketcounter = supermarketcounter + 1;
-
-
-                        }
-                    }
-                    allRecipes[xxxx].availableSupermarkets = supermarketsAvailable;
-
-                }
-
-
-                var supermarketsQuery = Supermarket.find();
-
-                supermarketsQuery.lean().exec(function (queryError4, queryResult4) {
-                    if (queryError4) {
-                        res.status(500).send(queryError4);
-                        return;
-                    }
-                    else
-                        for (var blar = 0; blar < allRecipes.length; blar++) {
-                            for (var blur = 0; blur < allRecipes[blar].availableSupermarkets.length; blur++) {
-                                for (var blir = 0; blir < queryResult4.length; blir++) {
-                                    if (String(allRecipes[blar].availableSupermarkets[blur]) === String(queryResult4[blir]._id)) {
-                                        allRecipes[blar].availableSupermarkets[blur] = queryResult4[blir];
-                                    }
-                                }
-
-                            }
-                        }
-                    res.json(allRecipes);
-                });
-
-
-//for debugging only
-//                for (var i = 0; i < allRecipes.length; i++) {
-//                    console.log("recipe" + i);
-//                    for (var j = 0; j < allRecipes[i].missingIngredients.length; j++) {
-//                        console.log(allRecipes[i].missingIngredients[j].title);
-//                    }
-//                    console.log("--------------");
-//                }
-
             });
-
-
-        });
-
-
     });
 
 
 };
 
-
 //returns the % of the coverage of ingredients from list A by list B
 // (how many % of the ingredients of list A are in list B)
 
-function compareLists(ingredientListA, ingredientListB) {
+function compareLists(ingredientListA, searchIngredientList) {
     var matches = 0;
-    for (var i = 0; i < ingredientListA.ingredients.length; i++) {
-        for (var j = 0; j < ingredientListB.ingredients.length; j++) {
-            if (String(ingredientListA.ingredients[i].ingredient) === String(ingredientListB.ingredients[j].ingredient)) {
+    var notUsedIngredientcounter = 0;
+    var notUsedIngredients = [];
+    for (var counterB = 0; counterB < searchIngredientList.length; counterB++) {
+        var noMatch = 0;
+        for (var counterA = 0; counterA < ingredientListA.length; counterA++) {
+            if (String(ingredientListA[counterA]._id) === String(searchIngredientList[counterB].ingredient)) {
                 matches = matches + 1;
+            }else{
+                noMatch = noMatch +1;
             }
         }
+        if(noMatch == counterA){
+            notUsedIngredients[notUsedIngredientcounter] = searchIngredientList[counterB];
+        }
+        noMatch = 0;
     }
 
+    //var result = {match:100 / i * matches,notUsedIngredients:notUsedIngredients };
 
-    return 100 / i * matches;
+    return {match:matches,notUsedIngredients:notUsedIngredients };
 }
 
 /*
