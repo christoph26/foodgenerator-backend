@@ -231,6 +231,10 @@ exports.searchIngredients = function (req, res) {
                     res.status(500).send(forEachError);
                     return;
                 }
+// difference to the text search function starts here:
+// supermarket filter works the same, but then function to compare the ingredients with the ingredientList form the ingredientSearch is called.
+// afterwards the array of recipes is sorted
+
 
                 //supermarket filter
                 if (req.body.supermarketFilter && req.body.supermarketFilter.length > 0) {
@@ -252,12 +256,12 @@ exports.searchIngredients = function (req, res) {
                             res.status(500).send(filterError);
                             return;
                         }
-                        //calculating the coverage for each ingredientList
+        //calculating the coverage for each recipe from the queryResult
                         for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
                             queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
                         }
 
-                        //sort function for the recipes to sort them by their coverage (from high to low coverage)
+        //sort function for the recipes to sort them by their match ingredients (from high to low)
                         if (queryResult.length > 1){
                             queryResult.sort(function (a, b) {
                                 if (a.searchResult.match < b.searchResult.match) {
@@ -275,12 +279,14 @@ exports.searchIngredients = function (req, res) {
                     });
 
                 } else {
-                    //calculating the coverage for each ingredientList
+
+
+                    //calculating the coverage for each recipe from the queryResult
                     for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
                         queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
                     }
 
-                    //sort function for the recipes to sort them by their coverage (from high to low coverage)
+                    //sort function for the recipes to sort them by their match ingredients (from high to low)
                     if (queryResult.length > 1){
                         queryResult.sort(function (a, b) {
                             if (a.searchResult.match < b.searchResult.match) {
@@ -307,19 +313,20 @@ exports.searchIngredients = function (req, res) {
 // (how many % of the ingredients of list A are in list B)
 
 function compareLists(ingredientListA, searchIngredientList) {
-    var matches = 0;
-    var notUsedIngredientcounter = 0;
-    var notUsedIngredients = [];
-    for (var counterB = 0; counterB < searchIngredientList.length; counterB++) {
+    var matches = 0; //count of ingredients from the search that are in the given recipe
+    var notUsedIngredientcounter = 0; // counter to store the not used Ingredient in the right space
+    var notUsedIngredients = [];// array with the not used Ingredients from the search term
+
+    for (var counterB = 0; counterB < searchIngredientList.length; counterB++) { //for each ingredient from the search
         var noMatch = 0;
-        for (var counterA = 0; counterA < ingredientListA.length; counterA++) {
+        for (var counterA = 0; counterA < ingredientListA.length; counterA++) { // check if the ingredients from the recipe are the same
             if (String(ingredientListA[counterA]._id) === String(searchIngredientList[counterB].ingredient)) {
-                matches = matches + 1;
+                matches = matches + 1; //
             }else{
-                noMatch = noMatch +1;
+                noMatch = noMatch +1; // count if the ingredient is not the same
             }
         }
-        if(noMatch == counterA){
+        if(noMatch == counterA){ // if noMatch = the amount of ingredient of the recipe, the ingredient from the search is not used in this recipe
             notUsedIngredients[notUsedIngredientcounter] = searchIngredientList[counterB];
         }
         noMatch = 0;
