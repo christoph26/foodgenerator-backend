@@ -3,31 +3,30 @@ var base = require('../base');
 var mongoose = require('mongoose');
 
 // Create endpoint /api/recipe/:id for GET
-exports.getRecipe = base.getEntityById(Recipe)
+exports.getRecipe = base.getEntityById(Recipe);
 
 
-exports.getRecipeOfFamily = function (req, res) {
+exports.getOtherRecipesOfFamily = function (req, res) {
 
-    if (!req.body.recipeFamilyId) {
-        res.status(400).send('Recipefamily ID required.');
-        return;
-    }
-    if (!req.body.currentRecipeId) {
-        res.status(400).send("Current recipe ID required");
-        return;
-    }
-
-    //Find all recipes with specified recipeFamily and an different id than currentRecipeId
-    Recipe.find({
-        recipeFamily: req.body.recipeFamilyId,
-        "_id": {"$ne": mongoose.Types.ObjectId(req.body.currentRecipeId)}
-    }).lean().exec(function (error, result) {
+    //Find the recipeFamily of the recipe with the passed id.
+    Recipe.findById(req.params.id).select('recipeFamily').lean().exec(function (error, result) {
         if (error) {
             res.status(500).send(error);
             return;
         }
 
-        res.json(result);
-    });
+        // Find and return the other recipes of the found family.
+        Recipe.find({
+            recipeFamily: result.recipeFamily,
+            "_id": {"$ne": mongoose.Types.ObjectId(req.params.id)}
+        }).lean().exec(function (error2, otherRecipesOfFamily) {
+            if (error2) {
+                res.status(500).send(error2);
+                return;
+            }
 
-}
+            res.json(otherRecipesOfFamily);
+        });
+
+    })
+};
