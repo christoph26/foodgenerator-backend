@@ -40,7 +40,7 @@ module.exports.login = function (req, res) {
     });
 };
 
-module.exports.signup = function (req, res) {
+module.exports.createUser = function (req, res) {
     var body = req.body;
     //check for required information
     if (!body.email) {
@@ -62,7 +62,7 @@ module.exports.signup = function (req, res) {
     //create new user object, insert information
     var user = new User();
     user.email = body.email;
-    user.password = body.password;
+    user.password = md5(body.password + "salzig");
     user.firstName = body.firstName;
     user.lastName = body.lastName;
     user.salt = "salzig";
@@ -78,8 +78,7 @@ module.exports.signup = function (req, res) {
     });
 };
 
-//deletes a user
-module.exports.unregister = function (req, res) {
+module.exports.deleteUser = function (req, res) {
     var body = req.body;
     //check for email and pw
     if (!body.email) {
