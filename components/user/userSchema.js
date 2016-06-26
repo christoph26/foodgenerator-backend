@@ -14,7 +14,7 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    //name of the user (optional)
+    //name of the user (optional)   //TODO why is this optional when in the web service it is not?
     firstName: String,
     lastName: String,
     //salt for pw hashing
