@@ -16,10 +16,7 @@ var userSchema = mongoose.Schema({
     },
     //name of the user (optional)   //TODO why is this optional when in the web service it is not?
     firstName: String,
-    lastName: String,
-    //salt for pw hashing
-    salt: String
-
+    lastName: String
 });
 
 userSchema.pre('save', function (next) {

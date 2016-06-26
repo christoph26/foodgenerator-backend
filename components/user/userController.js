@@ -62,10 +62,9 @@ module.exports.createUser = function (req, res) {
     //create new user object, insert information
     var user = new User();
     user.email = body.email;
-    user.password = md5(body.password + "salzig");
+    user.password = body.password;      // password gets salted and hashed implicit when calling save
     user.firstName = body.firstName;
     user.lastName = body.lastName;
-    user.salt = "salzig";
 
     //safe user in db
     user.save(function (err) {
