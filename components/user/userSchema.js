@@ -1,22 +1,24 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
-//define our user schema
 var userSchema = mongoose.Schema({
-    //email for login
     email: {
         type: String,
         required: true,
         unique: true
     },
-    //pw for login
     password: {
         type: String,
         required: true
     },
-    //name of the user (optional)   //TODO why is this optional when in the web service it is not?
-    firstName: String,
-    lastName: String
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    }
 });
 
 userSchema.pre('save', function (next) {
