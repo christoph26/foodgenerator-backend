@@ -56,7 +56,7 @@
   },
   {
     "_id": "333300000000000000000006",
-    "title": "Pasta Salad",
+    "title": "Spaghetti Salad",
     "effort": 1,
     "description": "Classic Pasta Salat with Italian Flavour",
     "vegan": false,
@@ -89,7 +89,7 @@
   },
   {
     "_id": "333300000000000000000009",
-    "title": "Vegan Pasta Salad",
+    "title": "Vegan Spaghetti Salad",
     "effort": 2,
     "description": "Vegan Pasta Salat with Italian Flavour",
     "vegan": true,
