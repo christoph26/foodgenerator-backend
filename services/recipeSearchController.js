@@ -148,19 +148,20 @@ function compareLists(ingredientListA, searchIngredientList) {
     var notUsedIngredientcounter = 0; // counter to store the not used Ingredient in the right space
     var notUsedIngredients = [];// array with the not used Ingredients from the search term
 
-    for (var counterB = 0; counterB < searchIngredientList.length; counterB++) { //for each ingredient from the search
-        var noMatch = 0;
-        for (var counterA = 0; counterA < ingredientListA.length; counterA++) { // check if the ingredients from the recipe are the same
-            if (String(ingredientListA[counterA]._id) === String(searchIngredientList[counterB])) {
+    for (var searchListIndex = 0; searchListIndex < searchIngredientList.length; searchListIndex++) { //for each ingredient from the search
+        var notMatched = 0;
+        for (var listAIndex = 0; listAIndex < ingredientListA.length; listAIndex++) { // check if the ingredients from the recipe are the same
+            if (String(ingredientListA[listAIndex]._id) === String(searchIngredientList[searchListIndex])) {
                 matches = matches + 1; //
             } else {
-                noMatch = noMatch + 1; // count if the ingredient is not the same
+                notMatched = notMatched + 1; // count if the ingredient is not the same
             }
         }
-        if (noMatch == counterA) { // if noMatch = the amount of ingredient of the recipe, the ingredient from the search is not used in this recipe
-            notUsedIngredients[notUsedIngredientcounter] = searchIngredientList[counterB];
+        if (notMatched == listAIndex) { // if notMatched = the amount of ingredient of the recipe, the ingredient from the search is not used in this recipe
+            notUsedIngredients[notUsedIngredientcounter] = searchIngredientList[searchListIndex];
+            notUsedIngredientcounter = notUsedIngredientcounter+1;
         }
-        noMatch = 0;
+        notMatched = 0;
     }
     return {
         match: matches,
@@ -188,7 +189,7 @@ exports.searchRecipes = function (req, res) {
     }
     if (typeof req.body.searchDirectRecipes === 'undefined') {
         res.status(400).send("Attribute 'searchDirectRecipes' required");
-
+        return;
     }
 
 
