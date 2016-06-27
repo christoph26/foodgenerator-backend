@@ -78,17 +78,15 @@ module.exports.createUser = function (req, res) {
 };
 
 module.exports.updateUser = function (req, res) {
-    var body = req.body;
-
     // check authorisation
     var idFromToken = base.getIdFromToken(req.headers['authorization'].split(" ")[1]);
-    if (!idFromToken || !(idFromToken.user._id === body._id)) {
+    if (!idFromToken || !(idFromToken.user._id === req.params.id)) {
         res.status(403).send('Unauthorized!');
         return;
     }
 
     // perform update
-    User.findOneAndUpdate({_id: body._id}, body, function (err) {
+    User.findOneAndUpdate({_id: req.params.id}, req.body, function (err) {
         if (err) {
             res.status(500).send(err);
             return;
