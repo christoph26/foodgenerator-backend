@@ -118,18 +118,16 @@ module.exports.deleteMealPlan = function (req, res) {
 };
 
 module.exports.listMealPlans = function (req, res) {
-    var body = req.body;
-
     // Check authorisation
     var idFromToken = base.getIdFromToken(req.headers['authorization'].split(" ")[1]);
-    if (!idFromToken || !(idFromToken.user._id == body.user)) {
+    if (!idFromToken || !(idFromToken.user._id == req.params.id)) {
         res.status(403).send('Unauthorized!');
         return;
     }
 
     // Assemble query
     var query = MealPlan.find();
-    query.where("user", idFromToken.user);
+    query.where("user", req.params.id);
     query.select("title _id");
 
     // Execute query and return result

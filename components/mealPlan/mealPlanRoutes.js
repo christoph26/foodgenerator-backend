@@ -17,8 +17,8 @@ function mealPlanRoutes(passport) {
     router.route('/mealPlans/:id')
         .delete(passport.authenticate('jwt', {session: false}), mealPlanController.deleteMealPlan);
 
-    router.route('/mealPlans/list')
-        .post(passport.authenticate('jwt', {session: false}), mealPlanController.listMealPlans);
+    router.route('/mealPlans/list/:id')
+        .get(passport.authenticate('jwt', {session: false}), mealPlanController.listMealPlans);
 
     return router;
 }
