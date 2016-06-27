@@ -256,13 +256,13 @@ exports.searchIngredients = function (req, res) {
                             res.status(500).send(filterError);
                             return;
                         }
-        //calculating the coverage for each recipe from the queryResult
+                        //calculating the coverage for each recipe from the queryResult
                         for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
                             queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
                         }
 
-        //sort function for the recipes to sort them by their match ingredients (from high to low)
-                        if (queryResult.length > 1){
+                        //sort function for the recipes to sort them by their match ingredients (from high to low)
+                        if (queryResult.length > 1) {
                             queryResult.sort(function (a, b) {
                                 if (a.searchResult.match < b.searchResult.match) {
                                     return 1;
@@ -275,7 +275,8 @@ exports.searchIngredients = function (req, res) {
                             });
                         }
 
-                        res.json(filteredResults);
+                        replaceNotUsedIngredientsAndAttachToResponse(filteredResults, res);
+
                     });
 
                 } else {
@@ -287,7 +288,7 @@ exports.searchIngredients = function (req, res) {
                     }
 
                     //sort function for the recipes to sort them by their match ingredients (from high to low)
-                    if (queryResult.length > 1){
+                    if (queryResult.length > 1) {
                         queryResult.sort(function (a, b) {
                             if (a.searchResult.match < b.searchResult.match) {
                                 return 1;
@@ -300,7 +301,7 @@ exports.searchIngredients = function (req, res) {
                         });
                     }
 
-                    res.json(queryResult);
+                    replaceNotUsedIngredientsAndAttachToResponse(queryResult, res);
 
                 }
             });
@@ -308,6 +309,44 @@ exports.searchIngredients = function (req, res) {
 
 
 };
+
+
+function replaceNotUsedIngredientsAndAttachToResponse(recipeList, response) {
+
+    //forEach over all resultrecipes
+    async.forEach(recipeList, function (recipe, forEachCallback) {
+
+            //replace NotUsedIngredients-List of each recipe by async-map
+            var ingredientIdList = recipe.searchResult.notUsedIngredients;
+            async.map(ingredientIdList, function (ingredientId, mapcallback) {
+                Ingredient.findById(ingredientId, function (error, resultIngredient) {
+                    if (error) {
+                        mapcallback(error);
+                    }
+
+                    mapcallback(null, resultIngredient);
+                });
+            }, function (mapError, resultIngredients) {
+                if (mapError) {
+                    forEachCallback(mapError);
+                }
+
+                recipe.searchResult.notUsedIngredients = resultIngredients;
+                forEachCallback();
+
+            });
+        }
+        , function (forEachError) {
+            if (forEachError) {
+                response.status(500).send(forEachError);
+                return;
+            }
+
+            response.json(recipeList);
+
+        });
+}
+
 
 //returns the % of the coverage of ingredients from list A by list B
 // (how many % of the ingredients of list A are in list B)
@@ -320,21 +359,21 @@ function compareLists(ingredientListA, searchIngredientList) {
     for (var counterB = 0; counterB < searchIngredientList.length; counterB++) { //for each ingredient from the search
         var noMatch = 0;
         for (var counterA = 0; counterA < ingredientListA.length; counterA++) { // check if the ingredients from the recipe are the same
-            if (String(ingredientListA[counterA]._id) === String(searchIngredientList[counterB].ingredient)) {
+            if (String(ingredientListA[counterA]._id) === String(searchIngredientList[counterB])) {
                 matches = matches + 1; //
-            }else{
-                noMatch = noMatch +1; // count if the ingredient is not the same
+            } else {
+                noMatch = noMatch + 1; // count if the ingredient is not the same
             }
         }
-        if(noMatch == counterA){ // if noMatch = the amount of ingredient of the recipe, the ingredient from the search is not used in this recipe
+        if (noMatch == counterA) { // if noMatch = the amount of ingredient of the recipe, the ingredient from the search is not used in this recipe
             notUsedIngredients[notUsedIngredientcounter] = searchIngredientList[counterB];
         }
         noMatch = 0;
     }
-
-    //var result = {match:100 / i * matches,notUsedIngredients:notUsedIngredients };
-
-    return {match:matches,notUsedIngredients:notUsedIngredients };
+    return {
+        match: matches,
+        notUsedIngredients: notUsedIngredients
+    };
 }
 
 /*
