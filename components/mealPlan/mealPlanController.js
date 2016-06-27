@@ -1,6 +1,8 @@
 var MealPlan = require('./mealPlanSchema');
 var base = require('../base');
 
+var async = require("async");
+
 // Create endpoint /users/:id for GET
 exports.getMealPlan = function (req, res) {
     MealPlan.findById(req.params.id).lean().exec(function (err, result) {
@@ -113,6 +115,29 @@ module.exports.deleteMealPlan = function (req, res) {
 
         }
     });
+};
 
+module.exports.listMealPlans = function (req, res) {
+    // Check authorisation
+    var idFromToken = base.getIdFromToken(req.headers['authorization'].split(" ")[1]);
+    if (!idFromToken || !(idFromToken.user._id == req.params.id)) {
+        res.status(403).send('Unauthorized!');
+        return;
+    }
+
+    // Assemble query
+    var query = MealPlan.find();
+    query.where("user", req.params.id);
+    query.select("title _id");
+
+    // Execute query and return result
+    query.lean().exec(function (queryError, queryResult) {
+        if (queryError) {
+            res.status(500).send(queryError);
+            return
+        }
+
+        res.json(queryResult);
+    })
 
 };
