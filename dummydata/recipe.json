@@ -53,5 +53,49 @@
     "picture": "img/recipes/avocado-salad-feta.jpg",
     "ingredientList": "222200000000000000000005",
     "recipeFamily": "444400000000000000000003"
+  },
+  {
+    "_id": "333300000000000000000006",
+    "title": "Pasta Salad",
+    "effort": 1,
+    "description": "Classic Pasta Salat with Italian Flavour",
+    "vegan": false,
+    "vegetarian": false,
+    "picture": "img/recipes/pasta-salad.jpg",
+    "ingredientList": "222200000000000000000006",
+    "recipeFamily": "444400000000000000000004"
+  },
+  {
+    "_id": "333300000000000000000007",
+    "title": "Spaghetti Bolognese by Tim Maelzer",
+    "effort": 3,
+    "description": "Classic Pasta Bolognese by star cook tim mälzer",
+    "vegan": false,
+    "vegetarian": false,
+    "picture": "img/recipes/bolognese-maelzer.jpg",
+    "ingredientList": "222200000000000000000007",
+    "recipeFamily": "444400000000000000000001"
+  },
+  {
+    "_id": "333300000000000000000008",
+    "title": "Spaghetti Carbonara",
+    "effort": 1,
+    "description": "One of the simplest menues. just eggs spaghetti and some ham",
+    "vegan": false,
+    "vegetarian": false,
+    "picture": "img/recipes/pasta-carb.jpg",
+    "ingredientList": "222200000000000000000008",
+    "recipeFamily": "444400000000000000000005"
+  },
+  {
+    "_id": "333300000000000000000009",
+    "title": "Vegan Pasta Salad",
+    "effort": 2,
+    "description": "Vegan Pasta Salat with Italian Flavour",
+    "vegan": true,
+    "vegetarian": true,
+    "picture": "img/recipes/pasta-salad.jpg",
+    "ingredientList": "222200000000000000000009",
+    "recipeFamily": "444400000000000000000004"
   }
 ]

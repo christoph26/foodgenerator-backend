@@ -13,5 +13,15 @@
     "_id": "444400000000000000000003",
     "title": "Avocado Salad",
     "defaultrecipe": "333300000000000000000004"
+  },
+  {
+    "_id": "444400000000000000000004",
+    "title": "Pasta Salad",
+    "defaultrecipe": "333300000000000000000005"
+  },
+  {
+    "_id": "444400000000000000000005",
+    "title": "Spaghetti Carbonara",
+    "defaultrecipe": "333300000000000000000008"
   }
 ]
