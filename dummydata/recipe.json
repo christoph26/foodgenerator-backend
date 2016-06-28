@@ -60,7 +60,7 @@
     "effort": 1,
     "description": "Classic Pasta Salat with Italian Flavour",
     "vegan": false,
-    "vegetarian": false,
+    "vegetarian": true,
     "picture": "img/recipes/pasta-salad.jpg",
     "ingredientList": "222200000000000000000006",
     "recipeFamily": "444400000000000000000004"
@@ -94,7 +94,7 @@
     "description": "Vegan Pasta Salat with Italian Flavour",
     "vegan": true,
     "vegetarian": true,
-    "picture": "img/recipes/pasta-salad.jpg",
+    "picture": "img/recipes/vegan-pasta-salad.jpg",
     "ingredientList": "222200000000000000000009",
     "recipeFamily": "444400000000000000000004"
   }
