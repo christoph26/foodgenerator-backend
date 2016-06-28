@@ -9,7 +9,7 @@ var async = require("async");
 
 
 exports.searchIngredients = function (req, res) {
-    if (!req.body.ingredients || req.body.ingredients == "") {
+    if (!req.body.ingredients || req.body.ingredients == []) {
         res.status(400).send('Ingredients required.');
         return;
     }
@@ -114,6 +114,7 @@ function replaceNotUsedIngredientsAndAttachToResponse(recipeList, response) {
                 Ingredient.findById(ingredientId, function (error, resultIngredient) {
                     if (error) {
                         mapcallback(error);
+                        return;
                     }
 
                     mapcallback(null, resultIngredient);
@@ -121,6 +122,7 @@ function replaceNotUsedIngredientsAndAttachToResponse(recipeList, response) {
             }, function (mapError, resultIngredients) {
                 if (mapError) {
                     forEachCallback(mapError);
+                    return;
                 }
 
                 recipe.searchResult.notUsedIngredients = resultIngredients;
@@ -294,6 +296,7 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                 IngredientList.findById(recipe.ingredientList).lean().exec(function (err, result) {
                     if (err) {
                         loadCallback(err);
+                        return;
                     }
                     ingredientList = result.ingredients;
                     loadCallback();
@@ -303,6 +306,7 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                 Supermarket.find().lean().exec(function (err, result) {
                     if (err) {
                         loadCallback(err);
+                        return;
                     }
                     supermarkets = result.map(function (elem) {
                         return elem._id;
@@ -314,6 +318,7 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
         , function (parallelError) {
             if (parallelError) {
                 callback(parallelError);
+                return;
             }
 
             //load ingredients of current ingredientList
@@ -321,12 +326,14 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                 Ingredient.findById(ingredientId.ingredient).lean().exec(function (err, ingredient) {
                     if (err) {
                         loadIngredientCallback(err);
+                        return;
                     }
                     loadIngredientCallback(null, ingredient);
                 });
             }, function (mapError, listOfIngredients) {
                 if (mapError) {
                     callback(mapError);
+                    return;
                 }
 
                 //replace reference to supermarketList with List of ingredients
@@ -355,6 +362,7 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                 }, function (reduceError, reduction) {
                     if (reduceError) {
                         callback(reduceError);
+                        return;
                     }
 
                     //Load supermarkets form Id-list
@@ -362,13 +370,15 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                         Supermarket.findById(supermarketId).lean().exec(function (loadError, supermarket) {
                             if (loadError) {
                                 mapCallback(loadError);
+                                return;
                             }
 
                             mapCallback(null, supermarket);
                         })
                     }, function (mapError, loadedSupermarkets) {
                         if (mapError) {
-                            callback(mapError)
+                            callback(mapError);
+                            return;
                         }
                         recipe.availability = loadedSupermarkets;
                         callback();
