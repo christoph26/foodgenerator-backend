@@ -1,6 +1,8 @@
 var Recipe = require('./recipeSchema');
 var base = require('../base');
 var mongoose = require('mongoose');
+var service = require('../../services/searchController')
+var async = require("async");
 
 // Create endpoint /api/recipe/:id for GET
 exports.getRecipe = base.getEntityById(Recipe);
@@ -25,7 +27,18 @@ exports.getOtherRecipesOfFamily = function (req, res) {
                 return;
             }
 
-            res.json(otherRecipesOfFamily);
+            //Calculate supermarket availabilities:
+            async.forEach(otherRecipesOfFamily, function (recipe, forEachCallback) {
+                    service.calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, forEachCallback);
+                }
+                , function (forEachError) {
+                    if (forEachError) {
+                        res.status(500).send(forEachError);
+                        return;
+                    }
+
+                    res.json(otherRecipesOfFamily);
+                });
         });
 
     })

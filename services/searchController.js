@@ -284,6 +284,8 @@ exports.searchRecipes = function (req, res) {
     }
 };
 
+exports.calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe = calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe;
+
 function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, callback) {
 
     var ingredientList;
