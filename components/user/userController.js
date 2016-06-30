@@ -40,7 +40,7 @@ module.exports.login = function (req, res) {
     });
 };
 
-module.exports.signup = function (req, res) {
+module.exports.createUser = function (req, res) {
     var body = req.body;
     //check for required information
     if (!body.email) {
@@ -62,10 +62,9 @@ module.exports.signup = function (req, res) {
     //create new user object, insert information
     var user = new User();
     user.email = body.email;
-    user.password = body.password;
+    user.password = body.password;      // password gets salted and hashed implicit when calling save
     user.firstName = body.firstName;
     user.lastName = body.lastName;
-    user.salt = "salzig";
 
     //safe user in db
     user.save(function (err) {
@@ -78,8 +77,26 @@ module.exports.signup = function (req, res) {
     });
 };
 
-//deletes a user
-module.exports.unregister = function (req, res) {
+module.exports.updateUser = function (req, res) {
+    // check authorisation
+    var idFromToken = base.getIdFromToken(req.headers['authorization'].split(" ")[1]);
+    if (!idFromToken || !(idFromToken.user._id === req.params.id)) {
+        res.status(403).send('Unauthorized!');
+        return;
+    }
+
+    // perform update
+    User.findOneAndUpdate({_id: req.params.id}, req.body, function (err) {
+        if (err) {
+            res.status(500).send(err);
+            return;
+        }
+
+        res.status(200).json("Update successful!");
+    });
+};
+
+module.exports.deleteUser = function (req, res) {
     var body = req.body;
     //check for email and pw
     if (!body.email) {
