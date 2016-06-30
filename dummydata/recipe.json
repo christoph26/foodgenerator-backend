@@ -6,6 +6,7 @@
     "description": "Preperation is simple and done in 30 minutes.",
     "vegan": false,
     "vegetarian": false,
+    "wallpaper": "img/recipes/spaghetti-bolognese-classic-wall.jpg" ,
     "picture": "img/recipes/spaghetti-bolognese-classic.jpg",
     "ingredientList": "222200000000000000000001",
     "recipeFamily": "444400000000000000000001"
@@ -17,6 +18,7 @@
     "description": "HOT as Hell.",
     "vegan": false,
     "vegetarian": false,
+    "wallpaper": "img/recipes/spaghetti-bolognese-rammstein-wall.jpg" ,
     "picture": "img/recipes/spaghetti-bolognese-rammstein.jpg",
     "ingredientList": "222200000000000000000002",
     "recipeFamily": "444400000000000000000001"
@@ -28,6 +30,7 @@
     "description": "Hot & Spicy",
     "vegan": false,
     "vegetarian": false,
+    "wallpaper": "img/recipes/chili-con-carne-wall.jpg" ,
     "picture": "img/recipes/chili-con-carne.jpg",
     "ingredientList": "222200000000000000000003",
     "recipeFamily": "444400000000000000000002"
@@ -39,6 +42,7 @@
     "description": "Delicious Healthy Salat for Vegan People",
     "vegan": true,
     "vegetarian": true,
+    "wallpaper": "img/recipes/avocado-salad-wall.jpg" ,
     "picture": "img/recipes/avocado-salad.jpg",
     "ingredientList": "222200000000000000000004",
     "recipeFamily": "444400000000000000000003"
@@ -50,6 +54,7 @@
     "description": "Delicious Healthy Salat for Vegetarian People",
     "vegan": false,
     "vegetarian": true,
+    "wallpaper": "img/recipes/avocado-salad-feta-wall.jpg" ,
     "picture": "img/recipes/avocado-salad-feta.jpg",
     "ingredientList": "222200000000000000000005",
     "recipeFamily": "444400000000000000000003"
@@ -61,6 +66,7 @@
     "description": "Classic Pasta Salat with Italian Flavour",
     "vegan": false,
     "vegetarian": true,
+    "wallpaper": "img/recipes/pasta-salad-wall.jpg" ,
     "picture": "img/recipes/pasta-salad.jpg",
     "ingredientList": "222200000000000000000006",
     "recipeFamily": "444400000000000000000004"
@@ -72,6 +78,7 @@
     "description": "Classic Pasta Bolognese by star cook tim mälzer",
     "vegan": false,
     "vegetarian": false,
+    "wallpaper": "img/recipes/bolognese-maelzer-wall.jpg" ,
     "picture": "img/recipes/bolognese-maelzer.jpg",
     "ingredientList": "222200000000000000000007",
     "recipeFamily": "444400000000000000000001"
@@ -83,6 +90,7 @@
     "description": "One of the simplest menues. just eggs spaghetti and some ham",
     "vegan": false,
     "vegetarian": false,
+    "wallpaper": "img/recipes/pasta-carb-wall.jpg" ,
     "picture": "img/recipes/pasta-carb.jpg",
     "ingredientList": "222200000000000000000008",
     "recipeFamily": "444400000000000000000005"
@@ -94,6 +102,7 @@
     "description": "Vegan Pasta Salat with Italian Flavour",
     "vegan": true,
     "vegetarian": true,
+    "wallpaper": "img/recipes/vegan-pasta-salad-wall.jpg" ,
     "picture": "img/recipes/vegan-pasta-salad.jpg",
     "ingredientList": "222200000000000000000009",
     "recipeFamily": "444400000000000000000004"
