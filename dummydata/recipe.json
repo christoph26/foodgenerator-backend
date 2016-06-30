@@ -6,6 +6,7 @@
     "description": "Preperation is simple and done in 30 minutes.",
     "vegan": false,
     "vegetarian": false,
+    "wallpaper": "img/recipes/spaghetti-bolognese-classic-wall.jpg" ,
     "picture": "img/recipes/spaghetti-bolognese-classic.jpg",
     "ingredientList": "222200000000000000000001",
     "recipeFamily": "444400000000000000000001"
@@ -17,6 +18,7 @@
     "description": "HOT as Hell.",
     "vegan": false,
     "vegetarian": false,
+    "wallpaper": "img/recipes/spaghetti-bolognese-rammstein-wall.jpg" ,
     "picture": "img/recipes/spaghetti-bolognese-rammstein.jpg",
     "ingredientList": "222200000000000000000002",
     "recipeFamily": "444400000000000000000001"
@@ -28,6 +30,7 @@
     "description": "Hot & Spicy",
     "vegan": false,
     "vegetarian": false,
+    "wallpaper": "img/recipes/chili-con-carne-wall.jpg" ,
     "picture": "img/recipes/chili-con-carne.jpg",
     "ingredientList": "222200000000000000000003",
     "recipeFamily": "444400000000000000000002"
@@ -39,6 +42,7 @@
     "description": "Delicious Healthy Salat for Vegan People",
     "vegan": true,
     "vegetarian": true,
+    "wallpaper": "img/recipes/avocado-salad-wall.jpg" ,
     "picture": "img/recipes/avocado-salad.jpg",
     "ingredientList": "222200000000000000000004",
     "recipeFamily": "444400000000000000000003"
@@ -50,8 +54,57 @@
     "description": "Delicious Healthy Salat for Vegetarian People",
     "vegan": false,
     "vegetarian": true,
+    "wallpaper": "img/recipes/avocado-salad-feta-wall.jpg" ,
     "picture": "img/recipes/avocado-salad-feta.jpg",
     "ingredientList": "222200000000000000000005",
     "recipeFamily": "444400000000000000000003"
+  },
+  {
+    "_id": "333300000000000000000006",
+    "title": "Spaghetti Salad",
+    "effort": 1,
+    "description": "Classic Pasta Salat with Italian Flavour",
+    "vegan": false,
+    "vegetarian": true,
+    "wallpaper": "img/recipes/pasta-salad-wall.jpg" ,
+    "picture": "img/recipes/pasta-salad.jpg",
+    "ingredientList": "222200000000000000000006",
+    "recipeFamily": "444400000000000000000004"
+  },
+  {
+    "_id": "333300000000000000000007",
+    "title": "Spaghetti Bolognese by Tim Maelzer",
+    "effort": 3,
+    "description": "Classic Pasta Bolognese by star cook tim mälzer",
+    "vegan": false,
+    "vegetarian": false,
+    "wallpaper": "img/recipes/bolognese-maelzer-wall.jpg" ,
+    "picture": "img/recipes/bolognese-maelzer.jpg",
+    "ingredientList": "222200000000000000000007",
+    "recipeFamily": "444400000000000000000001"
+  },
+  {
+    "_id": "333300000000000000000008",
+    "title": "Spaghetti Carbonara",
+    "effort": 1,
+    "description": "One of the simplest menues. Put a large saucepan of water on to boil. Finely chop the pancetta, having first removed any rind. Finely grate both cheeses and mix them together. Beat the eggs in a medium bowl, season with a little freshly grated black pepper and set everything aside.",
+    "vegan": false,
+    "vegetarian": false,
+    "wallpaper": "img/recipes/pasta-carb-wall.jpg" ,
+    "picture": "img/recipes/pasta-carb.jpg",
+    "ingredientList": "222200000000000000000008",
+    "recipeFamily": "444400000000000000000005"
+  },
+  {
+    "_id": "333300000000000000000009",
+    "title": "Vegan Spaghetti Salad",
+    "effort": 2,
+    "description": "This Pasta Salad is a flavorful summer pasta salad, featuring zucchini and yellow summer squashes, is a good choice for a vegan/vegetarian potluck, yet easy enough to make as part of an everyday meal. It’s delicious with grilled vegetables and vegan burgers.",
+    "vegan": true,
+    "vegetarian": true,
+    "wallpaper": "img/recipes/vegan-pasta-salad-wall.jpg" ,
+    "picture": "img/recipes/vegan-pasta-salad.jpg",
+    "ingredientList": "222200000000000000000009",
+    "recipeFamily": "444400000000000000000004"
   }
 ]
