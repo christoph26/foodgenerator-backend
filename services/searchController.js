@@ -8,9 +8,6 @@ var Supermarket = require('../components/supermarket/supermarketSchema');
 var async = require("async");
 
 
-
-
-
 /*
  expected body structure:
  {ingredients:[ids of ingredients], required
@@ -60,14 +57,14 @@ exports.searchIngredients = function (req, res) {
                                 return;
                             }
                             //calculating the coverage for each recipe from the queryResult
-                            calculateMatchAndDeleteBadResults(filteredResult, req,res);
+                            calculateMatchAndDeleteBadResults(filteredResult, req, res);
 
                         });
 
                 } else {
 
 
-                    calculateMatchAndDeleteBadResults(queryResult, req,res);
+                    calculateMatchAndDeleteBadResults(queryResult, req, res);
 
                 }
             });
@@ -78,20 +75,20 @@ exports.searchIngredients = function (req, res) {
 
 //calculate the match of each recipe. If the match is 0 then dont show the recipe as result.
 function calculateMatchAndDeleteBadResults(queryResult, req, res) {
-    var listwithIndexesFromRecipesWithLessThan1Match=[];//list for the indexes of the recipes with no ingredient match
-    var counterlist=0;// counter for the list of indexes with no ingredient match
+    var listwithIndexesFromRecipesWithLessThan1Match = [];//list for the indexes of the recipes with no ingredient match
+    var counterlist = 0;// counter for the list of indexes with no ingredient match
 
     for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
         queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
 
         if (queryResult[recipeCounter].searchResult.match < 1) {//if no ingredient match, add index of the recipe to the list
             listwithIndexesFromRecipesWithLessThan1Match[counterlist] = recipeCounter;
-            counterlist = counterlist+1;
+            counterlist = counterlist + 1;
         }
     }
     //go through the list of indexes to delete the recipes with no match
     //IMPORTANT go through the list from the end to the beginning because of the changing indexing of the recipes after one is removed.
-    for (var listlength = listwithIndexesFromRecipesWithLessThan1Match.length-1; listlength >= 0; listlength--) {
+    for (var listlength = listwithIndexesFromRecipesWithLessThan1Match.length - 1; listlength >= 0; listlength--) {
         queryResult.splice(listwithIndexesFromRecipesWithLessThan1Match[listlength], 1);
 
     }
@@ -171,7 +168,7 @@ function compareLists(ingredientListA, searchIngredientList) {
         }
         if (notMatched == listAIndex) { // if notMatched = the amount of ingredient of the recipe, the ingredient from the search is not used in this recipe
             notUsedIngredients[notUsedIngredientcounter] = searchIngredientList[searchListIndex];
-            notUsedIngredientcounter = notUsedIngredientcounter+1;
+            notUsedIngredientcounter = notUsedIngredientcounter + 1;
         }
         notMatched = 0;
     }
@@ -311,6 +308,7 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                         return;
                     }
                     ingredientList = result.ingredients;
+                    recipe.ingredientList = result.ingredients;
                     loadCallback();
                 });
             },
@@ -349,7 +347,11 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
                 }
 
                 //replace reference to supermarketList with List of ingredients
-                recipe.ingredientList = listOfIngredients;
+                for (var ingredientListIndex in recipe.ingredientList) {
+                    recipe.ingredientList[ingredientListIndex].title = listOfIngredients[ingredientListIndex].title;
+                    recipe.ingredientList[ingredientListIndex].supermarkets = listOfIngredients[ingredientListIndex].supermarkets;
+                }
+
                 var supermarketListsOfIngredients = listOfIngredients.map(function (ingredient) {
                     return ingredient.supermarkets;
                 });
@@ -404,7 +406,7 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
 
 function addVegetarianVeganAndEffortFilter(req, query) {
 //Filter for vegetarian and vegan flags
-    if (req.body.vegetarian !== undefined && req.body.vegetarian === true ) {
+    if (req.body.vegetarian !== undefined && req.body.vegetarian === true) {
         query.where("vegetarian", true);
     } else if (req.body.vegan !== undefined && req.body.vegan === true) {
         query.where("vegan", true);
