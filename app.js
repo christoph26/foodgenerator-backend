@@ -63,6 +63,9 @@ app.use('/', recipeFamilyRoutes());
 var supermarketRoutes = require("./components/supermarket/supermarketRoutes");
 app.use('/', supermarketRoutes());
 
+var mealPlanRoutes = require("./components/mealPlan/mealPlanRoutes");
+app.use('/', mealPlanRoutes(passport));
+
 var searchRoutes = require("./services/searchRoutes");
 app.use('/search', searchRoutes());
 

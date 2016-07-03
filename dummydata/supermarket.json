@@ -2,16 +2,16 @@
   {
     "_id": "888800000000000000000001",
     "title": "ALDI SUED",
-    "icon": "http://static06.kaufda.de/Geschaefte/Aldi-Sued.v9774.jpg"
+    "icon": "img/supermarkets/aldi-sued-logo.jpg"
   },
   {
     "_id": "888800000000000000000002",
     "title": "Penny",
-    "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Penny-Logo.svg/142px-Penny-Logo.svg.png"
+    "icon": "img/supermarkets/penny-logo.png"
   },
   {
     "_id": "888800000000000000000003",
     "title": "REAL",
-    "icon": "http://static05.kaufda.de/Geschaefte/Real.v1111.png"
+    "icon": "img/supermarkets/real-logo.png"
   }
 ]

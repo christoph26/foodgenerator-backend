@@ -31,6 +31,10 @@ var Recipe = new mongoose.Schema({
             type: String,
             required: true
         },
+        wallpaper: {
+            type: String,
+            required: true
+        },
         //ingredient list: list of tuple with ingredient and amount (incl. unit of measurement) of the ingredient
         ingredientList: {
             type: mongoose.Schema.Types.ObjectId,
