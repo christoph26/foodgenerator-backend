@@ -394,21 +394,21 @@ function calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, 
 
 function addVegetarianVeganAndEffortFilter(req, query) {
 //Filter for vegetarian and vegan flags
-    if (typeof req.body.vegetarian !== 'undefined' && req.body.vegetarian) {
+    if (req.body.vegetarian !== undefined && req.body.vegetarian === true ) {
         query.where("vegetarian", true);
-    } else if (typeof req.body.vegan !== 'undefined' && req.body.vegan) {
+    } else if (req.body.vegan !== undefined && req.body.vegan === true) {
         query.where("vegan", true);
     }
 
     //filter for effort
     var effortFilter = [];
-    if (typeof req.body.effortLow !== 'undefined' && req.body.effortLow) {
+    if (req.body.effortLow !== undefined && req.body.effortLow === true) {
         effortFilter.push({effort: 1});
     }
-    if (typeof req.body.effortMedium !== 'undefined' && req.body.effortMedium) {
+    if (req.body.effortMedium !== undefined && req.body.effortMedium === true) {
         effortFilter.push({effort: 2});
     }
-    if (typeof req.body.effortHigh !== 'undefined' && req.body.effortHigh) {
+    if (req.body.effortHigh !== undefined && req.body.effortHigh === true) {
         effortFilter.push({effort: 3});
     }
     if (effortFilter.length > 0) {
