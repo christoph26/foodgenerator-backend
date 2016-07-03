@@ -85,14 +85,29 @@ module.exports.updateUser = function (req, res) {
         return;
     }
 
-    // perform update
-    User.findOneAndUpdate({_id: req.params.id}, req.body, function (err) {
+    // perform update (do not use update method to ensure pre-save-hook is executed)
+    User.findOne({_id: req.params.id}, function (err, user) {
+        // first, find the user
         if (err) {
             res.status(500).send(err);
             return;
         }
 
-        res.status(200).json("Update successful!");
+        // second, update object
+        var body = req.body;
+        if (body.email) user.email = body.email;
+        if (body.password) user.password = body.password;
+        if (body.firstName) user.firstName = body.firstName;
+        if (body.lastName) user.lastName = body.lastName;
+
+        // third, persist user object to db
+        user.save(function (err) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            res.status(200).json("Update successful!");
+        });
     });
 };
 
