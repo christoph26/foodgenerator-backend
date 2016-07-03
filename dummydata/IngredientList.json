@@ -3,32 +3,32 @@
     "_id": "222200000000000000000001",
     "ingredients": [
       {
-        "amount": 500,
+        "amount": 100,
         "unit": "g",
         "ingredient": "111100000000000000000001"
       },
       {
-        "amount": 6,
-        "unit": "st",
+        "amount": 3,
+        "unit": "piece",
         "ingredient": "111100000000000000000002"
       },
       {
-        "amount": 2,
-        "unit": "st",
+        "amount": 1,
+        "unit": "piece",
         "ingredient": "111100000000000000000003"
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000004"
       },
       {
-        "amount": 2,
-        "unit": "tl",
+        "amount": 1,
+        "unit": "teaspoon",
         "ingredient": "111100000000000000000005"
       },
       {
-        "amount": 500,
+        "amount": 200,
         "unit": "g",
         "ingredient": "111100000000000000000006"
       }
@@ -38,38 +38,38 @@
     "_id": "222200000000000000000002",
     "ingredients": [
       {
-        "amount": 500,
+        "amount": 100,
         "unit": "g",
         "ingredient": "111100000000000000000001"
       },
       {
-        "amount": 6,
-        "unit": "st",
+        "amount": 3,
+        "unit": "piece",
         "ingredient": "111100000000000000000002"
       },
       {
-        "amount": 2,
-        "unit": "st",
+        "amount": 1,
+        "unit": "piece",
         "ingredient": "111100000000000000000003"
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000004"
       },
       {
         "amount": 2,
-        "unit": "tl",
+        "unit": "teaspoon",
         "ingredient": "111100000000000000000005"
       },
       {
-        "amount": 500,
+        "amount": 200,
         "unit": "g",
         "ingredient": "111100000000000000000006"
       },
       {
         "amount": 6,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000007"
       }
     ]
@@ -78,23 +78,23 @@
     "_id": "222200000000000000000003",
     "ingredients": [
       {
-        "amount": 500,
+        "amount": 200,
         "unit": "g",
         "ingredient": "111100000000000000000001"
       },
       {
-        "amount": 6,
-        "unit": "st",
+        "amount": 3,
+        "unit": "piece",
         "ingredient": "111100000000000000000002"
       },
       {
         "amount": 2,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000003"
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000004"
       },
       {
@@ -114,7 +114,7 @@
     "ingredients": [
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000012"
       },
       {
@@ -124,7 +124,7 @@
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000010"
       },
       {
@@ -145,7 +145,7 @@
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000012"
       },
       {
@@ -155,7 +155,7 @@
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000010"
       },
       {
@@ -174,7 +174,7 @@
         "ingredient": "111100000000000000000006"
       },
       {
-        "amount": 200,
+        "amount": 100,
         "unit": "g",
         "ingredient": "111100000000000000000014"
       },
@@ -185,16 +185,16 @@
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000004"
       },
       {
-        "amount": 70,
+        "amount": 50,
         "unit": "ml",
         "ingredient": "111100000000000000000011"
       },
       {
-        "amount": 150,
+        "amount": 90,
         "unit": "g",
         "ingredient": "111100000000000000000015"
       }
@@ -215,12 +215,12 @@
       },
       {
         "amount": 3,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000003"
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000004"
       },
       {
@@ -250,7 +250,7 @@
     "ingredients": [
       {
         "amount": 3,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000019"
       },
       {
@@ -275,12 +275,12 @@
     "ingredients": [
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000004"
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000003"
       },
       {
@@ -289,23 +289,23 @@
         "ingredient": "111100000000000000000018"
       },
       {
-        "amount": 1,
-        "unit": "st",
+        "amount": 20,
+        "unit": "piece",
         "ingredient": "111100000000000000000020"
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000021"
       },
       {
-        "amount": 1,
-        "unit": "st",
+        "amount": 50,
+        "unit": "ml",
         "ingredient": "111100000000000000000011"
       },
       {
         "amount": 1,
-        "unit": "st",
+        "unit": "piece",
         "ingredient": "111100000000000000000022"
       }
     ]
