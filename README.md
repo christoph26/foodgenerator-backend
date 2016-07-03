@@ -1,6 +1,6 @@
-# sebamaster-movie-backend application
+# sebamaster-foodgenerator-backend application
 
-sebamaster-movie-frontend application can be found [here](https://bitbucket.org/sebischair/sebamaster-movie-frontend)
+sebamaster-foodgenerator-frontend application can be found [here](https://github.com/christoph26/foodgenerator-backend)
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ Just for the backend application:
 
 go to your project root folder via command line
 ```
-cd path/to/workspace/sebamaster-movie-frontend
+cd path/to/workspace/sebamaster-foodgenerator-frontend
 ```
 
 **install node dependencies**
@@ -35,10 +35,21 @@ npm install
 ```
 mongod --dbpath relative/path/to/database
 ```
-* create all database schemes and import data to begin with 
+
+Use script to fill the database with dummydata:
+
+change to project root/database:
+
 ```
-mongorestore dump/
+cd database
 ```
+
+Execute script:
+
+```
+node initDbWithTestData.js
+
+
 
 **set up environment configuration**
 
