@@ -8,6 +8,20 @@ var Supermarket = require('../components/supermarket/supermarketSchema');
 var async = require("async");
 
 
+
+
+
+/*
+ expected body structure:
+ {ingredients:[ids of ingredients], required
+ vegetarian: boolean, default false
+ vegan: boolean, default false
+ effortLow: boolean, default false
+ effortMedium: boolean, default false
+ effortHigh: boolean, default false
+ }
+ */
+
 exports.searchIngredients = function (req, res) {
     if (!req.body.ingredients || req.body.ingredients == []) {
         res.status(400).send('Ingredients required.');
@@ -16,6 +30,7 @@ exports.searchIngredients = function (req, res) {
 
     var query = Recipe.find();
 
+    //vegan and vegetarian filter
     addVegetarianVeganAndEffortFilter(req, query);
 
     query.lean().exec(function (queryError, queryResult) {
@@ -25,7 +40,7 @@ exports.searchIngredients = function (req, res) {
         }
 
 
-        //Calculate supermarket availabilities:
+        //Calculate supermarket availabilities: (get recipes, then ingredients, then look where the ingredients are available)
         async.forEach(queryResult, function (recipe, forEachCallback) {
                 calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, forEachCallback);
             }
@@ -34,10 +49,6 @@ exports.searchIngredients = function (req, res) {
                     res.status(500).send(forEachError);
                     return;
                 }
-// difference to the text search function starts here:
-// supermarket filter works the same, but then function to compare the ingredients with the ingredientList form the ingredientSearch is called.
-// afterwards the array of recipes is sorted
-
 
                 //supermarket filter
                 if (req.body.supermarketFilter && req.body.supermarketFilter.length > 0) {
@@ -49,51 +60,14 @@ exports.searchIngredients = function (req, res) {
                                 return;
                             }
                             //calculating the coverage for each recipe from the queryResult
-                            for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
-                                queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
-                            }
-
-                            //sort function for the recipes to sort them by their match ingredients (from high to low)
-                            if (queryResult.length > 1) {
-                                queryResult.sort(function (a, b) {
-                                    if (a.searchResult.match < b.searchResult.match) {
-                                        return 1;
-                                    }
-                                    if (a.searchResult.match > b.searchResult.match) {
-                                        return -1;
-                                    }
-                                    // a must be equal to b
-                                    return 0;
-                                });
-                            }
-
-                            replaceNotUsedIngredientsAndAttachToResponse(filteredResults, res);
+                            calculateMatchAndDeleteBadResults(filteredResult, req,res);
 
                         });
 
                 } else {
 
 
-                    //calculating the coverage for each recipe from the queryResult
-                    for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
-                        queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
-                    }
-
-                    //sort function for the recipes to sort them by their match ingredients (from high to low)
-                    if (queryResult.length > 1) {
-                        queryResult.sort(function (a, b) {
-                            if (a.searchResult.match < b.searchResult.match) {
-                                return 1;
-                            }
-                            if (a.searchResult.match > b.searchResult.match) {
-                                return -1;
-                            }
-                            // a must be equal to b
-                            return 0;
-                        });
-                    }
-
-                    replaceNotUsedIngredientsAndAttachToResponse(queryResult, res);
+                    calculateMatchAndDeleteBadResults(queryResult, req,res);
 
                 }
             });
@@ -102,6 +76,42 @@ exports.searchIngredients = function (req, res) {
 
 };
 
+//calculate the match of each recipe. If the match is 0 then dont show the recipe as result.
+function calculateMatchAndDeleteBadResults(queryResult, req, res) {
+    var listwithIndexesFromRecipesWithLessThan1Match=[];//list for the indexes of the recipes with no ingredient match
+    var counterlist=0;// counter for the list of indexes with no ingredient match
+
+    for (var recipeCounter = 0; recipeCounter < queryResult.length; recipeCounter++) {
+        queryResult[recipeCounter].searchResult = compareLists(queryResult[recipeCounter].ingredientList, req.body.ingredients);
+
+        if (queryResult[recipeCounter].searchResult.match < 1) {//if no ingredient match, add index of the recipe to the list
+            listwithIndexesFromRecipesWithLessThan1Match[counterlist] = recipeCounter;
+            counterlist = counterlist+1;
+        }
+    }
+    //go through the list of indexes to delete the recipes with no match
+    //IMPORTANT go through the list from the end to the beginning because of the changing indexing of the recipes after one is removed.
+    for (var listlength = listwithIndexesFromRecipesWithLessThan1Match.length-1; listlength >= 0; listlength--) {
+        queryResult.splice(listwithIndexesFromRecipesWithLessThan1Match[listlength], 1);
+
+    }
+
+    //sort function for the recipes to sort them by their match ingredients (from high to low)
+    if (queryResult.length > 1) {
+        queryResult.sort(function (a, b) {
+            if (a.searchResult.match < b.searchResult.match) {
+                return 1;
+            }
+            if (a.searchResult.match > b.searchResult.match) {
+                return -1;
+            }
+            // a must be equal to b
+            return 0;
+        });
+    }
+
+    replaceNotUsedIngredientsAndAttachToResponse(queryResult, res);
+};
 
 function replaceNotUsedIngredientsAndAttachToResponse(recipeList, response) {
 
