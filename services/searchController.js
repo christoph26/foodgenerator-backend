@@ -108,7 +108,7 @@ function calculateMatchAndDeleteBadResults(queryResult, req, res) {
     }
 
     replaceNotUsedIngredientsAndAttachToResponse(queryResult, res);
-};
+}
 
 function replaceNotUsedIngredientsAndAttachToResponse(recipeList, response) {
 
@@ -160,7 +160,7 @@ function compareLists(ingredientListA, searchIngredientList) {
     for (var searchListIndex = 0; searchListIndex < searchIngredientList.length; searchListIndex++) { //for each ingredient from the search
         var notMatched = 0;
         for (var listAIndex = 0; listAIndex < ingredientListA.length; listAIndex++) { // check if the ingredients from the recipe are the same
-            if (String(ingredientListA[listAIndex]._id) === String(searchIngredientList[searchListIndex])) {
+            if (String(ingredientListA[listAIndex].ingredient) === String(searchIngredientList[searchListIndex])) {
                 matches = matches + 1; //
             } else {
                 notMatched = notMatched + 1; // count if the ingredient is not the same
