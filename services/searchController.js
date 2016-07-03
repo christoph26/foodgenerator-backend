@@ -57,7 +57,7 @@ exports.searchIngredients = function (req, res) {
                                 return;
                             }
                             //calculating the coverage for each recipe from the queryResult
-                            calculateMatchAndDeleteBadResults(filteredResult, req, res);
+                            calculateMatchAndDeleteBadResults(filteredResults, req, res);
 
                         });
 
