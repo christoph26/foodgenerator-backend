@@ -5,7 +5,18 @@ var service = require('../../services/searchController')
 var async = require("async");
 
 // Create endpoint /api/recipe/:id for GET
-exports.getRecipe = base.getEntityById(Recipe);
+exports.getRecipe = function (req,res) {
+    Recipe.findById(req.params.id).lean().exec(function (error, result) {
+        if (error) {
+            res.status(500).send(error);
+            return;
+        }
+
+        service.calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(result, function () {
+            res.json(result);
+        });
+    })
+};
 
 
 exports.getOtherRecipesOfFamily = function (req, res) {
