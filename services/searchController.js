@@ -8,6 +8,20 @@ var Supermarket = require('../components/supermarket/supermarketSchema');
 var async = require("async");
 
 
+
+
+
+/*
+ expected body structure:
+ {ingredients:[ids of ingredients], required
+ vegetarian: boolean, default false
+ vegan: boolean, default false
+ effortLow: boolean, default false
+ effortMedium: boolean, default false
+ effortHigh: boolean, default false
+ }
+ */
+
 exports.searchIngredients = function (req, res) {
     if (!req.body.ingredients || req.body.ingredients == []) {
         res.status(400).send('Ingredients required.');
@@ -16,6 +30,7 @@ exports.searchIngredients = function (req, res) {
 
     var query = Recipe.find();
 
+    //vegan and vegetarian filter
     addVegetarianVeganAndEffortFilter(req, query);
 
     query.lean().exec(function (queryError, queryResult) {
@@ -25,7 +40,7 @@ exports.searchIngredients = function (req, res) {
         }
 
 
-        //Calculate supermarket availabilities:
+        //Calculate supermarket availabilities: (get recipes, then ingredients, then look where the ingredients are available)
         async.forEach(queryResult, function (recipe, forEachCallback) {
                 calculateAvailableSupermarketsAndReplaceIngredientListOfRecipe(recipe, forEachCallback);
             }
@@ -34,10 +49,6 @@ exports.searchIngredients = function (req, res) {
                     res.status(500).send(forEachError);
                     return;
                 }
-// difference to the text search function starts here:
-// supermarket filter works the same, but then function to compare the ingredients with the ingredientList form the ingredientSearch is called.
-// afterwards the array of recipes is sorted
-
 
                 //supermarket filter
                 if (req.body.supermarketFilter && req.body.supermarketFilter.length > 0) {
@@ -84,7 +95,7 @@ function calculateMatchAndDeleteBadResults(queryResult, req, res) {
         queryResult.splice(listwithIndexesFromRecipesWithLessThan1Match[listlength], 1);
 
     }
-    
+
     //sort function for the recipes to sort them by their match ingredients (from high to low)
     if (queryResult.length > 1) {
         queryResult.sort(function (a, b) {
